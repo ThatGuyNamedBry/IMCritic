@@ -18,6 +18,7 @@ class Movie(db.Model):
     trailer = db.Column(db.String(255))
 
     reviews = db.relationship("Review", back_populates="movie")
+    movie_watchlist = db.relationship("MovieWatchlist", back_populates="movie")
 
     def to_dict(self):
         return {
