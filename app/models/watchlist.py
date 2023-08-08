@@ -1,5 +1,6 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from .user import User
+from .movie_watchlist import MovieWatchlist 
 from datetime import datetime
 
 class Watchlist(db.Model):
