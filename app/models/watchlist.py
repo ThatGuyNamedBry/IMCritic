@@ -14,7 +14,7 @@ class Watchlist(db.Model):
     name = db.Column(db.String(255), nullable=False)
 
     user = db.relationship('User', back_populates='watchlists')
-    movies = db.relationship('Movie', secondary='movie_watchlist')
+    movies = db.relationship('Movie', secondary='moviewatchlist')
 
     def to_dict(self):
         return {
