@@ -16,6 +16,7 @@ class User(db.Model, UserMixin):
 
     reviews = db.relationship("Review", back_populates="user")
     watchlists = db.relationship("Watchlist", back_populates="user")
+    actors = db.relationship("Actor", back_populates="user")
 
     @property
     def password(self):

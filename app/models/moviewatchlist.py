@@ -12,8 +12,8 @@ class MovieWatchlist(db.Model):
     watchlist_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('watchlists.id')), nullable=False)
     movie_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('movies.id')), nullable=False)
 
-    watchlist = db.relationship('Watchlist')
-    movie = db.relationship('Movie')
+    movie = db.relationship('Movie', back_populates='movie_watchlist')
+    watchlist = db.relationship('Watchlist', back_populates='movie_watchlist')
 
     def to_dict(self):
         return {
