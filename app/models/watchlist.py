@@ -1,6 +1,6 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from .user import User
-from .moviewatchlist import MovieWatchlist
+from .movie_watchlist import MovieWatchlist
 from datetime import datetime
 
 class Watchlist(db.Model):
@@ -14,7 +14,7 @@ class Watchlist(db.Model):
     name = db.Column(db.String(255), nullable=False)
 
     user = db.relationship('User', back_populates='watchlists')
-    movies = db.relationship('Movie', secondary='moviewatchlist')
+    movies = db.relationship('Movie', secondary='movie_watchlist')
 
     def to_dict(self):
         return {
