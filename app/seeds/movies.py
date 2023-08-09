@@ -1,4 +1,4 @@
-from app.models import db, environment, SCHEMA, Movie
+from app.models import db, environment, SCHEMA, Movie, Actor
 from sqlalchemy.sql import text
 
 

@@ -2,6 +2,7 @@ from .db import db, environment, SCHEMA, add_prefix_for_prod
 from .user import User
 from datetime import datetime
 
+
 class Movie(db.Model):
     __tablename__ = 'movies'
 
@@ -18,8 +19,9 @@ class Movie(db.Model):
     trailer = db.Column(db.String(255))
 
     reviews = db.relationship("Review", back_populates="movie")
-    movie_watchlist = db.relationship("MovieWatchlist", back_populates="movie")
-    actors = db.relationship("Actor", secondary="movie_actor")
+    movie_watchlist = db.relationship('MovieWatchlist', back_populates='movie', cascade="all, delete")
+    movie_actors = db.relationship("MovieActor", back_populates="movie", cascade="all, delete")
+    actors = db.relationship("Actor", secondary="movie_actor", back_populates="movies", cascade="all, delete")
 
     def to_dict(self):
         return {
@@ -33,3 +35,9 @@ class Movie(db.Model):
             'trailer': self.trailer,
             'actors': [actor.to_dict() for actor in self.actors]
         }
+
+
+# movie_actor = db.Table('movie_actor',
+#     db.Column('movie_id', db.Integer, db.ForeignKey(add_prefix_for_prod('movies.id')), primary_key=True),
+#     db.Column('actor_id', db.Integer, db.ForeignKey(add_prefix_for_prod('actors.id')), primary_key=True)
+# )

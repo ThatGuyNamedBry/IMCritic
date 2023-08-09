@@ -5,6 +5,7 @@ from .reviews import seed_reviews, undo_reviews
 from .actors import seed_actors, undo_actors
 from .watchlists import seed_watchlists, undo_watchlists
 from .moviewatchlists import seed_movie_watchlists, undo_movie_watchlists
+from .movie_actors import seed_movie_actors, undo_movie_actors
 
 from app.models.db import db, environment, SCHEMA
 
@@ -23,6 +24,7 @@ def seed():
         # Make sure to add all your other model's undo functions below
         undo_movie_watchlists()
         undo_watchlists()
+        undo_movie_actors()
         undo_actors()
         undo_reviews()
         undo_movies()
@@ -31,6 +33,7 @@ def seed():
     seed_movies()
     seed_reviews()
     seed_actors()
+    seed_movie_actors()
     seed_watchlists()
     seed_movie_watchlists()
 
@@ -40,6 +43,7 @@ def seed():
 def undo():
     undo_movie_watchlists()
     undo_watchlists()
+    undo_movie_actors()
     undo_actors()
     undo_reviews()
     undo_movies()
