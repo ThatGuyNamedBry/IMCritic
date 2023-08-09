@@ -108,7 +108,7 @@ def upgrade():
         sa.Column('actor_id', sa.Integer(), nullable=False),
         sa.ForeignKeyConstraint(['movie_id'], ['movies.id'], ),
         sa.ForeignKeyConstraint(['actor_id'], ['actors.id'], ),
-        sa.PrimaryKeyConstraint('movie_id', 'actor_id')
+        sa.PrimaryKeyConstraint('id')
     )
 
     if environment == "production":
