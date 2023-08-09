@@ -19,5 +19,6 @@ class MovieActor(db.Model):
         return {
             'id': self.id,
             'movie_id': self.movie.id,
-            'actor_id': self.actor.id
+            'actor_id': self.actor.id,
+            'actor': self.actor.to_dict()
         }
