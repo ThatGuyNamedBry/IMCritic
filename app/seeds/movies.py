@@ -31,7 +31,7 @@ def seed_movies():
         writer="Derek Kolstad",
         description="John Wick: Chapter 3 - Parabellum (or simply John Wick: Chapter 3) is a 2019 American action thriller film directed by Chad Stahelski. The film is the sequel to John Wick: Chapter 2 (2017) and the third installment in the John Wick franchise. It stars Keanu Reeves as the eponymous character, alongside an ensemble supporting cast including Halle Berry, Laurence Fishburne, Mark Dacascos, Asia Kate Dillon, Lance Reddick, Anjelica Huston, and Ian McShane. The film centers on John Wick going on the run from a legion of hitmen after a bounty is placed for his murder.",
         trailer="https://www.youtube.com/embed/M7XM597XO94",
-        img_ulr='https://m.media-amazon.com/images/M/MV5BMDg2YzI0ODctYjliMy00NTU0LTkxODYtYTNkNjQwMzVmOTcxXkEyXkFqcGdeQXVyNjg2NjQwMDQ@._V1_.jpg'
+        img_url='https://m.media-amazon.com/images/M/MV5BMDg2YzI0ODctYjliMy00NTU0LTkxODYtYTNkNjQwMzVmOTcxXkEyXkFqcGdeQXVyNjg2NjQwMDQ@._V1_.jpg'
     )
     movie4 = Movie(
         title="John Wick 4",
