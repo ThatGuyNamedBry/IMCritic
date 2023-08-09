@@ -45,6 +45,7 @@ def upgrade():
         sa.Column('writer', sa.String(length=255), nullable=False),
         sa.Column('description', sa.Text(), nullable=False),
         sa.Column('trailer', sa.String(length=255)),
+        sa.Column('img_url', sa.String(length=255)),
         sa.PrimaryKeyConstraint('id')
     )
 
