@@ -104,6 +104,7 @@ def upgrade():
 
     op.create_table(
         'movie_actor',
+        sa.Column('id', sa.Integer(), nullable=False),
         sa.Column('movie_id', sa.Integer(), nullable=False),
         sa.Column('actor_id', sa.Integer(), nullable=False),
         sa.ForeignKeyConstraint(['movie_id'], ['movies.id'], ),
