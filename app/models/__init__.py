@@ -5,4 +5,5 @@ from .review import Review
 from .actor import Actor
 from .watchlist import Watchlist
 from .moviewatchlist import MovieWatchlist
+from .movie_actor import MovieActor
 from .db import environment, SCHEMA
