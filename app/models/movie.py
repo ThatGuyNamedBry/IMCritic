@@ -19,6 +19,7 @@ class Movie(db.Model):
 
     reviews = db.relationship("Review", back_populates="movie")
     movie_watchlist = db.relationship("MovieWatchlist", back_populates="movie")
+    actors = db.relationship("Actor", secondary="movie_actor")
 
     def to_dict(self):
         return {
@@ -29,5 +30,6 @@ class Movie(db.Model):
             'director': self.director,
             'writer': self.writer,
             'description': self.description,
-            'trailer': self.trailer
+            'trailer': self.trailer,
+            'actors': [actor.to_dict() for actor in self.actors]
         }
