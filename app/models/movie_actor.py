@@ -8,6 +8,7 @@ class MovieActor(db.Model):
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
 
+    id = db.Column(db.Integer, primary_key=True)
     movie_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('movies.id')), primary_key=True)
     actor_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('actors.id')), primary_key=True)
 
