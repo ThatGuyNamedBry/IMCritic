@@ -8,7 +8,7 @@ def seed_watchlists():
         name="My Favorites"
     )
     watchlist2 = Watchlist(
-        user_id=2,
+        user_id=1,
         name="Action Movies"
     )
 
