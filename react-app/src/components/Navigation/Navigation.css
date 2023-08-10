@@ -1,7 +1,7 @@
 .profile-dropdown {
   position: absolute;
   top: 60px;
-  right: 15px;
+  right: 115px;
   display: flex;
   flex-direction: column;
   border: 1px solid #f5c518;
@@ -17,7 +17,13 @@
   display: flex;
   flex: row;
   justify-content: space-between;
+  align-items: center;
   list-style: none;
+  background-color: #121212;
+  height: 41px;
+  margin: 0px;
+  padding-left: 100px;
+  padding-right: 100px;
 }
 
 .navigation-ul li a {

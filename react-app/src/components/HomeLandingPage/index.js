@@ -28,7 +28,7 @@ const HomeLandingPage = () => {
             <div className="featured-trailers-section">
                 {recentMovies.length > 0 && (
                     <div className="trailer-box">
-                        <iframe title="Recent Movie Trailer" width="360" height="202.5" src={recentMovies[currentTrailerIndex].trailer} frameBorder="0" allowFullScreen></iframe>
+                        <iframe title="Recent Movie Trailer" width="600" height="350" src={recentMovies[currentTrailerIndex].trailer} frameBorder="0" allowFullScreen></iframe>
                         {/* <h3>{recentMovies[currentTrailerIndex].title}</h3> */}
                         <div className="navigation-buttons">
                             <button onClick={handlePrevTrailer}>Previous Trailer</button>
@@ -43,8 +43,8 @@ const HomeLandingPage = () => {
                 <div className="featured-movies-list">
                     {Object.values(allMovies).map(movie => (
                         <div key={movie.id} className="featured-movie">
-                            <p>{movie.title}</p>
                             <img src={movie.img_url} alt={movie.title} />
+                            <p>{movie.title}</p>
                         </div>
                     ))}
                 </div>
