@@ -50,7 +50,7 @@ def seed_movies():
 
 def undo_movies():
     if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.movies RESTART IDENTITY CASCADE;")
     else:
         db.session.execute(text("DELETE FROM movies"))
 
