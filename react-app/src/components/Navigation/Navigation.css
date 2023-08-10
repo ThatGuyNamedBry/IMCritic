@@ -4,7 +4,7 @@
   right: 15px;
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
+  border: 1px solid #f5c518;
   padding: 5px 5px;
   row-gap: 2px;
 }
@@ -18,4 +18,13 @@
   flex: row;
   justify-content: space-between;
   list-style: none;
+}
+
+.navigation-ul li a {
+  color: #f5c518;
+  text-decoration: none;
+}
+
+.navigation-ul li a:hover {
+  text-decoration: underline;
 }
