@@ -27,12 +27,20 @@
 }
 
 .featured-movie {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     background-color: rgb(19, 19, 19);
     height: 250px;
     width: 130px;
+}
+
+.featured-movie a {
+    text-decoration: none;
+    color: white;
+    font-size: small;
+}
+
+.featured-movie a:hover {
+    text-decoration: underline;
+    /* color: white; */
 }
 
 .featured-movie img{
