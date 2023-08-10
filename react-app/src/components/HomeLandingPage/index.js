@@ -13,30 +13,42 @@ const HomeLandingPage = () => {
     }, [dispatch]);
 
     const handlePrevTrailer = () => {
-        setCurrentTrailerIndex(prevIndex => (prevIndex === 0 ? Object.values(allMovies).length - 1 : prevIndex - 1));
+        setCurrentTrailerIndex(prevIndex => (prevIndex === recentMovies.length - 1 ? 0 : prevIndex + 1));
     };
 
     const handleNextTrailer = () => {
-        setCurrentTrailerIndex(prevIndex => (prevIndex === Object.values(allMovies).length - 1 ? 0 : prevIndex + 1));
+        setCurrentTrailerIndex(prevIndex => (prevIndex === 0 ? recentMovies.length - 1 : prevIndex - 1));
     };
 
-    const featuredMovie = Object.values(allMovies)[currentTrailerIndex];
+    const recentMovies = Object.values(allMovies).sort((a, b) => b.id - a.id).slice(0, 2);
+    // const recentMovies = Object.values(allMovies).reverse();
 
     return (
         <div className="home-landing-page">
-            {/* <h2>Top Movies</h2> */}
-            {featuredMovie && (
-                <div className="trailer-box">
-                    <h3>{featuredMovie.title}</h3>
-                    <p>{featuredMovie.release_year}</p>
-                    {/* <p>{featuredMovie.genre}</p> */}
-                    <iframe title="Movie Trailer" width="560" height="315" src={featuredMovie.trailer} frameBorder="0" allowFullScreen></iframe>
-                    <div className="navigation-buttons">
-                        <button onClick={handlePrevTrailer}>Previous Trailer</button>
-                        <button onClick={handleNextTrailer}>Next Trailer</button>
+            <div className="featured-trailers-section">
+                {recentMovies.length > 0 && (
+                    <div className="trailer-box">
+                        <iframe title="Recent Movie Trailer" width="360" height="202.5" src={recentMovies[currentTrailerIndex].trailer} frameBorder="0" allowFullScreen></iframe>
+                        {/* <h3>{recentMovies[currentTrailerIndex].title}</h3> */}
+                        <div className="navigation-buttons">
+                            <button onClick={handlePrevTrailer}>Previous Trailer</button>
+                            <button onClick={handleNextTrailer}>Next Trailer</button>
+                        </div>
                     </div>
+                )}
+            </div>
+
+            <div className="featured-movies-section">
+                <h3>Featured Movies</h3>
+                <div className="featured-movies-list">
+                    {Object.values(allMovies).map(movie => (
+                        <div key={movie.id} className="featured-movie">
+                            <p>{movie.title}</p>
+                            <img src={movie.img_url} alt={movie.title} />
+                        </div>
+                    ))}
                 </div>
-            )}
+            </div>
         </div>
     );
 }

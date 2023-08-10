@@ -17,6 +17,7 @@ class Movie(db.Model):
     writer = db.Column(db.String(255), nullable=False)
     description = db.Column(db.Text, nullable=False)
     trailer = db.Column(db.String(255))
+    img_url = db.Column(db.String(255))
 
     reviews = db.relationship("Review", back_populates="movie")
     movie_watchlist = db.relationship('MovieWatchlist', back_populates='movie', cascade="all, delete")
@@ -33,6 +34,7 @@ class Movie(db.Model):
             'writer': self.writer,
             'description': self.description,
             'trailer': self.trailer,
+            'img_url': self.img_url,
             'actors': [actors.to_dict() for actors in self.movie_actors]
         }
 
