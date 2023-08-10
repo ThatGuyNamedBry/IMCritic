@@ -20,7 +20,6 @@ const HomeLandingPage = () => {
         setCurrentTrailerIndex(prevIndex => (prevIndex === 0 ? recentMovies.length - 1 : prevIndex - 1));
     };
 
-    // Get the 4 most recent movies from allMovies
     const recentMovies = Object.values(allMovies).sort((a, b) => b.id - a.id).slice(0, 2);
     // const recentMovies = Object.values(allMovies).reverse();
 
@@ -55,18 +54,3 @@ const HomeLandingPage = () => {
 }
 
 export default HomeLandingPage;
-
-
-
-
-
-// {featuredMovie && (
-//     <div className="trailer-box">
-//         <h3>{featuredMovie.title}</h3>
-//         <iframe title="Movie Trailer" width="560" height="315" src={featuredMovie.trailer} frameBorder="0" allowFullScreen></iframe>
-//         <div className="navigation-buttons">
-//             <button onClick={handlePrevTrailer}>Previous Trailer</button>
-//             <button onClick={handleNextTrailer}>Next Trailer</button>
-//         </div>
-//     </div>
-// )}
