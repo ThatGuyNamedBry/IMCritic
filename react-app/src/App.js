@@ -6,6 +6,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import HomeLandingPage from "./components/HomeLandingPage";
+import MovieDetailsPage from "./components/MovieDetailsPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -20,12 +21,9 @@ function App() {
       {isLoaded && (
         <Switch>
           <Route exact path="/" component={HomeLandingPage} />
-          <Route path="/login" >
-            <LoginFormPage />
-          </Route>
-          <Route path="/signup">
-            <SignupFormPage />
-          </Route>
+          <Route exact path="/login" ><LoginFormPage /></Route>
+          <Route exact path="/signup"><SignupFormPage /></Route>
+          <Route path="/movies/:movieId" component={MovieDetailsPage} />
         </Switch>
       )}
     </>

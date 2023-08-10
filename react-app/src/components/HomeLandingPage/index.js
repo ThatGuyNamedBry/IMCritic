@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { getAllMoviesThunk } from '../../store/movie';
 import './HomeLandingPage.css';
 
@@ -43,8 +44,10 @@ const HomeLandingPage = () => {
                 <div className="featured-movies-list">
                     {Object.values(allMovies).map(movie => (
                         <div key={movie.id} className="featured-movie">
-                            <img src={movie.img_url} alt={movie.title} />
-                            <p>{movie.title}</p>
+                            <Link to={`/movies/${movie.id}`}> 
+                                <img src={movie.img_url} alt={movie.title} />
+                                <p>{movie.title}</p>
+                            </Link>
                         </div>
                     ))}
                 </div>
@@ -54,3 +57,6 @@ const HomeLandingPage = () => {
 }
 
 export default HomeLandingPage;
+
+{/* <img src={movie.img_url} alt={movie.title} />
+<p>{movie.title}</p> */}
