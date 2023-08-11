@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import Movie, Review, db  # Import your Movie and Review models
+from app.models import Movie, Review, db
+from app.forms import CreateMovieForm
 from app.api.auth_routes import validation_errors_to_error_messages
 
 movie_routes = Blueprint('movies', __name__)
@@ -48,7 +49,27 @@ def delete_movie(id):
 @movie_routes.route('/newMovie', methods=['POST'])
 @login_required
 def create_new_movie():
-    pass
+    form = CreateMovieForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    form.data['user_id'] = current_user.id
+    if form.validate_on_submit():
+        new_movie = Movie(
+            title=form.data['title'],
+            release_year=form.data['release_year'],
+            genre=form.data['genre'],
+            director=form.data['director'],
+            writer=form.data['writer'],
+            description=form.data['description'],
+            trailer=form.data['trailer'],
+            img_url=form.data['img_url'],
+            user_id=current_user.id
+        )
+        db.session.add(new_movie)
+        db.session.commit()
+        return new_movie.to_dict()
+
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 # Editing a Movie a user already created
 @movie_routes.route('/edit/<int:id>', methods=['PUT'])
