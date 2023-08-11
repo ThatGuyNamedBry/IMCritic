@@ -7,6 +7,7 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import HomeLandingPage from "./components/HomeLandingPage";
 import MovieDetailsPage from "./components/MovieDetailsPage";
+import CreateMovieForm from "./components/CreateMovieForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -23,7 +24,8 @@ function App() {
           <Route exact path="/" component={HomeLandingPage} />
           <Route exact path="/login" ><LoginFormPage /></Route>
           <Route exact path="/signup"><SignupFormPage /></Route>
-          <Route path="/movies/:movieId" component={MovieDetailsPage} />
+          <Route exact path="/movies/new" component={CreateMovieForm} />
+          <Route exact path="/movies/:movieId" component={MovieDetailsPage} />
         </Switch>
       )}
     </>

@@ -63,7 +63,6 @@ def create_new_movie():
             description=form.data['description'],
             trailer=form.data['trailer'],
             img_url=form.data['img_url'],
-            user_id=current_user.id
         )
         db.session.add(new_movie)
         db.session.commit()
