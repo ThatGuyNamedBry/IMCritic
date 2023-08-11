@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { useModal } from '../../context/Modal';
 import { getMovieByIdThunk } from '../../store/movie';
 import DeleteModal from '../DeleteModal';
+import './MovieDetailsPage.css';
 
 function MovieDetailsPage() {
   const dispatch = useDispatch();
@@ -25,9 +26,10 @@ function MovieDetailsPage() {
 
 
   return (
-    <div className="movie-details">
+    <div className="movie-details-container">
       <h2>{singleMovie.title}</h2>
       <p>{singleMovie.release_year}</p>
+      <img src={singleMovie.img_url} alt={singleMovie.title} />
       <iframe title="Movie Trailer" width="560" height="315" src={singleMovie.trailer} frameBorder="0" allowFullScreen></iframe>
       <button onClick={handleDeleteButtonClick}>Delete Movie</button>
     </div>
