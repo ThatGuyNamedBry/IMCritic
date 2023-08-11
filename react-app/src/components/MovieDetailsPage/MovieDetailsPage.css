@@ -1,0 +1,10 @@
+.movie-details-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.movie-details-container img {
+    height: 150px;
+    width: 125px;
+}

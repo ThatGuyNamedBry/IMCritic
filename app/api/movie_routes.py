@@ -36,8 +36,8 @@ def get_user_movies():
 @login_required
 def delete_movie(id):
     movie = Movie.query.get(id)
-
-    if movie is None or movie.user_id != current_user.id:
+    # if movie is None or movie.user_id != current_user.id:
+    if movie is None:
         return {'errors': 'Movie not found'}, 404
 
     db.session.delete(movie)
