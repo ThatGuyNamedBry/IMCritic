@@ -24,6 +24,12 @@ class Movie(db.Model):
     movie_actors = db.relationship("MovieActor", back_populates="movie", cascade="all, delete")
 
     def to_dict(self):
+        reviews = self.reviews
+        average_rating = 0.0
+
+        if reviews:
+            total_rating = sum(review.rating for review in reviews)
+            average_rating = total_rating / len(reviews)
         return {
             'id': self.id,
             'title': self.title,
@@ -34,7 +40,8 @@ class Movie(db.Model):
             'description': self.description,
             'trailer': self.trailer,
             'img_url': self.img_url,
-            'actors': [actors.to_dict() for actors in self.movie_actors]
+            'actors': [actors.to_dict() for actors in self.movie_actors],
+            'average_rating': average_rating,
         }
 
 

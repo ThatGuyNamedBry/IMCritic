@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getAllMoviesThunk } from '../../store/movie';
+import { getReviewsForMovieThunk } from '../../store/reviews';
 import './HomeLandingPage.css';
 
 const HomeLandingPage = () => {
@@ -12,6 +13,13 @@ const HomeLandingPage = () => {
     useEffect(() => {
         dispatch(getAllMoviesThunk());
     }, [dispatch]);
+
+    useEffect(() => {
+        Object.values(allMovies).forEach((movie) => {
+            console.log('Fetching reviews for movie ID:', movie.id);
+            dispatch(getReviewsForMovieThunk(movie.id));
+        });
+    }, [dispatch, allMovies]);
 
     const handlePrevTrailer = () => {
         setCurrentTrailerIndex(prevIndex => (prevIndex === recentMovies.length - 1 ? 0 : prevIndex + 1));
@@ -30,7 +38,6 @@ const HomeLandingPage = () => {
                 {recentMovies.length > 0 && (
                     <div className="trailer-box">
                         <iframe title="Recent Movie Trailer" width="600" height="350" src={recentMovies[currentTrailerIndex].trailer} frameBorder="0" allowFullScreen></iframe>
-                        {/* <h3>{recentMovies[currentTrailerIndex].title}</h3> */}
                         <div className="navigation-buttons">
                             <button onClick={handlePrevTrailer}>Previous Trailer</button>
                             <button onClick={handleNextTrailer}>Next Trailer</button>
@@ -44,9 +51,14 @@ const HomeLandingPage = () => {
                 <div className="featured-movies-list">
                     {Object.values(allMovies).map(movie => (
                         <div key={movie.id} className="featured-movie">
-                            <Link to={`/movies/${movie.id}`}> 
+                            <Link to={`/movies/${movie.id}`}>
                                 <img src={movie.img_url} alt={movie.title} />
                                 <p>{movie.title}</p>
+                                {movie.average_rating && (
+                                    <div className="average-rating">
+                                        {movie.average_rating.toFixed(2)}
+                                    </div>
+                                )}
                             </Link>
                         </div>
                     ))}
@@ -58,5 +70,17 @@ const HomeLandingPage = () => {
 
 export default HomeLandingPage;
 
-{/* <img src={movie.img_url} alt={movie.title} />
-<p>{movie.title}</p> */}
+// useEffect(() => {
+    //     if (Object.keys(allMovies).length > 0) {
+        //         Object.keys(allMovies).forEach(movieId => {
+            //             dispatch(getReviewsForMovieThunk(movieId));
+            //         });
+            //     }
+            // }, [dispatch, allMovies]);
+
+            {/* <img src={movie.img_url} alt={movie.title} />
+        <p>{movie.title}</p> */}
+
+        // {dispatch(getReviewsForMovieThunk(movie.id))}
+
+        // console.log('Redux Store State:', allReviews);
