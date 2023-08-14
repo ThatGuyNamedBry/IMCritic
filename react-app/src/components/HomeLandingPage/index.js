@@ -16,7 +16,7 @@ const HomeLandingPage = () => {
 
     useEffect(() => {
         Object.values(allMovies).forEach((movie) => {
-            console.log('Fetching reviews for movie ID:', movie.id);
+            // console.log('Fetching reviews for movie ID:', movie.id);
             dispatch(getReviewsForMovieThunk(movie.id));
         });
     }, [dispatch, allMovies]);
@@ -70,17 +70,10 @@ const HomeLandingPage = () => {
 
 export default HomeLandingPage;
 
-// useEffect(() => {
-    //     if (Object.keys(allMovies).length > 0) {
-        //         Object.keys(allMovies).forEach(movieId => {
-            //             dispatch(getReviewsForMovieThunk(movieId));
-            //         });
-            //     }
-            // }, [dispatch, allMovies]);
 
-            {/* <img src={movie.img_url} alt={movie.title} />
+
+{/* <img src={movie.img_url} alt={movie.title} />
         <p>{movie.title}</p> */}
 
-        // {dispatch(getReviewsForMovieThunk(movie.id))}
 
-        // console.log('Redux Store State:', allReviews);
+ // console.log('Redux Store State:', allReviews);

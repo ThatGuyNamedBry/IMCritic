@@ -34,7 +34,7 @@ const CreateMovieForm = () => {
             <h2>Create a New Movie</h2>
             <form onSubmit={handleSubmit}>
                 <label>
-                    Title:
+                    Title: 
                     <input
                         type="text"
                         value={title}
