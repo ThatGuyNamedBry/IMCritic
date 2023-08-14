@@ -36,6 +36,18 @@ function MovieDetailsPage() {
       <p>{singleMovie.release_year}</p>
       <img src={singleMovie.img_url} alt={singleMovie.title} />
       <iframe title="Movie Trailer" width="560" height="315" src={singleMovie.trailer} frameBorder="0" allowFullScreen></iframe>
+      <div className="movie-details-rating">
+        <p>Average Rating: {singleMovie.average_rating.toFixed(2)}</p>
+        <h3>All Reviews:</h3>
+        <ul>
+          {singleMovie.reviews.map(review => (
+            <li key={review.id}>
+              <p>Rating: {review.rating}</p>
+              <p>Content: {review.content}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
       {sessionUser && (
         <div>
           <button onClick={handleDeleteButtonClick}>Delete Movie</button>

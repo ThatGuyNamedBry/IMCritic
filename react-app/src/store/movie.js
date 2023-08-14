@@ -82,82 +82,81 @@ export const getMovieByIdThunk = (movieId) => async (dispatch) => {
 export const createMovieThunk = (formData) => async (dispatch) => {
   // console.log('Create movie thunk running, this is the formData', formData)
 
-    const response = await fetch('/api/movies/newMovie', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData),
-      // console.log('After fetch, this is the response', response)
-    });
-    if (response.ok) {
-      const newMovie = await response.json();
-      return dispatch(createMovieAction(newMovie))
-    } else {
-      const errorData = await response.json();
-      return errorData;
-    }
-  };
+  const response = await fetch('/api/movies/newMovie', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(formData),
+    // console.log('After fetch, this is the response', response)
+  });
+  if (response.ok) {
+    const newMovie = await response.json();
+    return dispatch(createMovieAction(newMovie))
+  } else {
+    const errorData = await response.json();
+    return errorData;
+  }
+};
 
-  //Edit/Update an Movie Thunk
-  export const updateMovieThunk = (movie, formData) => async (dispatch) => {
-    // console.log('Edit/Update an movie Thunk, this is movie  ', movie);
-    try {
-      const response = await fetch(`/api/movies/edit/${movie.id}`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-        // console.log('After fetch, this is the response', response)
+//Edit/Update an Movie Thunk
+export const updateMovieThunk = (movie, formData) => async (dispatch) => {
+  // console.log('Edit/Update an movie Thunk, this is movie  ', movie);
+  const response = await fetch(`/api/movies/edit/${movie.id}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(formData),
+    // console.log('After fetch, this is the response', response)
+  });
+  if (response.ok) {
+    const updatedMovie = await response.json();
+    return dispatch(updateMovieAction(updatedMovie))
+  } else {
+    const errorData = await response.json();
+    return errorData;
+  }
+
+}
+
+//Delete an Movie Thunk
+export const deleteMovieThunk = (movieId) => async (dispatch) => {
+  const response = await fetch(`/api/movies/${movieId}/delete`, {
+    method: 'DELETE',
+  });
+
+  if (response.ok) {
+    dispatch(deleteMovieAction(movieId));
+    return response;
+  }
+};
+
+
+//Reducer function
+const initialState = {
+  allMovies: {},
+  singleMovie: {}
+}
+
+const movieReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case LOAD_MOVIES:
+      // console.log(action.payload);
+      const allMoviesObject = {};
+      action.payload.forEach((movie) => {
+        allMoviesObject[movie.id] = movie;
       });
-      const updatedMovie = await response.json();
-      if (!response.ok) {
-        throw new Error(updatedMovie)
-      }
-      return dispatch(updateMovieAction(updatedMovie))
-    } catch (err) {
-      return err
-    }
+      return { ...state, allMovies: allMoviesObject };
+    case LOAD_MOVIE:
+      return { ...state, singleMovie: { [action.payload.id]: action.payload } };
+    case CREATE_MOVIE:
+      return { ...state, allMovies: { ...state.allMovies, [action.payload.id]: action.payload } };
+    case UPDATE_MOVIE:
+      return { ...state, singleMovie: { [action.payload.id]: action.payload } };
+    case DELETE_MOVIE:
+      const newMovies = { ...state.allMovies };
+      delete newMovies[action.payload];
+      return { ...state, allMovies: newMovies };
+    default:
+      return state;
   }
+};
 
-  //Delete an Movie Thunk
-  export const deleteMovieThunk = (movieId) => async (dispatch) => {
-    const response = await fetch(`/api/movies/${movieId}/delete`, {
-      method: 'DELETE',
-    });
-
-    if (response.ok) {
-      dispatch(deleteMovieAction(movieId));
-      return response;
-    }
-  };
-
-
-  //Reducer function
-  const initialState = {
-    allMovies: {},
-    singleMovie: {}
-  }
-
-  const movieReducer = (state = initialState, action) => {
-    switch (action.type) {
-      case LOAD_MOVIES:
-        // console.log(action.payload);
-        const allMoviesObject = {};
-        action.payload.forEach((movie) => {
-          allMoviesObject[movie.id] = movie;
-        });
-        return { ...state, allMovies: allMoviesObject };
-      case LOAD_MOVIE:
-        return { ...state, singleMovie: { [action.payload.id]: action.payload } };
-      case CREATE_MOVIE:
-        return { ...state, allMovies: { ...state.allMovies, [action.payload.id]: action.payload } };
-      case UPDATE_MOVIE:
-        return { ...state, singleMovie: { [action.payload.id]: action.payload } };
-      case DELETE_MOVIE:
-        const newMovies = { ...state.allMovies };
-        delete newMovies[action.payload];
-        return { ...state, allMovies: newMovies };
-      default:
-        return state;
-    }
-  };
-
-  export default movieReducer;
+export default movieReducer;
