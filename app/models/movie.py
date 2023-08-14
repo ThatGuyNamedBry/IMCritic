@@ -41,6 +41,7 @@ class Movie(db.Model):
             'trailer': self.trailer,
             'img_url': self.img_url,
             'actors': [actors.to_dict() for actors in self.movie_actors],
+            'reviews': [reviews.to_dict() for reviews in self.reviews],
             'average_rating': average_rating,
         }
 
