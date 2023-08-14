@@ -49,3 +49,16 @@
     width: 130px;
     object-fit: fill;
 }
+
+.fa-star {
+    font-size:xx-small;
+    color: yellow;
+}
+
+.average-rating {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: small;
+}

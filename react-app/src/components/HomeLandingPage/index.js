@@ -51,14 +51,15 @@ const HomeLandingPage = () => {
                 <div className="featured-movies-list">
                     {Object.values(allMovies).map(movie => (
                         <div key={movie.id} className="featured-movie">
+                                {movie.average_rating && (
+                                    <div className="average-rating">
+                                        <i className="fa-solid fa-star"></i>
+                                        {movie.average_rating.toFixed(1)}
+                                    </div>
+                                )}
                             <Link to={`/movies/${movie.id}`}>
                                 <img src={movie.img_url} alt={movie.title} />
                                 <p>{movie.title}</p>
-                                {movie.average_rating && (
-                                    <div className="average-rating">
-                                        {movie.average_rating.toFixed(2)}
-                                    </div>
-                                )}
                             </Link>
                         </div>
                     ))}
