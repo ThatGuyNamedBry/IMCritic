@@ -51,14 +51,18 @@ const HomeLandingPage = () => {
                 <div className="featured-movies-list">
                     {Object.values(allMovies).map(movie => (
                         <div key={movie.id} className="featured-movie">
-                                {movie.average_rating && (
-                                    <div className="average-rating">
-                                        <i className="fa-solid fa-star"></i>
-                                        {movie.average_rating.toFixed(1)}
-                                    </div>
-                                )}
                             <Link to={`/movies/${movie.id}`}>
                                 <img src={movie.img_url} alt={movie.title} />
+                            </Link>
+                            {movie.average_rating && (
+                                <div className="average-rating">
+                                    <div className="rating-content">
+                                        <span className="star-icon">★</span>
+                                        {movie.average_rating.toFixed(1)}
+                                    </div>
+                                </div>
+                            )}
+                            <Link to={`/movies/${movie.id}`}>
                                 <p>{movie.title}</p>
                             </Link>
                         </div>
@@ -71,10 +75,6 @@ const HomeLandingPage = () => {
 
 export default HomeLandingPage;
 
-
-
-{/* <img src={movie.img_url} alt={movie.title} />
-        <p>{movie.title}</p> */}
 
 
  // console.log('Redux Store State:', allReviews);
