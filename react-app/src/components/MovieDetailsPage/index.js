@@ -11,6 +11,7 @@ function MovieDetailsPage() {
   const dispatch = useDispatch();
   const { movieId } = useParams();
   const singleMovie = useSelector(state => state.movies.singleMovie[movieId]);
+  const sessionUser = useSelector(state => state.session.user);
   const { setModalContent } = useModal();
 
   useEffect(() => {
@@ -35,8 +36,12 @@ function MovieDetailsPage() {
       <p>{singleMovie.release_year}</p>
       <img src={singleMovie.img_url} alt={singleMovie.title} />
       <iframe title="Movie Trailer" width="560" height="315" src={singleMovie.trailer} frameBorder="0" allowFullScreen></iframe>
-      <button onClick={handleDeleteButtonClick}>Delete Movie</button>
-      <button onClick={handleEditButtonClick}>Edit Movie</button>
+      {sessionUser && (
+        <div>
+          <button onClick={handleDeleteButtonClick}>Delete Movie</button>
+          <button onClick={handleEditButtonClick}>Edit Movie</button>
+        </div>
+      )}
     </div>
   );
 }
