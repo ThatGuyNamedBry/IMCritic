@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { useModal } from '../../context/Modal';
 import { getMovieByIdThunk } from '../../store/movie';
 import DeleteModal from '../DeleteModal';
+import EditMovieForm from '../EditMovieForm';
 import './MovieDetailsPage.css';
 
 function MovieDetailsPage() {
@@ -17,13 +18,16 @@ function MovieDetailsPage() {
   }, [dispatch, movieId]);
 
   if (!singleMovie) {
-    return <div>Loading...</div>;
+    return <div>Loading details...</div>;
   }
 
   const handleDeleteButtonClick = () => {
     setModalContent(<DeleteModal type="movie" id={movieId} />);
   };
 
+  const handleEditButtonClick = () => {
+    setModalContent(<EditMovieForm movie={singleMovie} />);
+  };
 
   return (
     <div className="movie-details-container">
@@ -32,6 +36,7 @@ function MovieDetailsPage() {
       <img src={singleMovie.img_url} alt={singleMovie.title} />
       <iframe title="Movie Trailer" width="560" height="315" src={singleMovie.trailer} frameBorder="0" allowFullScreen></iframe>
       <button onClick={handleDeleteButtonClick}>Delete Movie</button>
+      <button onClick={handleEditButtonClick}>Edit Movie</button>
     </div>
   );
 }
