@@ -10,6 +10,7 @@ const HomeLandingPage = () => {
     const allMovies = useSelector(state => state.movies.allMovies);
     const [currentTrailerIndex, setCurrentTrailerIndex] = useState(0);
     const [startFeaturedIndex, setCurrentFeaturedIndex] = useState(0);
+    const [startTopRatedIndex, setStartTopRatedIndex] = useState(0);
 
     const itemsPerPage = 4;
 
@@ -44,8 +45,24 @@ const HomeLandingPage = () => {
         }
     };
 
+    const handlePrevTopRated = () => {
+        if (startTopRatedIndex - itemsPerPage >= 0) {
+            setStartTopRatedIndex(startTopRatedIndex - itemsPerPage);
+        }
+    };
+
+    const handleNextTopRated = () => {
+        if (startTopRatedIndex + itemsPerPage < Object.values(allMovies).length) {
+            setStartTopRatedIndex(startTopRatedIndex + itemsPerPage);
+        }
+    };
+
     const recentMovies = Object.values(allMovies).sort((a, b) => b.id - a.id).slice(0, 2);
     // const recentMovies = Object.values(allMovies).reverse();
+
+    const topRatedMovies = Object.values(allMovies)
+        .sort((a, b) => b.average_rating - a.average_rating)
+        .slice(startTopRatedIndex, startTopRatedIndex + itemsPerPage);
 
     return (
         <div className="home-landing-page">
@@ -88,6 +105,33 @@ const HomeLandingPage = () => {
                                 </Link>
                             </div>
                         ))}
+                </div>
+            </div>
+            <div className="top-rated-section">
+                <h3>Top Rated Movies</h3>
+                <div className="item-scroll">
+                    <button className='fa-solid fa-angle-left' onClick={handlePrevTopRated}></button>
+                    <button className='fa-solid fa-angle-right' onClick={handleNextTopRated}></button>
+                </div>
+                <div className="featured-movies-list">
+                    {topRatedMovies.map(movie => (
+                        <div key={movie.id} className="featured-movie">
+                            <Link to={`/movies/${movie.id}`}>
+                                <img src={movie.img_url} alt={movie.title} />
+                            </Link>
+                            {movie.average_rating && (
+                                <div className="average-rating">
+                                    <div className="rating-content">
+                                        <span className="star-icon">★</span>
+                                        {movie.average_rating.toFixed(1)}
+                                    </div>
+                                </div>
+                            )}
+                            <Link to={`/movies/${movie.id}`}>
+                                <p>{movie.title}</p>
+                            </Link>
+                        </div>
+                    ))}
                 </div>
             </div>
         </div>
