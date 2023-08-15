@@ -81,7 +81,7 @@ export const getReviewByIdThunk = (reviewId) => async (dispatch) => {
 
 // Create a Review Thunk
 export const createReviewThunk = (formData) => async (dispatch) => {
-    const response = await fetch('/api/reviews/new', {
+    const response = await fetch('/api/reviews/newReview', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
@@ -96,8 +96,8 @@ export const createReviewThunk = (formData) => async (dispatch) => {
 };
 
 // Edit/Update a Review Thunk
-export const updateReviewThunk = (review, formData) => async (dispatch) => {
-    const response = await fetch(`/api/reviews/edit/${review.id}`, {
+export const updateReviewThunk = (reviewId, formData) => async (dispatch) => {
+    const response = await fetch(`/api/reviews/edit/${reviewId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
@@ -107,7 +107,7 @@ export const updateReviewThunk = (review, formData) => async (dispatch) => {
         return dispatch(updateReviewAction(updatedReview));
     } else {
         const errorData = await response.json();
-        return errorData;
+        return { errors: errorData.errors };
     }
 };
 

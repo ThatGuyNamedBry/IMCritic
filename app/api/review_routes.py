@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import Movie, Review, db
+from app.forms import EditReviewForm
 from app.forms import CreateReviewForm
 from app.api.auth_routes import validation_errors_to_error_messages
 
@@ -26,13 +27,19 @@ def get_review_by_id(id):
     return jsonify(review.to_dict())
 
 # Create a review
-@review_routes.route("/new", methods=["POST"])
+@review_routes.route("/newReview", methods=["POST"])
 @login_required
 def create_new_review():
     form = CreateReviewForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
 
     form.data["user_id"] = current_user.id
+    form.data["movie_id"] = request.form.get("movie_id")
+
+    # existing_review = Review.query.filter_by(user_id=current_user.id, movie_id=form.data["movie_id"]).first()
+    # if existing_review:
+    #     return {"errors": "You can't review the same movie twice"}, 400
+
     if form.validate_on_submit():
         new_review = Review(
             user_id=current_user.id,
@@ -54,13 +61,16 @@ def edit_review(id):
     if review is None:
         return {"errors": "Review not found"}, 404
 
-    form = CreateReviewForm()
-    if form.validate_on_submit():
-        new_rating = form.data["rating"]
-        new_content = form.data["content"]
+    if review.user_id != current_user.id:
+        return {"errors": "You are not authorized to edit this review"}, 403
 
-        review.rating = new_rating
-        review.content = new_content
+    form = EditReviewForm()
+    form["csrf_token"].data = request.cookies["csrf_token"]
+
+    if form.validate_on_submit():
+        review.rating = form.data["rating"]
+        review.content = form.data["content"]
+
         db.session.commit()
 
         return review.to_dict()

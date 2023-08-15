@@ -19,7 +19,7 @@ class Movie(db.Model):
     trailer = db.Column(db.String(255))
     img_url = db.Column(db.String(255))
 
-    reviews = db.relationship("Review", back_populates="movie")
+    reviews = db.relationship("Review", back_populates="movie", cascade="all, delete")
     movie_watchlist = db.relationship('MovieWatchlist', back_populates='movie', cascade="all, delete")
     movie_actors = db.relationship("MovieActor", back_populates="movie", cascade="all, delete")
 
