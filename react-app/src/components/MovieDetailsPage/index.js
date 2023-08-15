@@ -7,6 +7,7 @@ import DeleteModal from '../DeleteModal';
 import EditMovieForm from '../EditMovieForm';
 import ReviewModal from '../ReviewModal';
 import './MovieDetailsPage.css';
+import EditReviewModal from '../EditReviewModal';
 
 function MovieDetailsPage() {
   const dispatch = useDispatch();
@@ -51,6 +52,11 @@ function MovieDetailsPage() {
             <li key={review.id}>
               <p>Rating: {review.rating}</p>
               {review.content && <p>Review: {review.content}</p>}
+              <div>
+              {sessionUser && sessionUser.id === review.user_id && (
+                  <button onClick={() => setModalContent(<EditReviewModal review={review} />)}>Edit Review</button>
+                )}
+              </div>
             </li>
           ))}
         </ul>

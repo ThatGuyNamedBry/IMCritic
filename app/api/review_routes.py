@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import Movie, Review, db
-from app.forms import CreateReviewForm
+from app.forms import EditReviewForm
 from app.api.auth_routes import validation_errors_to_error_messages
 
 review_routes = Blueprint("reviews", __name__)
@@ -60,13 +60,16 @@ def edit_review(id):
     if review is None:
         return {"errors": "Review not found"}, 404
 
-    form = CreateReviewForm()
-    if form.validate_on_submit():
-        new_rating = form.data["rating"]
-        new_content = form.data["content"]
+    if review.user_id != current_user.id:
+        return {"errors": "You are not authorized to edit this review"}, 403
 
-        review.rating = new_rating
-        review.content = new_content
+    form = EditReviewForm()
+    form["csrf_token"].data = request.cookies["csrf_token"]
+
+    if form.validate_on_submit():
+        review.rating = form.data["rating"]
+        review.content = form.data["content"]
+
         db.session.commit()
 
         return review.to_dict()
