@@ -26,13 +26,19 @@ def get_review_by_id(id):
     return jsonify(review.to_dict())
 
 # Create a review
-@review_routes.route("/new", methods=["POST"])
+@review_routes.route("/newReview", methods=["POST"])
 @login_required
 def create_new_review():
     form = CreateReviewForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
 
     form.data["user_id"] = current_user.id
+    form.data["movie_id"] = request.form.get("movie_id")
+
+    existing_review = Review.query.filter_by(user_id=current_user.id, movie_id=form.data["movie_id"]).first()
+    if existing_review:
+        return {"errors": "You can't review the same movie twice"}, 400
+
     if form.validate_on_submit():
         new_review = Review(
             user_id=current_user.id,
