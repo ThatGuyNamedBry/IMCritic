@@ -25,3 +25,7 @@
 .movie-details-average-rating button{
     height: 100%
 }
+
+.movie-details-star-icon {
+    color: yellow;
+}

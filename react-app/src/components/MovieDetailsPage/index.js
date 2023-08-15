@@ -46,7 +46,7 @@ function MovieDetailsPage() {
       <div className="movie-details-rating">
         <div className="movie-details-average-rating">
           <div className='inner-avg-rating-div'>
-            <span className="star-icon">★</span>
+            <span className="movie-details-star-icon">★</span>
             <p>{singleMovie.average_rating.toFixed(1)}</p>
           </div>
           <button onClick={handleCreateReviewClick}>Add a Review</button>
