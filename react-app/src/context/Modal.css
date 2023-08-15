@@ -23,3 +23,9 @@
   background-color:white;
   color: black
 }
+
+#modal-content form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
