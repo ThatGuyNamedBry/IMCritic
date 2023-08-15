@@ -53,8 +53,8 @@ function MovieDetailsPage() {
           <button onClick={handleCreateReviewClick}>Add a Review</button>
           )}
         </div>
-        <h3>All Reviews:</h3>
-        <ul>
+        <h3>User Reviews:</h3>
+        <ul className='reviews-map'>
           {singleMovie.reviews.map(review => (
             <li key={review.id}>
               <p>Rating: {review.rating}</p>

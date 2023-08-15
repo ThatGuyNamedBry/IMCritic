@@ -29,3 +29,11 @@
 .movie-details-star-icon {
     color: yellow;
 }
+
+.reviews-map {
+    padding-inline-start: 0px;
+}
+
+.reviews-map li {
+    list-style: none;
+}
