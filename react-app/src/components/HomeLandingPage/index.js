@@ -9,6 +9,9 @@ const HomeLandingPage = () => {
     const dispatch = useDispatch();
     const allMovies = useSelector(state => state.movies.allMovies);
     const [currentTrailerIndex, setCurrentTrailerIndex] = useState(0);
+    const [startFeaturedIndex, setCurrentFeaturedIndex] = useState(0);
+
+    const itemsPerPage = 4;
 
     useEffect(() => {
         dispatch(getAllMoviesThunk());
@@ -27,6 +30,18 @@ const HomeLandingPage = () => {
 
     const handleNextTrailer = () => {
         setCurrentTrailerIndex(prevIndex => (prevIndex === 0 ? recentMovies.length - 1 : prevIndex - 1));
+    };
+
+    const handlePrevFeatured = () => {
+        if (startFeaturedIndex - itemsPerPage >= 0) {
+            setCurrentFeaturedIndex(startFeaturedIndex - itemsPerPage);
+        }
+    };
+
+    const handleNextFeatured = () => {
+        if (startFeaturedIndex + itemsPerPage < Object.values(allMovies).length) {
+            setCurrentFeaturedIndex(startFeaturedIndex + itemsPerPage);
+        }
     };
 
     const recentMovies = Object.values(allMovies).sort((a, b) => b.id - a.id).slice(0, 2);
@@ -48,25 +63,31 @@ const HomeLandingPage = () => {
 
             <div className="featured-movies-section">
                 <h3>Featured Movies</h3>
+                <div className="item-scroll">
+                    <button className='fa-solid fa-angle-left' onClick={handlePrevFeatured} ></button>
+                    <button className='fa-solid fa-angle-right' onClick={handleNextFeatured} ></button>
+                </div>
                 <div className="featured-movies-list">
-                    {Object.values(allMovies).map(movie => (
-                        <div key={movie.id} className="featured-movie">
-                            <Link to={`/movies/${movie.id}`}>
-                                <img src={movie.img_url} alt={movie.title} />
-                            </Link>
-                            {movie.average_rating && (
-                                <div className="average-rating">
-                                    <div className="rating-content">
-                                        <span className="star-icon">★</span>
-                                        {movie.average_rating.toFixed(1)}
+                    {Object.values(allMovies).reverse()
+                        .slice(startFeaturedIndex, startFeaturedIndex + itemsPerPage)
+                        .map(movie => (
+                            <div key={movie.id} className="featured-movie">
+                                <Link to={`/movies/${movie.id}`}>
+                                    <img src={movie.img_url} alt={movie.title} />
+                                </Link>
+                                {movie.average_rating && (
+                                    <div className="average-rating">
+                                        <div className="rating-content">
+                                            <span className="star-icon">★</span>
+                                            {movie.average_rating.toFixed(1)}
+                                        </div>
                                     </div>
-                                </div>
-                            )}
-                            <Link to={`/movies/${movie.id}`}>
-                                <p>{movie.title}</p>
-                            </Link>
-                        </div>
-                    ))}
+                                )}
+                                <Link to={`/movies/${movie.id}`}>
+                                    <p>{movie.title}</p>
+                                </Link>
+                            </div>
+                        ))}
                 </div>
             </div>
         </div>
