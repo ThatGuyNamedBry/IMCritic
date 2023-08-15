@@ -35,9 +35,9 @@ def create_new_review():
     form.data["user_id"] = current_user.id
     form.data["movie_id"] = request.form.get("movie_id")
 
-    existing_review = Review.query.filter_by(user_id=current_user.id, movie_id=form.data["movie_id"]).first()
-    if existing_review:
-        return {"errors": "You can't review the same movie twice"}, 400
+    # existing_review = Review.query.filter_by(user_id=current_user.id, movie_id=form.data["movie_id"]).first()
+    # if existing_review:
+    #     return {"errors": "You can't review the same movie twice"}, 400
 
     if form.validate_on_submit():
         new_review = Review(

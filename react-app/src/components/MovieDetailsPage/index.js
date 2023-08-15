@@ -5,6 +5,7 @@ import { useModal } from '../../context/Modal';
 import { getMovieByIdThunk } from '../../store/movie';
 import DeleteModal from '../DeleteModal';
 import EditMovieForm from '../EditMovieForm';
+import ReviewModal from '../ReviewModal';
 import './MovieDetailsPage.css';
 
 function MovieDetailsPage() {
@@ -30,6 +31,11 @@ function MovieDetailsPage() {
     setModalContent(<EditMovieForm movie={singleMovie} />);
   };
 
+  const handleCreateReviewClick = () => {
+    setModalContent(<ReviewModal movieId={singleMovie.id} />);
+  };
+
+
   return (
     <div className="movie-details-container">
       <h2>{singleMovie.title}</h2>
@@ -37,7 +43,8 @@ function MovieDetailsPage() {
       <img src={singleMovie.img_url} alt={singleMovie.title} />
       <iframe title="Movie Trailer" width="560" height="315" src={singleMovie.trailer} frameBorder="0" allowFullScreen></iframe>
       <div className="movie-details-rating">
-        <p>Average Rating: {singleMovie.average_rating.toFixed(2)}</p>
+        <p>Average Rating: {singleMovie.average_rating.toFixed(1)}</p>
+        <button onClick={handleCreateReviewClick}>Create Review</button>
         <h3>All Reviews:</h3>
         <ul>
           {singleMovie.reviews.map(review => (
