@@ -50,7 +50,7 @@ function MovieDetailsPage() {
           {singleMovie.reviews.map(review => (
             <li key={review.id}>
               <p>Rating: {review.rating}</p>
-              <p>Content: {review.content}</p>
+              {review.content && <p>Review: {review.content}</p>}
             </li>
           ))}
         </ul>
