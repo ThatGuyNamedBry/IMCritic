@@ -8,3 +8,20 @@
     height: 150px;
     width: 125px;
 }
+
+.inner-avg-rating-div {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+
+.movie-details-average-rating {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.movie-details-average-rating button{
+    height: 100%
+}

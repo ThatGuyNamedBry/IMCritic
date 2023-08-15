@@ -44,8 +44,13 @@ function MovieDetailsPage() {
       <img src={singleMovie.img_url} alt={singleMovie.title} />
       <iframe title="Movie Trailer" width="560" height="315" src={singleMovie.trailer} frameBorder="0" allowFullScreen></iframe>
       <div className="movie-details-rating">
-        <p>Average Rating: {singleMovie.average_rating.toFixed(1)}</p>
-        <button onClick={handleCreateReviewClick}>Create Review</button>
+        <div className="movie-details-average-rating">
+          <div className='inner-avg-rating-div'>
+            <span className="star-icon">★</span>
+            <p>{singleMovie.average_rating.toFixed(1)}</p>
+          </div>
+          <button onClick={handleCreateReviewClick}>Add a Review</button>
+        </div>
         <h3>All Reviews:</h3>
         <ul>
           {singleMovie.reviews.map(review => (
@@ -53,7 +58,7 @@ function MovieDetailsPage() {
               <p>Rating: {review.rating}</p>
               {review.content && <p>Review: {review.content}</p>}
               <div>
-              {sessionUser && sessionUser.id === review.user_id && (
+                {sessionUser && sessionUser.id === review.user_id && (
                   <button onClick={() => setModalContent(<EditReviewModal review={review} />)}>Edit Review</button>
                 )}
               </div>
