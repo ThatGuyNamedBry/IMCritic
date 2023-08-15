@@ -61,6 +61,9 @@ function MovieDetailsPage() {
                 {sessionUser && sessionUser.id === review.user_id && (
                   <button onClick={() => setModalContent(<EditReviewModal review={review} />)}>Edit Review</button>
                 )}
+                {sessionUser && sessionUser.id === review.user_id && (
+                  <button onClick={() => setModalContent(<DeleteModal type="review" id={review.id} movieId={singleMovie.id}/>)}>Delete Review</button>
+                )}
               </div>
             </li>
           ))}

@@ -3,10 +3,11 @@ import React from 'react';
 import { useDispatch } from "react-redux";
 import { useHistory } from 'react-router-dom';
 import { useModal } from '../../context/Modal';
-import { deleteMovieThunk } from "../../store/movie";
+import { deleteMovieThunk, getMovieByIdThunk } from "../../store/movie";
+import { deleteReviewThunk } from '../../store/reviews';
 import './DeleteModal.css';
 
-function DeleteModal({ type, id }) {
+function DeleteModal({ type, id, movieId }) {
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -15,9 +16,14 @@ function DeleteModal({ type, id }) {
   const handleDelete = async () => {
     if (type === 'movie') {
       await dispatch(deleteMovieThunk(id));
-      history.push('/'); // Redirect to the home page
+      history.push('/');
+    } else if (type === 'review'){
+      await dispatch(deleteReviewThunk(id));
+      await dispatch(getMovieByIdThunk(movieId));
+      closeModal();
+    } else {
+      closeModal();
     }
-    closeModal();
   }
 
   const handleCancel = () => {
