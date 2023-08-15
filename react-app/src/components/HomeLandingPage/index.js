@@ -16,7 +16,7 @@ const HomeLandingPage = () => {
 
     useEffect(() => {
         Object.values(allMovies).forEach((movie) => {
-            console.log('Fetching reviews for movie ID:', movie.id);
+            // console.log('Fetching reviews for movie ID:', movie.id);
             dispatch(getReviewsForMovieThunk(movie.id));
         });
     }, [dispatch, allMovies]);
@@ -53,12 +53,17 @@ const HomeLandingPage = () => {
                         <div key={movie.id} className="featured-movie">
                             <Link to={`/movies/${movie.id}`}>
                                 <img src={movie.img_url} alt={movie.title} />
-                                <p>{movie.title}</p>
-                                {movie.average_rating && (
-                                    <div className="average-rating">
-                                        {movie.average_rating.toFixed(2)}
+                            </Link>
+                            {movie.average_rating && (
+                                <div className="average-rating">
+                                    <div className="rating-content">
+                                        <span className="star-icon">★</span>
+                                        {movie.average_rating.toFixed(1)}
                                     </div>
-                                )}
+                                </div>
+                            )}
+                            <Link to={`/movies/${movie.id}`}>
+                                <p>{movie.title}</p>
                             </Link>
                         </div>
                     ))}
@@ -70,17 +75,6 @@ const HomeLandingPage = () => {
 
 export default HomeLandingPage;
 
-// useEffect(() => {
-    //     if (Object.keys(allMovies).length > 0) {
-        //         Object.keys(allMovies).forEach(movieId => {
-            //             dispatch(getReviewsForMovieThunk(movieId));
-            //         });
-            //     }
-            // }, [dispatch, allMovies]);
 
-            {/* <img src={movie.img_url} alt={movie.title} />
-        <p>{movie.title}</p> */}
 
-        // {dispatch(getReviewsForMovieThunk(movie.id))}
-
-        // console.log('Redux Store State:', allReviews);
+ // console.log('Redux Store State:', allReviews);
