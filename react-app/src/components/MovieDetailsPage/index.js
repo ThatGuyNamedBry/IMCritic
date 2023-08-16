@@ -46,11 +46,20 @@ function MovieDetailsPage() {
       <div className="movie-details-rating">
         <div className="movie-details-average-rating">
           <div className='inner-avg-rating-div'>
-            <span className="movie-details-star-icon">★</span>
-            <p>{singleMovie.average_rating.toFixed(1)}</p>
+            {singleMovie.average_rating !== 0 ? (
+              <div className="movie-details-rating-content">
+                <span className="movie-details-star-icon">★</span>
+                {singleMovie.average_rating.toFixed(1)}
+              </div>
+            ) : (
+              <div className="movie-details-rating-content">
+                <span className="movie-details-star-icon">★</span>
+                New
+              </div>
+            )}
           </div>
           {sessionUser && (
-          <button onClick={handleCreateReviewClick}>Add a Review</button>
+            <button onClick={handleCreateReviewClick}>Add a Review</button>
           )}
         </div>
         <h3>User Reviews:</h3>

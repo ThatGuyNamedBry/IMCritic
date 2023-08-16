@@ -15,8 +15,17 @@ def seed_reviews():
     review3 = Review(
         user_id=3, movie_id=2, rating=4, content="Solid sequel, action-packed."
     )
+    review4 = Review(
+        user_id=1, movie_id=3, rating=5, content="Best of the series!."
+    )
+    review5 = Review(
+        user_id=3, movie_id=4, rating=4, content="Somehow these keep getting better. I hope they do a fifth one!"
+    )
+    review6 = Review(
+        user_id=2, movie_id=5, rating=5, content="Very funny, I couldn't stop laughing."
+    )
 
-    db.session.add_all([review1, review2, review3])
+    db.session.add_all([review1, review2, review3, review4, review5, review6])
     db.session.commit()
 
 def undo_reviews():

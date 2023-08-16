@@ -59,3 +59,8 @@
     align-items: baseline;
     font-size: small;
 }
+
+.item-scroll button{
+    background-color: rgb(19, 19, 19);
+    color: white
+}

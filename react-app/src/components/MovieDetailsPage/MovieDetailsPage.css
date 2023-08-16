@@ -18,8 +18,13 @@
 .movie-details-average-rating {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    align-items: baseline;
+    gap: 75px;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.movie-details-rating-content {
+    font-size: large;
 }
 
 .movie-details-average-rating button{
