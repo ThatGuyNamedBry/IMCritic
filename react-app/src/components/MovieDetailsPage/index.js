@@ -47,12 +47,12 @@ function MovieDetailsPage() {
         <div className="movie-details-average-rating">
           <div className='inner-avg-rating-div'>
             {singleMovie.average_rating !== 0 ? (
-              <div className="rating-content">
+              <div className="movie-details-rating-content">
                 <span className="movie-details-star-icon">★</span>
                 {singleMovie.average_rating.toFixed(1)}
               </div>
             ) : (
-              <div className="rating-content">
+              <div className="movie-details-rating-content">
                 <span className="movie-details-star-icon">★</span>
                 New
               </div>

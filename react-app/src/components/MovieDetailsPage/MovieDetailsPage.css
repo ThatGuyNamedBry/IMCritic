@@ -23,9 +23,10 @@
     margin-top: 5px;
 }
 
-.rating-content {
+.movie-details-rating-content {
     font-size: large;
 }
+
 .movie-details-average-rating button{
     height: 100%
 }
