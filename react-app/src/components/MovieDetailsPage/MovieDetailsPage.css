@@ -9,6 +9,13 @@
     width: 125px;
 }
 
+.movie-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: rgb(26, 26, 26);
+}
+
 .inner-avg-rating-div {
     display: flex;
     flex-direction: row;
