@@ -92,11 +92,18 @@ const HomeLandingPage = () => {
                                 <Link to={`/movies/${movie.id}`}>
                                     <img src={movie.img_url} alt={movie.title} />
                                 </Link>
-                                {movie.average_rating && (
+                                {movie.average_rating !== 0 ? (
                                     <div className="average-rating">
                                         <div className="rating-content">
                                             <span className="star-icon">★</span>
                                             {movie.average_rating.toFixed(1)}
+                                        </div>
+                                    </div>
+                                ) : (
+                                    <div className="average-rating">
+                                        <div className="rating-content">
+                                            <span className="star-icon">★</span>
+                                            New
                                         </div>
                                     </div>
                                 )}
@@ -119,11 +126,18 @@ const HomeLandingPage = () => {
                             <Link to={`/movies/${movie.id}`}>
                                 <img src={movie.img_url} alt={movie.title} />
                             </Link>
-                            {movie.average_rating && (
+                            {movie.average_rating !== 0 ? (
                                 <div className="average-rating">
                                     <div className="rating-content">
                                         <span className="star-icon">★</span>
                                         {movie.average_rating.toFixed(1)}
+                                    </div>
+                                </div>
+                            ) : (
+                                <div className="average-rating">
+                                    <div className="rating-content">
+                                        <span className="star-icon">★</span>
+                                        New
                                     </div>
                                 </div>
                             )}
@@ -143,3 +157,12 @@ export default HomeLandingPage;
 
 
  // console.log('Redux Store State:', allReviews);
+
+//  {movie.average_rating && (
+//     <div className="average-rating">
+//         <div className="rating-content">
+//             <span className="star-icon">★</span>
+//             {movie.average_rating.toFixed(1)}
+//         </div>
+//     </div>
+// )}
