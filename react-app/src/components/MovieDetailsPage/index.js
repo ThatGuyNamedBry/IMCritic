@@ -95,16 +95,22 @@ function MovieDetailsPage() {
         <ul className='reviews-map'>
           {singleMovie.reviews.map(review => (
             <li key={review.id}>
-              <p>Rating: {review.rating}</p>
-              {review.content && <p>Review: {review.content}</p>}
-              <div>
-                {sessionUser && sessionUser.id === review.user_id && (
-                  <button onClick={() => setModalContent(<EditReviewModal review={review} />)}>Edit Review</button>
-                )}
-                {sessionUser && sessionUser.id === review.user_id && (
-                  <button onClick={() => setModalContent(<DeleteModal type="review" id={review.id} movieId={singleMovie.id} />)}>Delete Review</button>
-                )}
+              <div className='inner-reviews-map'>
+                <p>Rating: {review.rating}</p>
+                <div className='edit-delete-bttns-container'>
+                  {sessionUser && sessionUser.id === review.user_id && (
+                    <div onClick={() => setModalContent(<EditReviewModal review={review} />)} className='update-delete-buttons'>
+                      <i className='fa-regular fa-pen-to-square'></i>
+                    </div>
+                  )}
+                  {sessionUser && sessionUser.id === review.user_id && (
+                    <div onClick={() => setModalContent(<DeleteModal type="review" id={review.id} movieId={singleMovie.id} />)} className='update-delete-buttons'>
+                      <i className='fa-regular fa-trash-can'></i>
+                    </div>
+                  )}
+                </div>
               </div>
+              {review.content && <p>Review: {review.content}</p>}
             </li>
           ))}
         </ul>

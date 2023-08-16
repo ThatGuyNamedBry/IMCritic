@@ -126,3 +126,10 @@
     margin-right: 2px;
     transition: 0.3s;
 }
+
+.inner-reviews-map {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+}
