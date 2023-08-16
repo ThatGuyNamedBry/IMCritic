@@ -46,31 +46,47 @@ function MovieDetailsPage() {
           <img src={singleMovie.img_url} alt={singleMovie.title} />
         </div>
         <div className='right-movie-header'>
-          <p>{singleMovie.genre}</p>
-          <p>{singleMovie.description}</p>
-          <p>Director: {singleMovie.director}</p>
-          <p>Writer(s): {singleMovie.writer}</p>
-          <div className="movie-details-average-rating">
-            <div className='inner-avg-rating-div'>
-              {singleMovie.average_rating !== 0 ? (
-                <div className="movie-details-rating-content">
-                  <span className="movie-details-star-icon">★</span>
-                  {singleMovie.average_rating.toFixed(1)}
+          <div className='edit-delete-bttns-container'>
+            {sessionUser && (
+              <div>
+                <div onClick={handleEditButtonClick} className='update-delete-buttons'>
+                  <i className='fa-regular fa-pen-to-square'></i>
                 </div>
-              ) : (
-                <div className="movie-details-rating-content">
-                  <span className="movie-details-star-icon">★</span>
-                  New
+                <div onClick={handleDeleteButtonClick} className='update-delete-buttons'>
+                  <i className='fa-regular fa-trash-can'></i>
                 </div>
-              )}
-            </div>
-            <div className='review-bttn-container'>
-              {sessionUser && (
-                <div className='review-bttn' onClick={handleCreateReviewClick}>☆ Rate</div>
-              )}
+              </div>
+            )}
+          </div>
+          <div className='genre-rating-container'>
+            <p>{singleMovie.genre}</p>
+            <div className="movie-details-average-rating">
+              <div className='inner-avg-rating-div'>
+                {singleMovie.average_rating !== 0 ? (
+                  <div className="movie-details-rating-content">
+                    <span className="movie-details-star-icon">★</span>
+                    {singleMovie.average_rating.toFixed(1)}
+                  </div>
+                ) : (
+                  <div className="movie-details-rating-content">
+                    <span className="movie-details-star-icon">★</span>
+                    New
+                  </div>
+                )}
+              </div>
+              <div className='review-bttn-container'>
+                {sessionUser && (
+                  <div className='review-bttn' onClick={handleCreateReviewClick}>☆ Rate</div>
+                )}
+              </div>
             </div>
           </div>
+          <p>Director: {singleMovie.director}</p>
+          <p>Writer(s): {singleMovie.writer}</p>
         </div>
+      </div>
+      <div className='description-div'>
+        <p>{singleMovie.description}</p>
       </div>
       <p>Trailer</p>
       <iframe title="Movie Trailer" width="360" height="215" src={singleMovie.trailer} frameBorder="0" allowFullScreen></iframe>
@@ -93,12 +109,6 @@ function MovieDetailsPage() {
           ))}
         </ul>
       </div>
-      {sessionUser && (
-        <div>
-          <button onClick={handleDeleteButtonClick}>Delete Movie</button>
-          <button onClick={handleEditButtonClick}>Edit Movie</button>
-        </div>
-      )}
     </div>
   );
 }
