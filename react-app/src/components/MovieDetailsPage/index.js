@@ -50,24 +50,26 @@ function MovieDetailsPage() {
           <p>{singleMovie.description}</p>
           <p>Director: {singleMovie.director}</p>
           <p>Writer(s): {singleMovie.writer}</p>
-        <div className="movie-details-average-rating">
-          <div className='inner-avg-rating-div'>
-            {singleMovie.average_rating !== 0 ? (
-              <div className="movie-details-rating-content">
-                <span className="movie-details-star-icon">★</span>
-                {singleMovie.average_rating.toFixed(1)}
-              </div>
-            ) : (
-              <div className="movie-details-rating-content">
-                <span className="movie-details-star-icon">★</span>
-                New
-              </div>
-            )}
+          <div className="movie-details-average-rating">
+            <div className='inner-avg-rating-div'>
+              {singleMovie.average_rating !== 0 ? (
+                <div className="movie-details-rating-content">
+                  <span className="movie-details-star-icon">★</span>
+                  {singleMovie.average_rating.toFixed(1)}
+                </div>
+              ) : (
+                <div className="movie-details-rating-content">
+                  <span className="movie-details-star-icon">★</span>
+                  New
+                </div>
+              )}
+            </div>
+            <div className='review-bttn-container'>
+              {sessionUser && (
+                <div className='review-bttn' onClick={handleCreateReviewClick}>☆ Rate</div>
+              )}
+            </div>
           </div>
-          {sessionUser && (
-            <button onClick={handleCreateReviewClick}>Add a Review</button>
-          )}
-        </div>
         </div>
       </div>
       <p>Trailer</p>
