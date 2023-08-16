@@ -39,11 +39,17 @@ function MovieDetailsPage() {
 
   return (
     <div className="movie-details-container">
-      <h2>{singleMovie.title}</h2>
-      <p>{singleMovie.release_year}</p>
-      <img src={singleMovie.img_url} alt={singleMovie.title} />
-      <iframe title="Movie Trailer" width="560" height="315" src={singleMovie.trailer} frameBorder="0" allowFullScreen></iframe>
-      <div className="movie-details-rating">
+      <div className='movie-header'>
+        <div className='left-movie-header'>
+          <h2>{singleMovie.title}</h2>
+          <p>{singleMovie.release_year}</p>
+          <img src={singleMovie.img_url} alt={singleMovie.title} />
+        </div>
+        <div className='right-movie-header'>
+          <p>{singleMovie.genre}</p>
+          <p>{singleMovie.description}</p>
+          <p>Director: {singleMovie.director}</p>
+          <p>Writer(s): {singleMovie.writer}</p>
         <div className="movie-details-average-rating">
           <div className='inner-avg-rating-div'>
             {singleMovie.average_rating !== 0 ? (
@@ -62,6 +68,11 @@ function MovieDetailsPage() {
             <button onClick={handleCreateReviewClick}>Add a Review</button>
           )}
         </div>
+        </div>
+      </div>
+      <p>Trailer</p>
+      <iframe title="Movie Trailer" width="360" height="215" src={singleMovie.trailer} frameBorder="0" allowFullScreen></iframe>
+      <div className="movie-details-rating">
         <h3>User Reviews:</h3>
         <ul className='reviews-map'>
           {singleMovie.reviews.map(review => (
