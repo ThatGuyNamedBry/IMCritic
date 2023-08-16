@@ -60,7 +60,16 @@
     font-size: small;
 }
 
+.item-scroll {
+    display: flex;
+    justify-content: space-between;
+}
 .item-scroll button{
     background-color: rgb(19, 19, 19);
-    color: white
+    padding: 10px;
+    color: white;
+}
+
+.item-scroll button:hover{
+    color: #f5c518;
 }

@@ -7,6 +7,8 @@
   border: 1px solid #f5c518;
   padding: 5px 5px;
   row-gap: 2px;
+  background-color: #121212;
+  list-style: none;
 }
 
 .hidden {
