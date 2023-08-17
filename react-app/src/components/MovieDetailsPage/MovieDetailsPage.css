@@ -2,6 +2,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    font-size: small;
 }
 
 .movie-details-container img {
@@ -13,12 +15,30 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
     background-color: rgb(26, 26, 26);
+    width: 100%;
 }
 
 .right-movie-header {
     display: flex;
     flex-direction: column;
+    margin-left: 5px;
+}
+
+.right-movie-header p {
+    margin: 5px;
+}
+
+.left-movie-header {
+    margin-top: -3px;
+}
+
+.left-movie-header h2 {
+    margin-bottom: -5px;
+    max-width: 150px;
+    overflow: hidden;
+    word-wrap: break-word;
 }
 
 /* .left-movie-header h2 {
@@ -41,6 +61,10 @@
     justify-content: flex-end;
 }
 
+.movie-details-rating-container {
+    margin-top: 10px;
+}
+
 .movie-details-rating-content {
     font-size: large;
 }
@@ -55,6 +79,7 @@
 
 .reviews-map {
     padding-inline-start: 0px;
+    width: 400px;
 }
 
 .reviews-map li {
@@ -83,17 +108,11 @@
     background-color: rgb(50, 50, 50);
 }
 
-.genre-rating-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: baseline;
-}
+
 .description-div {
-    display: flex;
-    align-items: center;
-    width: 50%;
-}
+    max-width: 400px;
+    margin: 0;
+  }
 
 .update-delete-buttons {
     font-family: inherit;
@@ -114,15 +133,14 @@
 
 .edit-delete-bttns-container {
     display: flex;
-    justify-content: flex-end;
-    margin-top: -20px;
+    justify-content: flex-start;
     margin-bottom: 10px;
 }
 
 .edit-delete-bttns-container div {
     display: flex;
     flex-direction: row;
-    gap: 3px;
+    gap: 2px;
     margin-right: 2px;
     transition: 0.3s;
 }

@@ -44,8 +44,6 @@ function MovieDetailsPage() {
           <h2>{singleMovie.title}</h2>
           <p>{singleMovie.release_year}</p>
           <img src={singleMovie.img_url} alt={singleMovie.title} />
-        </div>
-        <div className='right-movie-header'>
           <div className='edit-delete-bttns-container'>
             {sessionUser && (
               <div>
@@ -58,10 +56,11 @@ function MovieDetailsPage() {
               </div>
             )}
           </div>
-          <div className='genre-rating-container'>
-            <p>{singleMovie.genre}</p>
+        </div>
+        <div className="right-movie-header">
+          <div className="movie-details-rating-container">
             <div className="movie-details-average-rating">
-              <div className='inner-avg-rating-div'>
+              <div className="inner-avg-rating-div">
                 {singleMovie.average_rating !== 0 ? (
                   <div className="movie-details-rating-content">
                     <span className="movie-details-star-icon">★</span>
@@ -74,19 +73,22 @@ function MovieDetailsPage() {
                   </div>
                 )}
               </div>
-              <div className='review-bttn-container'>
+              <div className="review-bttn-container">
                 {sessionUser && (
-                  <div className='review-bttn' onClick={handleCreateReviewClick}>☆ Rate</div>
+                  <div className="review-bttn" onClick={handleCreateReviewClick}>
+                    ☆ Rate
+                  </div>
                 )}
               </div>
             </div>
+            <p>{singleMovie.genre}</p>
+          </div>
+          <div className="description-div">
+            <p>{singleMovie.description}</p>
           </div>
           <p>Director: {singleMovie.director}</p>
           <p>Writer(s): {singleMovie.writer}</p>
         </div>
-      </div>
-      <div className='description-div'>
-        <p>{singleMovie.description}</p>
       </div>
       <p>Trailer</p>
       <iframe title="Movie Trailer" width="360" height="215" src={singleMovie.trailer} frameBorder="0" allowFullScreen></iframe>
