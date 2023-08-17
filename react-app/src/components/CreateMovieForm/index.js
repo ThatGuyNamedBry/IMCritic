@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { createMovieThunk } from '../../store/movie';
 import './CreateMovieForm.css';
@@ -7,6 +7,7 @@ import './CreateMovieForm.css';
 const CreateMovieForm = () => {
     const history = useHistory();
     const dispatch = useDispatch();
+    const user = useSelector(state => state.session.user);
     const [title, setTitle] = useState('');
     const [release_year, setReleaseYear] = useState('');
     const [genre, setGenre] = useState('');
@@ -19,7 +20,17 @@ const CreateMovieForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const formData = { title, release_year, genre, director, writer, description, trailer, img_url };
+        const formData = {
+            user_id: user.id,
+            title,
+            release_year,
+            genre,
+            director,
+            writer,
+            description,
+            trailer,
+            img_url
+        };
         const data = await dispatch(createMovieThunk(formData));
 
         if (data.errors) {

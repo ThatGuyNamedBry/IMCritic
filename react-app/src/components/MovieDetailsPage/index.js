@@ -45,7 +45,7 @@ function MovieDetailsPage() {
           <p>{singleMovie.release_year}</p>
           <img src={singleMovie.img_url} alt={singleMovie.title} />
           <div className='edit-delete-bttns-container'>
-            {sessionUser && (
+            {sessionUser && sessionUser.id === singleMovie.user_id && (
               <div>
                 <div onClick={handleEditButtonClick} className='update-delete-buttons'>
                   <i className='fa-regular fa-pen-to-square'></i>
