@@ -2,8 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField, TextAreaField, URLField
 from wtforms.validators import DataRequired, Length, URL
 
-class CreateMovieForm(FlaskForm):
-    user_id = IntegerField('User ID', validators=[DataRequired()])
+class EditMovieForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired(), Length(max=255)])
     release_year = IntegerField('Release Year', validators=[DataRequired()])
     genre = StringField('Genre', validators=[DataRequired(), Length(max=255)])

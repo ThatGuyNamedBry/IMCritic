@@ -14,6 +14,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
 
+    movies = db.relationship("Movie", back_populates="user")
     reviews = db.relationship("Review", back_populates="user")
     watchlists = db.relationship("Watchlist", back_populates="user")
 

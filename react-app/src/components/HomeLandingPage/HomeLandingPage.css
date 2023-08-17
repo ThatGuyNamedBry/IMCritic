@@ -12,7 +12,7 @@
 }
 
 
-.home-landing-page h3{
+.home-landing-page h3 {
     color: #f5c518;
 }
 
@@ -45,11 +45,10 @@
 
 .featured-movie img:hover {
     opacity: 0.7;
-
 }
 
 .star-icon {
-    font-size:small;
+    font-size: small;
     color: yellow;
 }
 
@@ -61,15 +60,50 @@
 }
 
 .item-scroll {
+    position: relative;
     display: flex;
-    justify-content: space-between;
-}
-.item-scroll button{
-    background-color: rgb(19, 19, 19);
-    padding: 10px;
-    color: white;
+    align-items: center;
+    z-index: 100;
 }
 
-.item-scroll button:hover{
+.item-scroll button {
+    background-color: rgb(0, 0, 0, 0.3);
+    padding: 10px;
+    color: white;
+    font-size: 1.4rem;
+    margin-bottom: -50%;
+    border: 1px solid white;
+}
+
+.item-scroll button:hover {
     color: #f5c518;
+}
+
+.prev-button {
+    display: none;
+    position: absolute;
+    left: 0;
+    margin-left: -10px;
+}
+
+.next-button {
+    position: absolute;
+    right: 0;
+    margin-right: -10px;
+}
+
+.trailer-prev-button {
+    position: absolute;
+    left: 0;
+}
+
+
+.trailer-next-button {
+    position: absolute;
+    right: 0;
+}
+
+.featured-movies-section:hover .prev-button,
+.top-rated-section:hover .prev-button {
+    display: block;
 }
