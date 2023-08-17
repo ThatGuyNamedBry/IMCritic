@@ -70,8 +70,8 @@ const HomeLandingPage = () => {
                 {recentMovies.length > 0 && (
                     <div className="trailer-box">
                         <div className="item-scroll">
-                            <button className='fa-solid fa-angle-left' onClick={handlePrevTrailer}></button>
-                            <button className='fa-solid fa-angle-right' onClick={handleNextTrailer}></button>
+                            <button className='fa-solid fa-angle-left trailer-prev-button' onClick={handlePrevTrailer}></button>
+                            <button className='fa-solid fa-angle-right trailer-next-button' onClick={handleNextTrailer}></button>
                         </div>
                         <iframe title="Recent Movie Trailer" width="600" height="350" src={recentMovies[currentTrailerIndex].trailer} frameBorder="0" allowFullScreen></iframe>
                     </div>
@@ -81,8 +81,10 @@ const HomeLandingPage = () => {
             <div className="featured-movies-section">
                 <h3>Featured Movies</h3>
                 <div className="item-scroll">
-                    <button className='fa-solid fa-angle-left' onClick={handlePrevFeatured} ></button>
-                    <button className='fa-solid fa-angle-right' onClick={handleNextFeatured} ></button>
+                    {startFeaturedIndex > 0 && (
+                        <button className={`fa-solid fa-angle-left prev-button`} onClick={handlePrevFeatured}></button>
+                    )}
+                    <button className='fa-solid fa-angle-right next-button' onClick={handleNextFeatured}></button>
                 </div>
                 <div className="featured-movies-list">
                     {Object.values(allMovies).reverse()
@@ -117,8 +119,10 @@ const HomeLandingPage = () => {
             <div className="top-rated-section">
                 <h3>Top Rated Movies</h3>
                 <div className="item-scroll">
-                    <button className='fa-solid fa-angle-left' onClick={handlePrevTopRated}></button>
-                    <button className='fa-solid fa-angle-right' onClick={handleNextTopRated}></button>
+                {startTopRatedIndex > 0 && (
+                        <button className={`fa-solid fa-angle-left prev-button`} onClick={handlePrevTopRated}></button>
+                    )}
+                    <button className='fa-solid fa-angle-right next-button' onClick={handleNextTopRated}></button>
                 </div>
                 <div className="featured-movies-list">
                     {topRatedMovies.map(movie => (
