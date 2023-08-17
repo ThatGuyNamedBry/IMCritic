@@ -16,6 +16,7 @@ function DeleteModal({ type, id, movieId }) {
   const handleDelete = async () => {
     if (type === 'movie') {
       await dispatch(deleteMovieThunk(id));
+      closeModal();
       history.push('/');
     } else if (type === 'review'){
       await dispatch(deleteReviewThunk(id));

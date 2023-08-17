@@ -86,7 +86,9 @@ const HomeLandingPage = () => {
                     {startFeaturedIndex > 0 && (
                         <button className={`fa-solid fa-angle-left prev-button`} onClick={handlePrevFeatured}></button>
                     )}
-                    <button className='fa-solid fa-angle-right next-button' onClick={handleNextFeatured}></button>
+                    {Object.values(allMovies).length - (startFeaturedIndex + itemsPerPage) >= 4 && (
+                        <button className='fa-solid fa-angle-right next-button' onClick={handleNextFeatured}></button>
+                    )}
                 </div>
                 <div className="featured-movies-list">
                     {Object.values(allMovies).reverse()
@@ -121,10 +123,12 @@ const HomeLandingPage = () => {
             <div className="top-rated-section">
                 <h3>Top Rated Movies</h3>
                 <div className="item-scroll">
-                {startTopRatedIndex > 0 && (
+                    {startTopRatedIndex > 0 && (
                         <button className={`fa-solid fa-angle-left prev-button`} onClick={handlePrevTopRated}></button>
                     )}
-                    <button className='fa-solid fa-angle-right next-button' onClick={handleNextTopRated}></button>
+                    {Object.values(allMovies).length - (startTopRatedIndex + itemsPerPage) >= 4 && (
+                        <button className='fa-solid fa-angle-right next-button' onClick={handleNextTopRated}></button>
+                    )}
                 </div>
                 <div className="featured-movies-list">
                     {topRatedMovies.map(movie => (
