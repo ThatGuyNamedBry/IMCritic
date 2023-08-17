@@ -69,11 +69,11 @@ const HomeLandingPage = () => {
             <div className="featured-trailers-section">
                 {recentMovies.length > 0 && (
                     <div className="trailer-box">
-                        <iframe title="Recent Movie Trailer" width="600" height="350" src={recentMovies[currentTrailerIndex].trailer} frameBorder="0" allowFullScreen></iframe>
                         <div className="item-scroll">
                             <button className='fa-solid fa-angle-left' onClick={handlePrevTrailer}></button>
                             <button className='fa-solid fa-angle-right' onClick={handleNextTrailer}></button>
                         </div>
+                        <iframe title="Recent Movie Trailer" width="600" height="350" src={recentMovies[currentTrailerIndex].trailer} frameBorder="0" allowFullScreen></iframe>
                     </div>
                 )}
             </div>
