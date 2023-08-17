@@ -133,15 +133,14 @@
 
 .edit-delete-bttns-container {
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
     margin-bottom: 10px;
-    margin-right: 20px;
 }
 
 .edit-delete-bttns-container div {
     display: flex;
     flex-direction: row;
-    gap: 3px;
+    gap: 2px;
     margin-right: 2px;
     transition: 0.3s;
 }
@@ -151,5 +150,4 @@
     flex-direction: row;
     align-items: baseline;
     justify-content: space-between;
-    margin-right: -10px;
 }
