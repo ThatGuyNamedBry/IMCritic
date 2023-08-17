@@ -40,7 +40,8 @@ const HomeLandingPage = () => {
     };
 
     const handleNextFeatured = () => {
-        if (startFeaturedIndex + itemsPerPage < Object.values(allMovies).length) {
+        const remainingMovies = Object.values(allMovies).length - (startFeaturedIndex + itemsPerPage);
+        if (remainingMovies >= 4) {
             setCurrentFeaturedIndex(startFeaturedIndex + itemsPerPage);
         }
     };
@@ -52,7 +53,8 @@ const HomeLandingPage = () => {
     };
 
     const handleNextTopRated = () => {
-        if (startTopRatedIndex + itemsPerPage < Object.values(allMovies).length) {
+        const remainingMovies = Object.values(allMovies).length - (startTopRatedIndex + itemsPerPage);
+        if (remainingMovies >= 4) {
             setStartTopRatedIndex(startTopRatedIndex + itemsPerPage);
         }
     };
