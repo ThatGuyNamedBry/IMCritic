@@ -1,0 +1,20 @@
+.star-rating {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.star {
+    color: lightgray;
+    cursor: pointer;
+    font-size: 150%;
+}
+
+.star.filled {
+    color: black;
+}
+
+.star.empty {
+    color: lightgray;
+}

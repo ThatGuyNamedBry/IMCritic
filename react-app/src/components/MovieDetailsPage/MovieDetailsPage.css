@@ -16,6 +16,17 @@
     background-color: rgb(26, 26, 26);
 }
 
+.right-movie-header {
+    display: flex;
+    flex-direction: column;
+}
+
+/* .left-movie-header h2 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+} */
+
 .inner-avg-rating-div {
     display: flex;
     flex-direction: row;
@@ -25,9 +36,9 @@
 .movie-details-average-rating {
     display: flex;
     flex-direction: row;
-    gap: 75px;
+    gap: 20px;
     align-items: center;
-    margin-top: 5px;
+    justify-content: flex-end;
 }
 
 .movie-details-rating-content {
@@ -48,4 +59,77 @@
 
 .reviews-map li {
     list-style: none;
+}
+
+.review-bttn-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.review-bttn {
+    background-color: transparent;
+    font-size: large;
+    color: rgb(87, 153, 239);
+    cursor: pointer;
+    padding: 1px 3px 3px 2px;
+}
+
+.review-bttn:hover {
+    background-color: rgb(39, 39, 39);
+}
+
+.review-bttn:active {
+    background-color: rgb(50, 50, 50);
+}
+
+.genre-rating-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+}
+.description-div {
+    display: flex;
+    align-items: center;
+    width: 50%;
+}
+
+.update-delete-buttons {
+    font-family: inherit;
+    background-color: transparent;
+    color: rgb(188, 188, 188);
+    cursor: pointer;
+    padding: 1px;
+}
+
+.update-delete-buttons:hover {
+    /* background-color: rgb(93, 93, 93); */
+    color: rgb(93, 93, 93);
+}
+
+.update-delete-buttons:active {
+    transform: scale(.9);
+}
+
+.edit-delete-bttns-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -20px;
+    margin-bottom: 10px;
+}
+
+.edit-delete-bttns-container div {
+    display: flex;
+    flex-direction: row;
+    gap: 3px;
+    margin-right: 2px;
+    transition: 0.3s;
+}
+
+.inner-reviews-map {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
 }

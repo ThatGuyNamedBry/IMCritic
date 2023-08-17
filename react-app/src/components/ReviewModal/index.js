@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useModal } from '../../context/Modal';
 import { createReviewThunk } from '../../store/reviews';
 import { getMovieByIdThunk } from '../../store/movie';
+import './ReviewModal.css';
 
 const ReviewModal = ({ movieId }) => {
     const dispatch = useDispatch();
@@ -10,6 +11,7 @@ const ReviewModal = ({ movieId }) => {
     const [rating, setRating] = useState('');
     const [content, setContent] = useState('');
     const [errors, setErrors] = useState([]);
+    const [activeRating, setActiveRating] = useState(rating);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -29,17 +31,33 @@ const ReviewModal = ({ movieId }) => {
         }
     };
 
+    const handleStarClick = (value) => {
+        setRating(value);
+    };
+
+    const handleStarHover = (value) => {
+        setActiveRating(value);
+    };
+
     return (
         <div>
             <h2>Create Review</h2>
             <form onSubmit={handleSubmit}>
                 <label>
                     Rating:
-                    <input
-                        type="number"
-                        value={rating}
-                        onChange={(e) => setRating(e.target.value)}
-                    />
+                    <div className="star-rating">
+                    {Array.from({ length: 5 }).map((_, index) => (
+                        <span
+                            key={index}
+                            className={`star ${index < activeRating ? 'filled' : 'empty'}`}
+                            onMouseEnter={() => handleStarHover(index + 1)}
+                            onMouseLeave={() => setActiveRating(rating)}
+                            onClick={() => handleStarClick(index + 1)}
+                        >
+                            ★
+                        </span>
+                    ))}
+                </div>
                 </label>
                 <label>
                     Content:

@@ -46,29 +46,47 @@ function MovieDetailsPage() {
           <img src={singleMovie.img_url} alt={singleMovie.title} />
         </div>
         <div className='right-movie-header'>
-          <p>{singleMovie.genre}</p>
-          <p>{singleMovie.description}</p>
-          <p>Director: {singleMovie.director}</p>
-          <p>Writer(s): {singleMovie.writer}</p>
-        <div className="movie-details-average-rating">
-          <div className='inner-avg-rating-div'>
-            {singleMovie.average_rating !== 0 ? (
-              <div className="movie-details-rating-content">
-                <span className="movie-details-star-icon">★</span>
-                {singleMovie.average_rating.toFixed(1)}
-              </div>
-            ) : (
-              <div className="movie-details-rating-content">
-                <span className="movie-details-star-icon">★</span>
-                New
+          <div className='edit-delete-bttns-container'>
+            {sessionUser && (
+              <div>
+                <div onClick={handleEditButtonClick} className='update-delete-buttons'>
+                  <i className='fa-regular fa-pen-to-square'></i>
+                </div>
+                <div onClick={handleDeleteButtonClick} className='update-delete-buttons'>
+                  <i className='fa-regular fa-trash-can'></i>
+                </div>
               </div>
             )}
           </div>
-          {sessionUser && (
-            <button onClick={handleCreateReviewClick}>Add a Review</button>
-          )}
+          <div className='genre-rating-container'>
+            <p>{singleMovie.genre}</p>
+            <div className="movie-details-average-rating">
+              <div className='inner-avg-rating-div'>
+                {singleMovie.average_rating !== 0 ? (
+                  <div className="movie-details-rating-content">
+                    <span className="movie-details-star-icon">★</span>
+                    {singleMovie.average_rating.toFixed(1)}
+                  </div>
+                ) : (
+                  <div className="movie-details-rating-content">
+                    <span className="movie-details-star-icon">★</span>
+                    New
+                  </div>
+                )}
+              </div>
+              <div className='review-bttn-container'>
+                {sessionUser && (
+                  <div className='review-bttn' onClick={handleCreateReviewClick}>☆ Rate</div>
+                )}
+              </div>
+            </div>
+          </div>
+          <p>Director: {singleMovie.director}</p>
+          <p>Writer(s): {singleMovie.writer}</p>
         </div>
-        </div>
+      </div>
+      <div className='description-div'>
+        <p>{singleMovie.description}</p>
       </div>
       <p>Trailer</p>
       <iframe title="Movie Trailer" width="360" height="215" src={singleMovie.trailer} frameBorder="0" allowFullScreen></iframe>
@@ -77,26 +95,26 @@ function MovieDetailsPage() {
         <ul className='reviews-map'>
           {singleMovie.reviews.map(review => (
             <li key={review.id}>
-              <p>Rating: {review.rating}</p>
-              {review.content && <p>Review: {review.content}</p>}
-              <div>
-                {sessionUser && sessionUser.id === review.user_id && (
-                  <button onClick={() => setModalContent(<EditReviewModal review={review} />)}>Edit Review</button>
-                )}
-                {sessionUser && sessionUser.id === review.user_id && (
-                  <button onClick={() => setModalContent(<DeleteModal type="review" id={review.id} movieId={singleMovie.id} />)}>Delete Review</button>
-                )}
+              <div className='inner-reviews-map'>
+                <p>Rating: {review.rating}</p>
+                <div className='edit-delete-bttns-container'>
+                  {sessionUser && sessionUser.id === review.user_id && (
+                    <div onClick={() => setModalContent(<EditReviewModal review={review} />)} className='update-delete-buttons'>
+                      <i className='fa-regular fa-pen-to-square'></i>
+                    </div>
+                  )}
+                  {sessionUser && sessionUser.id === review.user_id && (
+                    <div onClick={() => setModalContent(<DeleteModal type="review" id={review.id} movieId={singleMovie.id} />)} className='update-delete-buttons'>
+                      <i className='fa-regular fa-trash-can'></i>
+                    </div>
+                  )}
+                </div>
               </div>
+              {review.content && <p>Review: {review.content}</p>}
             </li>
           ))}
         </ul>
       </div>
-      {sessionUser && (
-        <div>
-          <button onClick={handleDeleteButtonClick}>Delete Movie</button>
-          <button onClick={handleEditButtonClick}>Edit Movie</button>
-        </div>
-      )}
     </div>
   );
 }
