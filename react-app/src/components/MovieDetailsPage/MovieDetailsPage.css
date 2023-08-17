@@ -41,12 +41,6 @@
     word-wrap: break-word;
 }
 
-/* .left-movie-header h2 {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-} */
-
 .inner-avg-rating-div {
     display: flex;
     flex-direction: row;
