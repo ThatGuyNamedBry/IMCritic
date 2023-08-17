@@ -10,6 +10,7 @@ class Movie(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     title = db.Column(db.String(255), nullable=False)
     release_year = db.Column(db.Integer, nullable=False)
     genre = db.Column(db.String(255), nullable=False)
@@ -19,6 +20,7 @@ class Movie(db.Model):
     trailer = db.Column(db.String(255))
     img_url = db.Column(db.String(255))
 
+    user = db.relationship("User", back_populates="movies")
     reviews = db.relationship("Review", back_populates="movie", cascade="all, delete")
     movie_watchlist = db.relationship('MovieWatchlist', back_populates='movie', cascade="all, delete")
     movie_actors = db.relationship("MovieActor", back_populates="movie", cascade="all, delete")
@@ -32,6 +34,7 @@ class Movie(db.Model):
             average_rating = total_rating / len(reviews)
         return {
             'id': self.id,
+            'user_id': self.user.id,
             'title': self.title,
             'release_year': self.release_year,
             'genre': self.genre,

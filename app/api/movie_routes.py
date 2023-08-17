@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import Movie, Review, db
-from app.forms import CreateMovieForm
+from app.forms import CreateMovieForm, EditMovieForm
 from app.api.auth_routes import validation_errors_to_error_messages
 
 movie_routes = Blueprint("movies", __name__)
@@ -43,6 +43,9 @@ def delete_movie(id):
     # if movie is None or movie.user_id != current_user.id:
     if movie is None:
         return {"errors": "Movie not found"}, 404
+    
+    if movie.user_id != current_user.id:
+        return {"errors": "You are not authorized to delete this movie"}, 403
 
     db.session.delete(movie)
     db.session.commit()
@@ -60,6 +63,7 @@ def create_new_movie():
     form.data["user_id"] = current_user.id
     if form.validate_on_submit():
         new_movie = Movie(
+            user_id=form.data["user_id"],
             title=form.data["title"],
             release_year=form.data["release_year"],
             genre=form.data["genre"],
@@ -84,7 +88,10 @@ def edit_movie(id):
     if movie is None:
         return {"errors": "Movie not found"}, 404
 
-    form = CreateMovieForm()
+    if movie.user_id != current_user.id:
+        return {"errors": "You are not authorized to edit this movie"}, 403
+
+    form = EditMovieForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
 
     if form.validate_on_submit():

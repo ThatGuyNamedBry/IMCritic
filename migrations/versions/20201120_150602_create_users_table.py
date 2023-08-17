@@ -38,6 +38,7 @@ def upgrade():
     op.create_table(
         'movies',
         sa.Column('id', sa.Integer(), nullable=False),
+        sa.Column('user_id', sa.Integer(), nullable=False),
         sa.Column('title', sa.String(length=255), nullable=False),
         sa.Column('release_year', sa.Integer(), nullable=False),
         sa.Column('genre', sa.String(length=255), nullable=False),

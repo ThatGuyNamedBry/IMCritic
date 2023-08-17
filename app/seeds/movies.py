@@ -4,6 +4,7 @@ from sqlalchemy.sql import text
 
 def seed_movies():
     movie1 = Movie(
+        user_id=1,
         title="John Wick 1",
         release_year="2014",
         genre="Action",
@@ -14,6 +15,7 @@ def seed_movies():
         img_url='https://upload.wikimedia.org/wikipedia/en/thumb/9/98/John_Wick_TeaserPoster.jpg/220px-John_Wick_TeaserPoster.jpg'
     )
     movie2 = Movie(
+        user_id=1,
         title="John Wick 2",
         release_year="2017",
         genre="Action",
@@ -24,6 +26,7 @@ def seed_movies():
         img_url='https://m.media-amazon.com/images/M/MV5BNTZiMGM5MjItY2VjMi00NmE0LWFlMDItYjA4MzEzMjI4Y2Y2XkEyXkFqcGdeQXVyODA1NjQ0OTY@._V1_.jpg'
     )
     movie3 = Movie(
+        user_id=2,
         title="John Wick 3",
         release_year="2019",
         genre="Action",
@@ -34,6 +37,7 @@ def seed_movies():
         img_url='https://m.media-amazon.com/images/M/MV5BMDg2YzI0ODctYjliMy00NTU0LTkxODYtYTNkNjQwMzVmOTcxXkEyXkFqcGdeQXVyNjg2NjQwMDQ@._V1_.jpg'
     )
     movie4 = Movie(
+        user_id=2,
         title="John Wick 4",
         release_year="2023",
         genre="Action",
@@ -44,6 +48,7 @@ def seed_movies():
         img_url='https://www.thevillagesentertainment.com/wp-content/uploads/2023/03/John-wick-4-poster-scaled.jpg'
     )
     movie5 = Movie(
+        user_id=3,
         title="The Other Guys",
         release_year="2010",
         genre="Comedy",
@@ -54,6 +59,7 @@ def seed_movies():
         img_url='https://m.media-amazon.com/images/M/MV5BMDlhZDQ5NDUtNDcwMi00MTQ5LTk1Y2UtYjNmMjgzNzNhNzU3XkEyXkFqcGdeQXVyODE5NzE3OTE@._V1_.jpg'
     )
     movie6 = Movie(
+        user_id=1,
         title="Step Brothers",
         release_year="2008",
         genre="Comedy",
@@ -64,6 +70,7 @@ def seed_movies():
         img_url='https://upload.wikimedia.org/wikipedia/en/d/d9/StepbrothersMP08.jpg'
     )
     movie7 = Movie(
+        user_id=3,
         title="Talladega Nights: The Ballad of Ricky Bobby",
         release_year="2006",
         genre="Comedy",
@@ -74,6 +81,7 @@ def seed_movies():
         img_url='https://upload.wikimedia.org/wikipedia/en/thumb/e/e7/Talladega_nights.jpg/220px-Talladega_nights.jpg'
     )
     movie8 = Movie(
+        user_id=2,
         title="Happy Gilmore",
         release_year="1996",
         genre="Comedy",
