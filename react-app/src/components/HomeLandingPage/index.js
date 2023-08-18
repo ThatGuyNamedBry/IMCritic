@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getAllMoviesThunk } from '../../store/movie';
@@ -11,8 +11,11 @@ const HomeLandingPage = () => {
     const [currentTrailerIndex, setCurrentTrailerIndex] = useState(0);
     const [startFeaturedIndex, setCurrentFeaturedIndex] = useState(0);
     const [startTopRatedIndex, setStartTopRatedIndex] = useState(0);
+    const [isPlaying, setIsPlaying] = useState(false);
 
     const itemsPerPage = 5;
+
+    const iframeRef = useRef(null);
 
     useEffect(() => {
         dispatch(getAllMoviesThunk());
@@ -66,17 +69,27 @@ const HomeLandingPage = () => {
         .sort((a, b) => b.average_rating - a.average_rating)
         .slice(startTopRatedIndex, startTopRatedIndex + itemsPerPage);
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrentTrailerIndex(prevIndex =>
-                prevIndex === recentMovies.length - 1 ? 0 : prevIndex + 1
-            );
-        }, 8000);
+        useEffect(() => {
+            const interval = setInterval(() => {
+                if (!isPlaying) {
+                    setCurrentTrailerIndex(prevIndex =>
+                        prevIndex === recentMovies.length - 1 ? 0 : prevIndex + 1
+                    );
+                }
+            }, 7000);
 
-        return () => {
-            clearInterval(interval);
+            return () => {
+                clearInterval(interval);
+            };
+        }, [recentMovies.length, isPlaying]);
+
+        const handleIframeMouseOver = () => {
+            setIsPlaying(true);
         };
-    }, [recentMovies.length]);
+
+        const handleIframeMouseOut = () => {
+            setIsPlaying(false);
+        };
 
     return (
         <div className="home-landing-page">
@@ -87,7 +100,7 @@ const HomeLandingPage = () => {
                             <button className='fa-solid fa-angle-left trailer-prev-button' onClick={handlePrevTrailer}></button>
                             <button className='fa-solid fa-angle-right trailer-next-button' onClick={handleNextTrailer}></button>
                         </div>
-                        <iframe title="Recent Movie Trailer" width="600" height="400" src={recentMovies[currentTrailerIndex].trailer} frameBorder="0" allowFullScreen></iframe>
+                        <iframe ref={iframeRef} onMouseOver={handleIframeMouseOver} onMouseOut={handleIframeMouseOut} title="Recent Movie Trailer" width="600" height="400" src={recentMovies[currentTrailerIndex].trailer} frameBorder="0" allowFullScreen></iframe>
                     </div>
                 )}
                 <div className="up-next-section">
