@@ -13,7 +13,7 @@ function Navigation({ isLoaded }) {
 		<div className="navigation-container">
 			<ul className='navigation-ul'>
 				<li>
-					<NavLink exact to="/">Home</NavLink>
+					<NavLink exact to="/">IMCritic</NavLink>
 				</li>
 				<li>
 					{sessionUser && (
@@ -27,6 +27,7 @@ function Navigation({ isLoaded }) {
 						<ProfileButton user={sessionUser} />
 					) : (
 						<OpenModalButton
+						className="signin-bttn"
 						buttonText="Sign In"
 						modalComponent={<LoginFormModal />}
 					  />
