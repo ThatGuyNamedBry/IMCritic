@@ -31,6 +31,11 @@ const CreateMovieForm = () => {
             trailer,
             img_url
         };
+
+        // if (description.length < 50 || description.length > 1000) {
+        //     setErrors([ "Description length must be between 50 and 1000 characters"]);
+        // }
+
         const data = await dispatch(createMovieThunk(formData));
 
         if (data.errors) {
@@ -50,6 +55,7 @@ const CreateMovieForm = () => {
                         type="text"
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
+                        placeholder='Title'
                     />
                 </label>
                 <label>
@@ -58,6 +64,7 @@ const CreateMovieForm = () => {
                         type="number"
                         value={release_year}
                         onChange={(e) => setReleaseYear(e.target.value)}
+                        placeholder='Release Year'
                     />
                 </label>
                 <label>
@@ -66,6 +73,7 @@ const CreateMovieForm = () => {
                         type="text"
                         value={genre}
                         onChange={(e) => setGenre(e.target.value)}
+                        placeholder='Genre'
                     />
                 </label>
                 <label>
@@ -74,6 +82,7 @@ const CreateMovieForm = () => {
                         type="text"
                         value={director}
                         onChange={(e) => setDirector(e.target.value)}
+                        placeholder='Director'
                     />
                 </label>
                 <label>
@@ -82,6 +91,7 @@ const CreateMovieForm = () => {
                         type="text"
                         value={writer}
                         onChange={(e) => setWriter(e.target.value)}
+                        placeholder='Writer'
                     />
                 </label>
                 <label>
@@ -89,6 +99,7 @@ const CreateMovieForm = () => {
                     <textarea
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
+                        placeholder='Description'
                     />
                 </label>
                 <label>
@@ -97,6 +108,7 @@ const CreateMovieForm = () => {
                         type="url"
                         value={trailer}
                         onChange={(e) => setTrailer(e.target.value)}
+                        placeholder='Trailer URL'
                     />
                 </label>
                 <label>
@@ -105,6 +117,7 @@ const CreateMovieForm = () => {
                         type="url"
                         value={img_url}
                         onChange={(e) => setImgUrl(e.target.value)}
+                        placeholder='Image URL'
                     />
                 </label>
                 <button type="submit">Create Movie</button>

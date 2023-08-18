@@ -43,7 +43,7 @@ def delete_movie(id):
     # if movie is None or movie.user_id != current_user.id:
     if movie is None:
         return {"errors": "Movie not found"}, 404
-    
+
     if movie.user_id != current_user.id:
         return {"errors": "You are not authorized to delete this movie"}, 403
 
