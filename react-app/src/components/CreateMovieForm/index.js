@@ -109,7 +109,7 @@ const CreateMovieForm = () => {
                 </label>
                 <button type="submit">Create Movie</button>
             </form>
-            <ul className="errors-ul">
+            <ul className="errors">
                 {errors.map((error, idx) => (
                     <li key={idx}>{error}</li>
                 ))}

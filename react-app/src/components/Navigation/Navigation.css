@@ -1,14 +1,31 @@
 .profile-dropdown {
   position: absolute;
-  top: 60px;
-  right: 115px;
+  top: 42px;
+  right: 94px;
   display: flex;
   flex-direction: column;
-  border: 1px solid #f5c518;
+  border: none;
+  border-radius: 4px;
   padding: 5px 5px;
   row-gap: 2px;
-  background-color: #121212;
+  background-color: #212121;
   list-style: none;
+  z-index: 100;
+  padding: 8px;
+}
+
+.movies-dropdown {
+  position: absolute;
+  top: 42px;
+  left: 94px;
+  display: flex;
+  flex-direction: column;
+  border: none;
+  background-color: #212121;
+  list-style: none;
+  z-index: 100;
+  row-gap: 10px;
+  padding: 10px
 }
 
 .hidden {
@@ -61,4 +78,48 @@
 .navigation-ul li button:active {
   background-color: rgb(80, 80, 80);
   transform: scale(.95);
+}
+
+.left-nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap:5px;
+}
+
+.menu-bttn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap:6px;
+}
+
+.movies-menu-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: -12px;
+  font-weight:900;
+  font-size:large;
+}
+
+.movies-menu-section i {
+  color:#f5c518
+}
+
+.dropdown-link {
+  background-color: transparent !important;
+  color: white !important;
+  border: none;
+  border-radius: 2px;
+  font-size: small;
+  font-weight:600 !important;
+}
+
+.dropdown-link:hover {
+  background-color: rgb(40, 40, 40);
+  color: white;
+  font-weight: bold;
+  text-decoration: underline;
 }

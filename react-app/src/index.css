@@ -12,3 +12,8 @@ body {
 button {
     cursor: pointer;
 }
+
+.errors li {
+    color: red;
+    list-style: none;
+}

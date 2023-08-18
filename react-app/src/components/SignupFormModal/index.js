@@ -15,6 +15,17 @@ function SignupFormModal() {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+
+		if (!/\S+@\S+\.\S+/.test(email)) {
+			setErrors([ "Invalid email format"]);
+			return;
+		}
+
+		if (username.length < 4 || username.length > 16) {
+			setErrors([ "Username must be between 4 and 16 characters"]);
+			return;
+		}
+
 		if (password === confirmPassword) {
 			const data = await dispatch(signUp(username, email, password));
 			if (data) {
@@ -33,7 +44,7 @@ function SignupFormModal() {
 		<>
 			<h1>Sign Up</h1>
 			<form onSubmit={handleSubmit}>
-				<ul>
+				<ul className="errors">
 					{errors.map((error, idx) => (
 						<li key={idx}>{error}</li>
 					))}

@@ -69,7 +69,7 @@ const ReviewModal = ({ movieId }) => {
                 <button type="submit">Submit Review</button>
                 <button type="button" onClick={closeModal}>Cancel</button>
             </form>
-            <ul className="errors-ul">
+            <ul className="errors">
                 {errors.map((error, idx) => (
                     <li key={idx}>{error}</li>
                 ))}

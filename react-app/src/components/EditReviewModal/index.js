@@ -67,7 +67,7 @@ const EditReviewModal = ({ review }) => {
                 <button type="submit">Save Changes</button>
                 <button type="button" onClick={closeModal}>Cancel</button>
             </form>
-            <ul className="errors-ul">
+            <ul className="errors">
                 {errors.map((error, idx) => (
                     <li key={idx}>{error}</li>
                 ))}

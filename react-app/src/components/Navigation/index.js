@@ -5,6 +5,7 @@ import ProfileButton from './ProfileButton';
 import './Navigation.css';
 import OpenModalButton from '../OpenModalButton';
 import LoginFormModal from "../LoginFormModal";
+import DropdownMenu from './DropdownMenu';
 
 function Navigation({ isLoaded }) {
 	const sessionUser = useSelector(state => state.session.user);
@@ -12,25 +13,23 @@ function Navigation({ isLoaded }) {
 	return (
 		<div className="navigation-container">
 			<ul className='navigation-ul'>
-				<li>
-					<NavLink exact to="/">IMCritic</NavLink>
-				</li>
-				<li>
-					{sessionUser && (
-						<NavLink to="/movies/new" >
-							Add a Movie
-						</NavLink>
-					)}
-				</li>
+				<div className='left-nav'>
+					<li>
+						<NavLink exact to="/">IMCritic</NavLink>
+					</li>
+					<li>
+						<DropdownMenu />
+					</li>
+				</div>
 				<li>
 					{sessionUser ? (
 						<ProfileButton user={sessionUser} />
 					) : (
 						<OpenModalButton
-						className="signin-bttn"
-						buttonText="Sign In"
-						modalComponent={<LoginFormModal />}
-					  />
+							className="signin-bttn"
+							buttonText="Sign In"
+							modalComponent={<LoginFormModal />}
+						/>
 					)}
 				</li>
 			</ul>
