@@ -17,7 +17,9 @@
 .movie-card {
     background-color: rgb(19, 19, 19);
     width: 200px;
+    height: 250px;
     border-radius: 3px;
+    padding-bottom: 10px;
 }
 
 .movie-card a {
@@ -31,7 +33,7 @@
 }
 
 .movie-card img {
-    height: auto;
+    height: 190px;
     width: 200px;
     object-fit: fill;
     margin-bottom: 10px;
