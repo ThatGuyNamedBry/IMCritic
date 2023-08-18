@@ -53,10 +53,16 @@
   background-color: #f5c518;
   font-weight:bolder;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  transition: 0.1s;
 }
 
 .navigation-ul li a:hover {
   opacity: .9;
+}
+
+.navigation-ul li a:active {
+  transform: scale(.95);
+  padding: 5px 4.5px;
 }
 
 .navigation-ul li button {
