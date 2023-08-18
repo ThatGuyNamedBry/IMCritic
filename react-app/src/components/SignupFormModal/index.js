@@ -15,6 +15,22 @@ function SignupFormModal() {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+
+		if (!/\S+@\S+\.\S+/.test(email)) {
+			setErrors([ "Invalid email format"]);
+			return;
+		}
+
+		if (username.length < 4 || username.length > 16) {
+			setErrors([ "Username must be between 4 and 16 characters"]);
+			return;
+		}
+
+		if (password.length < 6 || password.length > 16) {
+			setErrors([ "Password must be between 6 and 16 characters"]);
+			return;
+		}
+
 		if (password === confirmPassword) {
 			const data = await dispatch(signUp(username, email, password));
 			if (data) {
@@ -24,16 +40,16 @@ function SignupFormModal() {
 			}
 		} else {
 			setErrors([
-				"Confirm Password field must be the same as the Password field",
+				"Confirm Password and Password field must match!",
 			]);
 		}
 	};
 
 	return (
-		<>
+		<div className="login-container">
 			<h1>Sign Up</h1>
 			<form onSubmit={handleSubmit}>
-				<ul>
+				<ul className="errors">
 					{errors.map((error, idx) => (
 						<li key={idx}>{error}</li>
 					))}
@@ -44,7 +60,7 @@ function SignupFormModal() {
 						type="text"
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
-						required
+						placeholder="Email"
 					/>
 				</label>
 				<label>
@@ -53,7 +69,7 @@ function SignupFormModal() {
 						type="text"
 						value={username}
 						onChange={(e) => setUsername(e.target.value)}
-						required
+						placeholder="Username"
 					/>
 				</label>
 				<label>
@@ -62,7 +78,7 @@ function SignupFormModal() {
 						type="password"
 						value={password}
 						onChange={(e) => setPassword(e.target.value)}
-						required
+						placeholder="Password"
 					/>
 				</label>
 				<label>
@@ -71,12 +87,12 @@ function SignupFormModal() {
 						type="password"
 						value={confirmPassword}
 						onChange={(e) => setConfirmPassword(e.target.value)}
-						required
+						placeholder="Confirm Password"
 					/>
 				</label>
 				<button type="submit">Sign Up</button>
 			</form>
-		</>
+		</div>
 	);
 }
 

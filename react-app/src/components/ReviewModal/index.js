@@ -40,9 +40,14 @@ const ReviewModal = ({ movieId }) => {
     };
 
     return (
-        <div>
+        <div className="review-modal-container">
             <h2>Create Review</h2>
             <form onSubmit={handleSubmit}>
+            <ul className="errors">
+                {errors.map((error, idx) => (
+                    <li key={idx}>{error}</li>
+                ))}
+            </ul>
                 <label>
                     Rating:
                     <div className="star-rating">
@@ -69,11 +74,6 @@ const ReviewModal = ({ movieId }) => {
                 <button type="submit">Submit Review</button>
                 <button type="button" onClick={closeModal}>Cancel</button>
             </form>
-            <ul className="errors-ul">
-                {errors.map((error, idx) => (
-                    <li key={idx}>{error}</li>
-                ))}
-            </ul>
         </div>
     );
 };

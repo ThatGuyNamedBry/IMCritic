@@ -108,7 +108,7 @@ const EditMovieForm = ({ movie }) => {
                 </label>
                 <button type="submit">Save Changes</button>
             </form>
-            <ul className="errors-ul">
+            <ul className="errors">
                 {errors.map((error, idx) => (
                     <li key={idx}>{error}</li>
                 ))}

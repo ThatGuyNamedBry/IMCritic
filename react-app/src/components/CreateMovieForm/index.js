@@ -3,10 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { createMovieThunk } from '../../store/movie';
 import './CreateMovieForm.css';
+import { useModal } from '../../context/Modal';
 
 const CreateMovieForm = () => {
     const history = useHistory();
     const dispatch = useDispatch();
+    const { closeModal } = useModal();
     const user = useSelector(state => state.session.user);
     const [title, setTitle] = useState('');
     const [release_year, setReleaseYear] = useState('');
@@ -31,6 +33,7 @@ const CreateMovieForm = () => {
             trailer,
             img_url
         };
+
         const data = await dispatch(createMovieThunk(formData));
 
         if (data.errors) {
@@ -44,12 +47,18 @@ const CreateMovieForm = () => {
         <div className='create-movie-container'>
             <h2>Create a New Movie</h2>
             <form onSubmit={handleSubmit}>
+            <ul className="errors">
+                {errors.map((error, idx) => (
+                    <li key={idx}>{error}</li>
+                ))}
+            </ul>
                 <label>
                     Title:
                     <input
                         type="text"
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
+                        placeholder='Title'
                     />
                 </label>
                 <label>
@@ -58,6 +67,7 @@ const CreateMovieForm = () => {
                         type="number"
                         value={release_year}
                         onChange={(e) => setReleaseYear(e.target.value)}
+                        placeholder='Release Year'
                     />
                 </label>
                 <label>
@@ -66,6 +76,7 @@ const CreateMovieForm = () => {
                         type="text"
                         value={genre}
                         onChange={(e) => setGenre(e.target.value)}
+                        placeholder='Genre'
                     />
                 </label>
                 <label>
@@ -74,6 +85,7 @@ const CreateMovieForm = () => {
                         type="text"
                         value={director}
                         onChange={(e) => setDirector(e.target.value)}
+                        placeholder='Director'
                     />
                 </label>
                 <label>
@@ -82,6 +94,7 @@ const CreateMovieForm = () => {
                         type="text"
                         value={writer}
                         onChange={(e) => setWriter(e.target.value)}
+                        placeholder='Writer'
                     />
                 </label>
                 <label>
@@ -89,6 +102,7 @@ const CreateMovieForm = () => {
                     <textarea
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
+                        placeholder='Description'
                     />
                 </label>
                 <label>
@@ -97,6 +111,7 @@ const CreateMovieForm = () => {
                         type="url"
                         value={trailer}
                         onChange={(e) => setTrailer(e.target.value)}
+                        placeholder='Trailer URL'
                     />
                 </label>
                 <label>
@@ -105,15 +120,12 @@ const CreateMovieForm = () => {
                         type="url"
                         value={img_url}
                         onChange={(e) => setImgUrl(e.target.value)}
+                        placeholder='Image URL'
                     />
                 </label>
                 <button type="submit">Create Movie</button>
+                <button type="button" onClick={() => history.goBack()}>Cancel</button>
             </form>
-            <ul className="errors-ul">
-                {errors.map((error, idx) => (
-                    <li key={idx}>{error}</li>
-                ))}
-            </ul>
         </div>
     );
 
