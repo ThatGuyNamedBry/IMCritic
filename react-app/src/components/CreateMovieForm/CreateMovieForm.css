@@ -21,13 +21,14 @@
 
 .create-movie-container form input {
     width: 100%;
-    height: auto;
+    padding: 5px 0px;
     border-radius: 4px;
 }
 
 .create-movie-container form textarea {
     width: 100%;
     border-radius: 4px;
+    padding: 5px 0px;
 }
 
 .create-movie-container button {

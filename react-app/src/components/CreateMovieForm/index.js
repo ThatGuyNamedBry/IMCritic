@@ -45,6 +45,11 @@ const CreateMovieForm = () => {
         <div className='create-movie-container'>
             <h2>Create a New Movie</h2>
             <form onSubmit={handleSubmit}>
+            <ul className="errors">
+                {errors.map((error, idx) => (
+                    <li key={idx}>{error}</li>
+                ))}
+            </ul>
                 <label>
                     Title:
                     <input
@@ -118,11 +123,6 @@ const CreateMovieForm = () => {
                 </label>
                 <button type="submit">Create Movie</button>
             </form>
-            <ul className="errors">
-                {errors.map((error, idx) => (
-                    <li key={idx}>{error}</li>
-                ))}
-            </ul>
         </div>
     );
 
