@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import { NavLink } from 'react-router-dom';
-import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import "./Navigation.css";
 
 function DropdownMenu() {
     const [showMenu, setShowMenu] = useState(false);
     const ulRef = useRef();
+    const user = useSelector(state => state.session.user);
 
     const openMenu = () => {
         if (showMenu) return;
@@ -40,11 +41,13 @@ function DropdownMenu() {
                     <i className="fas fa-film" />
                     <p>Movies</p>
                 </div>
-                <li>
-                    <NavLink to="/movies/new" onClick={closeMenu} className="dropdown-link">
-                        Add a Movie
-                    </NavLink>
-                </li>
+                {user && (
+                    <li>
+                        <NavLink to="/movies/new" onClick={closeMenu} className="dropdown-link">
+                            Add a Movie
+                        </NavLink>
+                    </li>
+                )}
                 <li>
                     <NavLink to="/movies" onClick={closeMenu} className="dropdown-link">
                         All Movies

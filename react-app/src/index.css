@@ -17,4 +17,11 @@ button {
 .errors li {
     color: red;
     list-style: none;
+    font-size: small;
+    margin-bottom: -2px;
+}
+
+.errors {
+    padding-inline-start: 0;
+    margin-bottom: 3px;
 }

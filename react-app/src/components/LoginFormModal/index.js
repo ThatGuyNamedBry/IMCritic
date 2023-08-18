@@ -43,7 +43,7 @@ function LoginFormModal() {
   };
 
   return (
-    <>
+    <div className="login-container">
       <h1>Log In</h1>
       <form onSubmit={handleSubmit}>
         <ul className="errors">
@@ -67,17 +67,17 @@ function LoginFormModal() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </label>
-        <button type="submit">Log In</button>
+        <button type="submit">Sign in</button>
         <button className="demoUserLink" onClick={demoUserLogin}>Demo User</button>
         <div className="signup-div">
-          <p>Or</p>
+          <p className="signup-text">New to IMCritic?</p>
           <OpenModalButton
             buttonText="Create a New Account"
             modalComponent={<SignupFormModal />}
           />
         </div>
       </form>
-    </>
+    </div>
   );
 }
 
