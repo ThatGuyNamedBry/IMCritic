@@ -47,7 +47,7 @@ function DropdownMenu() {
                 </li>
                 <li>
                     <NavLink to="/movies" onClick={closeMenu} className="dropdown-link">
-                        Get All Movies
+                        All Movies
                     </NavLink>
                 </li>
             </ul>

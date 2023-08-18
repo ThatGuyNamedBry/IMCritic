@@ -25,6 +25,7 @@
     background-color: rgb(19, 19, 19);
     height: 250px;
     width: 130px;
+    border-radius: 3px;
 }
 
 .featured-movie a {
@@ -41,6 +42,7 @@
     height: 130px;
     width: 130px;
     object-fit: fill;
+    border-radius: 3px;
 }
 
 .featured-movie img:hover {

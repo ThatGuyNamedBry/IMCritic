@@ -39,15 +39,18 @@ function ProfileButton({ user }) {
   const closeMenu = () => setShowMenu(false);
 
   return (
-    <>
+    <div className="profile-button-container">
       <button onClick={openMenu}>
         <i className="fas fa-user-circle" />
+        <span className={`username`}>
+          {user.username}
+        </span>
       </button>
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
           <>
-            <li>{user.username}</li>
-            <li>{user.email}</li>
+            <li><button onClick={() => alert('feature coming soon!')}>Your Reviews</button></li>
+            <li><button onClick={() => alert('feature coming soon!')}>Your Watchlists</button></li>
             <li>
               <button onClick={handleLogout}>Sign out</button>
             </li>
@@ -68,7 +71,7 @@ function ProfileButton({ user }) {
           </>
         )}
       </ul>
-    </>
+    </div>
   );
 }
 
