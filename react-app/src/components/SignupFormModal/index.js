@@ -26,6 +26,11 @@ function SignupFormModal() {
 			return;
 		}
 
+		if (password.length < 6 || password.length > 16) {
+			setErrors([ "Password must be between 6 and 16 characters"]);
+			return;
+		}
+
 		if (password === confirmPassword) {
 			const data = await dispatch(signUp(username, email, password));
 			if (data) {
@@ -35,7 +40,7 @@ function SignupFormModal() {
 			}
 		} else {
 			setErrors([
-				"Confirm Password field must be the same as the Password field",
+				"Confirm Password and Password field must match!",
 			]);
 		}
 	};
@@ -55,7 +60,6 @@ function SignupFormModal() {
 						type="text"
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
-						required
 					/>
 				</label>
 				<label>
@@ -64,7 +68,6 @@ function SignupFormModal() {
 						type="text"
 						value={username}
 						onChange={(e) => setUsername(e.target.value)}
-						required
 					/>
 				</label>
 				<label>
@@ -73,7 +76,6 @@ function SignupFormModal() {
 						type="password"
 						value={password}
 						onChange={(e) => setPassword(e.target.value)}
-						required
 					/>
 				</label>
 				<label>
@@ -82,7 +84,6 @@ function SignupFormModal() {
 						type="password"
 						value={confirmPassword}
 						onChange={(e) => setConfirmPassword(e.target.value)}
-						required
 					/>
 				</label>
 				<button type="submit">Sign Up</button>
