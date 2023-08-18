@@ -32,10 +32,6 @@ const CreateMovieForm = () => {
             img_url
         };
 
-        // if (description.length < 50 || description.length > 1000) {
-        //     setErrors([ "Description length must be between 50 and 1000 characters"]);
-        // }
-
         const data = await dispatch(createMovieThunk(formData));
 
         if (data.errors) {
