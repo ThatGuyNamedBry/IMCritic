@@ -26,11 +26,11 @@ const HomeLandingPage = () => {
     }, [dispatch, allMovies]);
 
     const handlePrevTrailer = () => {
-        setCurrentTrailerIndex(prevIndex => (prevIndex === recentMovies.length - 1 ? 0 : prevIndex + 1));
+        setCurrentTrailerIndex(prevIndex => (prevIndex === 0 ? recentMovies.length - 1 : prevIndex - 1));
     };
 
     const handleNextTrailer = () => {
-        setCurrentTrailerIndex(prevIndex => (prevIndex === 0 ? recentMovies.length - 1 : prevIndex - 1));
+        setCurrentTrailerIndex(prevIndex => (prevIndex === recentMovies.length - 1 ? 0 : prevIndex + 1));
     };
 
     const handlePrevFeatured = () => {
@@ -59,12 +59,24 @@ const HomeLandingPage = () => {
         }
     };
 
-    const recentMovies = Object.values(allMovies).sort((a, b) => b.id - a.id).slice(0, 2);
+    const recentMovies = Object.values(allMovies).sort((a, b) => b.id - a.id).slice(0, 3);
     // const recentMovies = Object.values(allMovies).reverse();
 
     const topRatedMovies = Object.values(allMovies)
         .sort((a, b) => b.average_rating - a.average_rating)
         .slice(startTopRatedIndex, startTopRatedIndex + itemsPerPage);
+
+        useEffect(() => {
+            const interval = setInterval(() => {
+                setCurrentTrailerIndex(prevIndex =>
+                    prevIndex === recentMovies.length - 1 ? 0 : prevIndex + 1
+                );
+            }, 8000);
+
+            return () => {
+                clearInterval(interval);
+            };
+        }, [recentMovies.length]);
 
     return (
         <div className="home-landing-page">
@@ -75,9 +87,25 @@ const HomeLandingPage = () => {
                             <button className='fa-solid fa-angle-left trailer-prev-button' onClick={handlePrevTrailer}></button>
                             <button className='fa-solid fa-angle-right trailer-next-button' onClick={handleNextTrailer}></button>
                         </div>
-                        <iframe title="Recent Movie Trailer" width="600" height="350" src={recentMovies[currentTrailerIndex].trailer} frameBorder="0" allowFullScreen></iframe>
+                        <iframe title="Recent Movie Trailer" width="550" height="350" src={recentMovies[currentTrailerIndex].trailer} frameBorder="0" allowFullScreen></iframe>
                     </div>
                 )}
+                <div className="up-next-section">
+                    <h3>Up Next</h3>
+                    <div className="up-next-movies">
+                    {recentMovies.map((movie, index) => (
+                            <div
+                                key={movie.id}
+                                className={`up-next-movie ${index === currentTrailerIndex ? 'current' : ''}`}
+                                onClick={() => setCurrentTrailerIndex(index)}
+                            >
+                                <img src={movie.img_url} alt={movie.title} />
+                                <p>{movie.title}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
             </div>
 
             <div className="featured-movies-section">
