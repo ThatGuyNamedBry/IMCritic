@@ -91,8 +91,41 @@ def seed_movies():
         trailer="https://www.youtube.com/embed/y1emDAYCfVQ",
         img_url='https://upload.wikimedia.org/wikipedia/en/thumb/b/be/Happygilmoreposter.jpg/220px-Happygilmoreposter.jpg'
     )
+    movie9 = Movie(
+        user_id=2,
+        title="Get Smart",
+        release_year="2008",
+        genre="Comedy",
+        director="Peter Segal",
+        writer="Tom J. Astle, Matt Ember",
+        description="Maxwell Smart, analyst for CONTROL the top secret American intelligence agency, yearns to become a field agent like Agent 23. Invaluable as an analyst, his admittance tests top scores are disregarded. Their headquarters is attacked by the terrorist organization KAOS, so most agents' identities are exposed.",
+        trailer="https://www.youtube.com/embed/K9WNBO3szgQ",
+        img_url='https://upload.wikimedia.org/wikipedia/en/thumb/8/88/Getsmart08.png/220px-Getsmart08.png'
+    )
+    movie10 = Movie(
+        user_id=1,
+        title="Evan Almighty",
+        release_year="2007",
+        genre="Comedy",
+        director="Tom Shadyac",
+        writer="Steve Oedekerk",
+        description="Newly elected to Congress, former local television news reporter Evan Baxter leaves his hometown of Buffalo, New York, and later moves to the community of Prestige Crest, located in the fictional town of Huntsville, Virginia, where his congressional campaign officially declares that he will change the world. Evan prays to God to give him this opportunity. His wife, Joan, also prays that she, Evan, and their three sons will be closer together as a family.",
+        trailer="https://www.youtube.com/embed/y4BaYuoEC1I",
+        img_url='https://upload.wikimedia.org/wikipedia/en/thumb/1/14/Evan_almightymp1.jpg/220px-Evan_almightymp1.jpg'
+    )
+    movie11 = Movie(
+        user_id=3,
+        title="Anchorman: The Legend of Ron Burgundy",
+        release_year="2004",
+        genre="Comedy",
+        director="Adam McKay",
+        writer="Adam McKay, Will Ferrell",
+        description="In 1974, Ron Burgundy is the famous anchorman for a local San Diego television station, fictional KVWN channel 4. He works alongside his friends, whom he had known since childhood, on the news team: lead field reporter Brian Fantana, sportscaster Champ Kind, and meteorologist Brick Tamland.",
+        trailer="https://www.youtube.com/embed/y4BaYuoEC1I",
+        img_url='https://upload.wikimedia.org/wikipedia/en/thumb/1/14/Evan_almightymp1.jpg/220px-Evan_almightymp1.jpg'
+    )
 
-    db.session.add_all([movie1, movie2, movie3, movie4, movie5, movie6, movie7, movie8])
+    db.session.add_all([movie1, movie2, movie3, movie4, movie5, movie6, movie7, movie8, movie9, movie10, movie11])
     db.session.commit()
 
 
