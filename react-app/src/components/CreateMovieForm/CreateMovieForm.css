@@ -5,6 +5,9 @@
     justify-content: center;
 }
 
+.create-movie-container h2 {
+    color: #f5c518;
+}
 
 .create-movie-container form{
     display: flex;
@@ -28,4 +31,21 @@
 
 .create-movie-container button {
     margin-top: 5px;
+}
+
+.create-movie-container button {
+    background-color: #f5c518;
+    color: black;
+    padding: 8px 10px;
+    border: none;
+    font-weight: bold;
+    border-radius: 3px;
+}
+
+.create-movie-container button:hover {
+    opacity: .9;
+}
+
+.create-movie-container button:active {
+    transform: scale(.95);
 }
