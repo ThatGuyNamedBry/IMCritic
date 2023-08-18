@@ -71,7 +71,7 @@
     padding: 10px;
     color: white;
     font-size: 1.4rem;
-    margin-bottom: -50%;
+    top: 110px;
     border: 1px solid white;
 }
 
@@ -95,12 +95,14 @@
 .trailer-prev-button {
     position: absolute;
     left: 0;
+    top: 180px !important;
 }
 
 
 .trailer-next-button {
     position: absolute;
     right: 0;
+    top: 180px !important;
 }
 
 .featured-movies-section:hover .prev-button,
