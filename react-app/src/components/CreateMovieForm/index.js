@@ -124,7 +124,7 @@ const CreateMovieForm = () => {
                     />
                 </label>
                 <button type="submit">Create Movie</button>
-                <button type="button" onClick={() => history.push('/')}>Cancel</button>
+                <button type="button" onClick={() => history.goBack()}>Cancel</button>
             </form>
         </div>
     );
