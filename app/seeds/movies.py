@@ -121,8 +121,8 @@ def seed_movies():
         director="Adam McKay",
         writer="Adam McKay, Will Ferrell",
         description="In 1974, Ron Burgundy is the famous anchorman for a local San Diego television station, fictional KVWN channel 4. He works alongside his friends, whom he had known since childhood, on the news team: lead field reporter Brian Fantana, sportscaster Champ Kind, and meteorologist Brick Tamland.",
-        trailer="https://www.youtube.com/embed/y4BaYuoEC1I",
-        img_url='https://upload.wikimedia.org/wikipedia/en/thumb/1/14/Evan_almightymp1.jpg/220px-Evan_almightymp1.jpg'
+        trailer="https://www.youtube.com/embed/QvJ1K0_JzFI",
+        img_url='https://upload.wikimedia.org/wikipedia/en/6/64/Movie_poster_Anchorman_The_Legend_of_Ron_Burgundy.jpg'
     )
 
     db.session.add_all([movie1, movie2, movie3, movie4, movie5, movie6, movie7, movie8, movie9, movie10, movie11])
