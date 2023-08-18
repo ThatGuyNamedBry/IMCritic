@@ -38,9 +38,14 @@ const EditReviewModal = ({ review }) => {
     };
 
     return (
-        <div>
+        <div className="review-modal-container">
             <h2>Edit Review</h2>
             <form onSubmit={handleSubmit}>
+            <ul className="errors">
+                {errors.map((error, idx) => (
+                    <li key={idx}>{error}</li>
+                ))}
+            </ul>
                 <label>
                     Rating:
                     <div className="star-rating">
@@ -67,11 +72,6 @@ const EditReviewModal = ({ review }) => {
                 <button type="submit">Save Changes</button>
                 <button type="button" onClick={closeModal}>Cancel</button>
             </form>
-            <ul className="errors">
-                {errors.map((error, idx) => (
-                    <li key={idx}>{error}</li>
-                ))}
-            </ul>
         </div>
     );
 };
