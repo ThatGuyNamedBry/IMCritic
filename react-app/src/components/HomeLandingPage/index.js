@@ -12,7 +12,7 @@ const HomeLandingPage = () => {
     const [startFeaturedIndex, setCurrentFeaturedIndex] = useState(0);
     const [startTopRatedIndex, setStartTopRatedIndex] = useState(0);
 
-    const itemsPerPage = 4;
+    const itemsPerPage = 5;
 
     useEffect(() => {
         dispatch(getAllMoviesThunk());
@@ -41,7 +41,7 @@ const HomeLandingPage = () => {
 
     const handleNextFeatured = () => {
         const remainingMovies = Object.values(allMovies).length - (startFeaturedIndex + itemsPerPage);
-        if (remainingMovies >= 4) {
+        if (remainingMovies >= 5) {
             setCurrentFeaturedIndex(startFeaturedIndex + itemsPerPage);
         }
     };
@@ -54,7 +54,7 @@ const HomeLandingPage = () => {
 
     const handleNextTopRated = () => {
         const remainingMovies = Object.values(allMovies).length - (startTopRatedIndex + itemsPerPage);
-        if (remainingMovies >= 4) {
+        if (remainingMovies >= 5) {
             setStartTopRatedIndex(startTopRatedIndex + itemsPerPage);
         }
     };
@@ -114,7 +114,7 @@ const HomeLandingPage = () => {
                     {startFeaturedIndex > 0 && (
                         <button className={`fa-solid fa-angle-left prev-button`} onClick={handlePrevFeatured}></button>
                     )}
-                    {Object.values(allMovies).length - (startFeaturedIndex + itemsPerPage) >= 4 && (
+                    {Object.values(allMovies).length - (startFeaturedIndex + itemsPerPage) >= 5 && (
                         <button className='fa-solid fa-angle-right next-button' onClick={handleNextFeatured}></button>
                     )}
                 </div>
@@ -154,7 +154,7 @@ const HomeLandingPage = () => {
                     {startTopRatedIndex > 0 && (
                         <button className={`fa-solid fa-angle-left prev-button`} onClick={handlePrevTopRated}></button>
                     )}
-                    {Object.values(allMovies).length - (startTopRatedIndex + itemsPerPage) >= 4 && (
+                    {Object.values(allMovies).length - (startTopRatedIndex + itemsPerPage) >= 5 && (
                         <button className='fa-solid fa-angle-right next-button' onClick={handleNextTopRated}></button>
                     )}
                 </div>
