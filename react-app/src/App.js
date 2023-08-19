@@ -9,6 +9,7 @@ import HomeLandingPage from "./components/HomeLandingPage";
 import MovieDetailsPage from "./components/MovieDetailsPage";
 import CreateMovieForm from "./components/CreateMovieForm";
 import AllMoviesPage from './components/AllMoviesPage';
+import Footer from "./components/Footer";
 
 function App() {
   const dispatch = useDispatch();
@@ -30,6 +31,7 @@ function App() {
           <Route exact path="/movies/:movieId" component={MovieDetailsPage} />
         </Switch>
       )}
+      <Footer />
     </>
   );
 }
