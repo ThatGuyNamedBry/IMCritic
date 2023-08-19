@@ -1,0 +1,40 @@
+.footer {
+    background-color: #121212;
+    color: white;
+    padding: 10px 0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+.footer-links ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.footer-links li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    align-items: center;
+    color: white;
+}
+
+.footer-links a:hover {
+    text-decoration: underline
+}
+
+.footer-text {
+    margin-top: 10px;
+    text-align: center;
+}
