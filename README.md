@@ -2,7 +2,9 @@
 
 IMCritic is an innovative platform that pays homage to IMDb while offering a unique experience for movie enthusiasts. As a soft clone of IMDb, IMCritic is dedicated to providing a space where users can immerse themselves in the world of cinema.
 Check it out [here](https://imcritic.onrender.com)!
-# Description
+
+# Index
+[MVP Feature List](https://github.com/ThatGuyNamedBry/IMCritic/wiki/IMCritic-Features-List) | [Database Schema](https://github.com/ThatGuyNamedBry/IMCritic/wiki/DB-SCHEMA) | [User Stories](https://github.com/ThatGuyNamedBry/IMCritic/wiki/IMCritic-User-Stories) | [WireFrames](https://github.com/ThatGuyNamedBry/IMCritic/wiki/Wireframes)
 
 
 
