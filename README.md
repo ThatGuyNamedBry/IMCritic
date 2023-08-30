@@ -29,6 +29,10 @@ Check it out [here](https://imcritic.onrender.com)!
 ## Images
 
 ### Home Landing Page
-<div style="max-height: 400px; overflow: auto;">
-  <img src="https://github.com/ThatGuyNamedBry/IMCritic/assets/115834757/c5709f0b-8aaf-4472-9f2a-67f72b797702" alt="imcritic-homepage" style="width: 100%; object-fit: contain; max-height: none; height: 600px;" />
-</div>
+![imcritic-homepage](https://github.com/ThatGuyNamedBry/IMCritic/assets/115834757/fed40e9c-cad9-42f9-b5de-d366c5979c53)
+
+### MovieDetails Page
+![IMCritic-movieDetails](https://github.com/ThatGuyNamedBry/IMCritic/assets/115834757/d920fc6c-4769-4603-afac-379b41fed46c)
+
+### Review Modal
+![ReviewModal](https://github.com/ThatGuyNamedBry/IMCritic/assets/115834757/e84d4039-48a6-4c93-ab90-9d95c671e917)
