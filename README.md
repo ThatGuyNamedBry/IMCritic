@@ -25,3 +25,11 @@ Check it out [here](https://imcritic.onrender.com)!
   <img src="https://github.com/devicons/devicon/blob/master/icons/python/python-original.svg" alt="Python" title="Python" width="40" height="40" />
   <img src="https://github.com/devicons/devicon/blob/master/icons/flask/flask-original.svg" alt="Flask" title="Flask" width="40" height="40" />
 </div>
+
+## Images
+
+### Home Landing Page
+<div style="max-height: 400px; overflow: auto;">
+  <img src="https://drive.google.com/file/d/18cPX-an-aHUE3Nlv6WJ3mSiDOGsoqcZ8/view?usp=drive_link" alt="HomeLandingPage" style="width: 100%;" />
+</div>
+
