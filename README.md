@@ -15,7 +15,7 @@
 </div>
 
 - Backend:
-<div id ="badges" align="column">
+<div id ="badges">
   <img src="https://img.shields.io/badge/Python-3.5%2B-blue.svg" alt="Python 3.5+" title="Python"  width="40" height="40"/>
   <img src="https://img.shields.io/badge/Flask-2.0-lightgrey.svg" alt="Flask 2.0" title="Flask" width="40" height="40"/>
 </div>
