@@ -30,6 +30,6 @@ Check it out [here](https://imcritic.onrender.com)!
 
 ### Home Landing Page
 <div style="max-height: 400px; overflow: auto;">
-  <img src="https://drive.google.com/file/d/18cPX-an-aHUE3Nlv6WJ3mSiDOGsoqcZ8/view" alt="HomeLandingPage" style="width: 100%;" />
+  <img src="https://drive.google.com/file/d/18cPX-an-aHUE3Nlv6WJ3mSiDOGsoqcZ8/preview" alt="HomeLandingPage" style="width: 100%;" />
 </div>
 
