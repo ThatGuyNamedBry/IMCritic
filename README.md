@@ -30,5 +30,5 @@ Check it out [here](https://imcritic.onrender.com)!
 
 ### Home Landing Page
 <div style="max-height: 400px; overflow: auto;">
-  <img src="https://github.com/ThatGuyNamedBry/IMCritic/assets/115834757/c5709f0b-8aaf-4472-9f2a-67f72b797702" alt="imcritic-homepage" style="width: 100%; object-fit: contain; max-height: none; height: 250px;" />
+  <img src="https://github.com/ThatGuyNamedBry/IMCritic/assets/115834757/c5709f0b-8aaf-4472-9f2a-67f72b797702" alt="imcritic-homepage" style="width: 100%; object-fit: contain; max-height: none; height: 600px;" />
 </div>
