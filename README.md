@@ -29,7 +29,4 @@ Check it out [here](https://imcritic.onrender.com)!
 ## Images
 
 ### Home Landing Page
-<div style="max-height: 400px; overflow: auto;">
-  <img src="https://drive.google.com/file/d/18cPX-an-aHUE3Nlv6WJ3mSiDOGsoqcZ8/preview" alt="HomeLandingPage" style="width: 100%;" />
-</div>
-
+![imcritic-homepage](https://github.com/ThatGuyNamedBry/IMCritic/assets/115834757/2f1fd17c-cc75-4516-8009-dc2f11bb2477)
