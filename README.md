@@ -1,7 +1,7 @@
 # IMCritic Movie Review Site
 
-IMCritic is a soft clone of IMDb where users can rate and review their favoirite movies. 
-Check out [IMCritic](https://imcritic.onrender.com)!
+IMCritic is an innovative platform that pays homage to IMDb while offering a unique experience for movie enthusiasts. As a soft clone of IMDb, IMCritic is dedicated to providing a space where users can immerse themselves in the world of cinema.
+Check it out [here](https://imcritic.onrender.com)!
 # Description
 
 
