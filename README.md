@@ -31,4 +31,4 @@ Check it out [here](https://imcritic.onrender.com)!
 ### Home Landing Page
 
 
-![3dgifmaker80621](https://github.com/ThatGuyNamedBry/IMCritic/assets/115834757/048ecf3a-7a75-477b-bb5f-fe299eedc927)
+![imcritic-homepage](https://github.com/ThatGuyNamedBry/IMCritic/assets/115834757/c5709f0b-8aaf-4472-9f2a-67f72b797702)
