@@ -3,11 +3,13 @@ import thunk from 'redux-thunk';
 import session from './session'
 import movieReducer from './movie';
 import reviewReducer from './reviews';
+import actorReducer from './actors';
 
 const rootReducer = combineReducers({
   session,
   movies: movieReducer,
-  reviews: reviewReducer
+  reviews: reviewReducer,
+  actors: actorReducer,
 });
 
 

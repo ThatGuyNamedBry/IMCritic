@@ -88,6 +88,7 @@ function MovieDetailsPage() {
           </div>
           <p>Director: {singleMovie.director}</p>
           <p>Writer(s): {singleMovie.writer}</p>
+          <p>Actor(s): {singleMovie.actors.map(actorData => actorData.actor.name).join(', ')}</p>
         </div>
       </div>
       <p>Trailer</p>

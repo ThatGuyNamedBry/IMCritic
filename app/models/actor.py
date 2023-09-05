@@ -14,7 +14,6 @@ class Actor(db.Model):
     img_url = db.Column(db.String(255), nullable=False)
 
     movie_actors = db.relationship("MovieActor", back_populates="actor")
-    # movies = db.relationship("Movie", secondary="movie_actor", back_populates="actors", cascade="all, delete")
 
     def to_dict(self):
         return {
@@ -22,3 +21,5 @@ class Actor(db.Model):
             'name': self.name,
             'img_url': self.img_url
         }
+
+    # movies = db.relationship("Movie", secondary="movie_actor", back_populates="actors", cascade="all, delete")
