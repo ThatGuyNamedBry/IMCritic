@@ -3,7 +3,6 @@ import './Footer.css';
 
 const Footer = () => {
     return (
-      <div className="page-wrapper">
         <footer className="footer">
           <div className="footer-content">
             <div className="footer-links">
@@ -17,7 +16,6 @@ const Footer = () => {
             &copy; {new Date().getFullYear()} IMCritic. All rights reserved.
           </div>
         </footer>
-      </div>
     );
   };
 
