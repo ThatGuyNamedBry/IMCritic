@@ -2,9 +2,8 @@
     background-color: #0a0a0a;
     color: white;
     padding: 10px 0;
-    position: absolute;
-    bottom: 0;
     width: 100%;
+    margin-top: 1px;
 }
 
 .footer-content {
@@ -38,4 +37,3 @@
     margin-top: 10px;
     text-align: center;
 }
-

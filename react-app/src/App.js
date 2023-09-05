@@ -19,9 +19,10 @@ function App() {
   }, [dispatch]);
 
   return (
-    <>
+    <div className="app-container">
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
+        <div className="content-container">
         <Switch>
           <Route exact path="/" component={HomeLandingPage} />
           <Route exact path="/login" ><LoginFormPage /></Route>
@@ -30,9 +31,10 @@ function App() {
           <Route exact path="/movies/new" component={CreateMovieForm} />
           <Route exact path="/movies/:movieId" component={MovieDetailsPage} />
         </Switch>
+        </div>
       )}
       <Footer />
-    </>
+    </div>
   );
 }
 

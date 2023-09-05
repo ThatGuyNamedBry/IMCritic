@@ -29,7 +29,14 @@ html, body {
     padding: 0;
 }
 
-#root {
-    min-height: 100%;
-    position: relative;
+
+/* Update the content-container to grow and push the footer down */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content-container {
+  flex-grow: 1;
 }
