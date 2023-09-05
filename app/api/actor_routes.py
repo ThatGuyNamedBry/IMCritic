@@ -23,8 +23,7 @@ def get_actor_by_id(id):
     actor = Actor.query.get(id)
     return jsonify(actor.to_dict())
 
-    @actor_routes.route("/<int:id>/movies")
-
+@actor_routes.route("/<int:id>/movies")
 def get_actor_movies(id):
     actor = Actor.query.get(id)
     if actor is None:

@@ -145,3 +145,12 @@
     align-items: baseline;
     justify-content: space-between;
 }
+
+.actor-link {
+    text-decoration: none;
+    color: inherit;
+  }
+
+.actor-link:hover {
+    text-decoration: underline;
+}
