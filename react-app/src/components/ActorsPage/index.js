@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, NavLink } from 'react-router-dom';
+import { getMovieByIdThunk } from '../../store/movie';
+import './ActorsPage.css';
+
 
 function ActorsPage() {
   const { actorId } = useParams();
+  const singleMovie = useSelector(state => state.movies.singleMovie[movieId]);
+  const allMovies = useSelector(state => state.movies.allMovies);
   const [actorMovies, setActorMovies] = useState([]);
 
   useEffect(() => {
