@@ -7,8 +7,8 @@ const Footer = () => {
           <div className="footer-content">
             <div className="footer-links">
               <ul>
-                <li><a href="https://www.linkedin.com/in/bryant-stine-447010272/" target="_blank">LinkedIn</a></li>
-                <li><a href="https://github.com/ThatGuyNamedBry/IMCritic" target="_blank">Project Github Repo</a></li>
+                <li><a href="https://www.linkedin.com/in/bryant-stine/" target="_blank" rel="noreferrer">LinkedIn</a></li>
+                <li><a href="https://github.com/ThatGuyNamedBry/IMCritic" target="_blank" rel="noreferrer">Project Github Repo</a></li>
               </ul>
             </div>
           </div>
