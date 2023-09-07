@@ -1,6 +1,7 @@
 //                                           Action Types
 const LOAD_ACTORS = 'actors/LOAD_ACTORS';
 const LOAD_ACTOR = 'actors/LOAD_ACTOR';
+const LOAD_ACTOR_MOVIES = 'actors/LOAD_ACTOR_MOVIES';
 const CREATE_ACTOR = 'actors/CREATE_ACTOR';
 const UPDATE_ACTOR = 'actors/UPDATE_ACTOR';
 const DELETE_ACTOR = 'actors/DELETE_ACTOR';
@@ -21,6 +22,14 @@ export const getActorByIdAction = (actor) => {
   return {
     type: LOAD_ACTOR,
     payload: actor,
+  };
+};
+
+//Get Actor's Movies by Actor ID Action
+export const getActorMoviesByIdAction = (actorMovies) => {
+  return {
+    type: LOAD_ACTOR_MOVIES,
+    payload: actorMovies,
   };
 };
 
@@ -78,6 +87,16 @@ export const getActorByIdThunk = (actorId) => async (dispatch) => {
   }
 };
 
+//Get Actor's Movies by Actor ID Thunk
+export const getActorMoviesByIdThunk = (actorId) => async (dispatch) => {
+  const response = await fetch(`/api/actors/${actorId}/movies`);
+  if (response.ok) {
+    const actorMovies = await response.json();
+    dispatch(getActorMoviesByIdAction(actorMovies));
+    return actorMovies;
+  }
+};
+
 //Create an Actor Thunk
 export const createActorThunk = (formData) => async (dispatch) => {
   // console.log('Create actor thunk running, this is the formData', formData)
@@ -132,7 +151,8 @@ export const deleteActorThunk = (actorId) => async (dispatch) => {
 //Reducer function
 const initialState = {
   allActors: {},
-  singleActor: {}
+  singleActor: {},
+  actorMovies: {},
 }
 
 const actorReducer = (state = initialState, action) => {
@@ -146,6 +166,8 @@ const actorReducer = (state = initialState, action) => {
       return { ...state, allActors: allActorsObject };
     case LOAD_ACTOR:
       return { ...state, singleActor: { [action.payload.id]: action.payload } };
+      case LOAD_ACTOR_MOVIES:
+        return { ...state, actorMovies: action.payload };
     case CREATE_ACTOR:
       return { ...state, allActors: { ...state.allActors, [action.payload.id]: action.payload } };
     case UPDATE_ACTOR:
