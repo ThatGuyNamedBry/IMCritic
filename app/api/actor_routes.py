@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import Actor, Review, db
-from app.forms import CreateActorForm, EditMovieForm
+from app.forms import CreateActorForm, EditActorForm
 from app.api.auth_routes import validation_errors_to_error_messages
 
 actor_routes = Blueprint("actors", __name__)
@@ -70,17 +70,11 @@ def create_new_actor():
     form = CreateActorForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
 
-    form.data["user_id"] = current_user.id
+    # form.data["user_id"] = current_user.id
     if form.validate_on_submit():
         new_actor = Actor(
-            user_id=form.data["user_id"],
             title=form.data["title"],
-            release_year=form.data["release_year"],
-            genre=form.data["genre"],
-            director=form.data["director"],
-            writer=form.data["writer"],
-            description=form.data["description"],
-            trailer=form.data["trailer"],
+            name=form.data["name"],
             img_url=form.data["img_url"],
         )
         db.session.add(new_actor)
