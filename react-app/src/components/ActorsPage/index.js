@@ -31,39 +31,42 @@ function ActorsPage() {
   const actorMoviesDetails = Object.values(allMovies).filter(movie => movieIds.includes(movie.id));
 
   return (
-    <div>
-      <h2>{singleActor.name}'s Movies</h2>
-      <div className="actor-details">
+    <div className="actors-page">
+      <div className='actor-info'>
+        <h2>{singleActor.name}</h2>
         <div className="actor-image">
           <img src={singleActor.img_url} alt={singleActor.name} />
         </div>
-        <ul className="actor-movie-list">
-          {actorMoviesDetails.map((movie) => (
-            <li key={movie.id} className="movie-card">
-              <NavLink to={`/movies/${movie.id}`}>
-                <img src={movie.img_url} alt={movie.title} />
-              </NavLink>
-              {movie.average_rating !== 0 ? (
-                <div className="average-rating">
-                  <div className="rating-content">
-                    <span className="star-icon">★</span>
-                    {movie.average_rating.toFixed(1)}
-                  </div>
+      </div>
+      <div className='known-for'>
+        <h2>Known for:</h2>
+      </div>
+      <div className="all-movies-list">
+        {actorMoviesDetails.map((movie) => (
+          <div key={movie.id} className="movie-card">
+            <NavLink to={`/movies/${movie.id}`}>
+              <img src={movie.img_url} alt={movie.title} />
+            </NavLink>
+            {movie.average_rating !== 0 ? (
+              <div className="average-rating">
+                <div className="rating-content">
+                  <span className="star-icon">★</span>
+                  {movie.average_rating.toFixed(1)}
                 </div>
-              ) : (
-                <div className="average-rating">
-                  <div className="rating-content">
-                    <span className="star-icon">★</span>
-                    New
-                  </div>
+              </div>
+            ) : (
+              <div className="average-rating">
+                <div className="rating-content">
+                  <span className="star-icon">★</span>
+                  New
                 </div>
-              )}
-              <NavLink to={`/movies/${movie.id}`}>
-                <p>{movie.title}</p>
-              </NavLink>
-            </li>
-          ))}
-        </ul>
+              </div>
+            )}
+            <NavLink to={`/movies/${movie.id}`}>
+              <p>{movie.title}</p>
+            </NavLink>
+          </div>
+        ))}
       </div>
     </div>
   );

@@ -12,6 +12,7 @@
     flex-wrap: wrap;
     gap: 17px;
     justify-content: center;
+    font-size: smaller;
 }
 
 .movie-card {
@@ -45,7 +46,7 @@
 
 .movie-card p {
     color: white;
-    font-size: medium;
+    font-size: small;
     margin: 0;
 }
 
