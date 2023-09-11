@@ -26,7 +26,6 @@ function ActorsPage() {
     return <div>Loading actor details...</div>;
   }
 
-
   const movieIds = Object.values(actorMovies).map(actorMovie => actorMovie.movie_id);
   const actorMoviesDetails = Object.values(allMovies).filter(movie => movieIds.includes(movie.id));
 

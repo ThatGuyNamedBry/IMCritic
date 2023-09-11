@@ -88,7 +88,6 @@ function MovieDetailsPage() {
           </div>
           <p>Director: {singleMovie.director}</p>
           <p>Writer(s): {singleMovie.writer}</p>
-          {/* <p>Actor(s): {singleMovie.actors.map(actorData => actorData.actor.name).join(', ')}</p> */}
           <p >Actor(s): {singleMovie.actors.map((actorData, index) => (
             <span key={actorData.actor.id}>
               <Link to={`/actors/${actorData.actor.id}`} key={actorData.actor.id} className="actor-link">
@@ -132,3 +131,5 @@ function MovieDetailsPage() {
 }
 
 export default MovieDetailsPage;
+
+{/* <p>Actor(s): {singleMovie.actors.map(actorData => actorData.actor.name).join(', ')}</p> */}
