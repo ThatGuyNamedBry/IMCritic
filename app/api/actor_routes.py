@@ -73,7 +73,6 @@ def create_new_actor():
     # form.data["user_id"] = current_user.id
     if form.validate_on_submit():
         new_actor = Actor(
-            title=form.data["title"],
             name=form.data["name"],
             img_url=form.data["img_url"],
         )

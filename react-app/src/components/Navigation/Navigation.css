@@ -114,6 +114,20 @@
   color:#f5c518
 }
 
+.actors-menu-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: -12px;
+  font-weight:900;
+  font-size:large;
+}
+
+.actors-menu-section i {
+  color:#f5c518
+}
+
 .dropdown-link {
   background-color: transparent !important;
   color: white !important;

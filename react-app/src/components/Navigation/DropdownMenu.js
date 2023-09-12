@@ -53,6 +53,17 @@ function DropdownMenu() {
                         All Movies
                     </NavLink>
                 </li>
+                <div className="actors-menu-section">
+                    <i className="fas fa-users" />
+                    <p>Actors</p>
+                </div>
+                {user && (
+                    <li>
+                        <NavLink to="/actors/new" onClick={closeMenu} className="dropdown-link">
+                            Create New Actor
+                        </NavLink>
+                    </li>
+                )}
             </ul>
         </>
     );
