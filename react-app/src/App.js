@@ -11,6 +11,7 @@ import CreateMovieForm from "./components/CreateMovieForm";
 import AllMoviesPage from './components/AllMoviesPage';
 import Footer from "./components/Footer";
 import ActorsPage from "./components/ActorsPage";
+import CreateActorForm from "./components/CreateActorForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -31,6 +32,7 @@ function App() {
           <Route exact path="/movies" component={AllMoviesPage} />
           <Route exact path="/movies/new" component={CreateMovieForm} />
           <Route exact path="/movies/:movieId" component={MovieDetailsPage} />
+          <Route exact path="/actors/new" component={CreateActorForm} />
           <Route exact path="/actors/:actorId" component={ActorsPage} />
         </Switch>
         </div>
