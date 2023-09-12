@@ -101,6 +101,23 @@ function MovieDetailsPage() {
       </div>
       <p>Trailer</p>
       <iframe title="Movie Trailer" width="360" height="215" src={singleMovie.trailer} frameBorder="0" allowFullScreen></iframe>
+      <div className="movie-actors">
+        <h3>Actors:</h3>
+        {singleMovie.actors.map((actorData, index) => (
+          <div key={actorData.actor.id} className="actor-info">
+            <Link
+              to={`/actors/${actorData.actor.id}`}
+              className="movie-actor-link"
+            >
+              <img
+                src={actorData.actor.img_url}
+                alt={actorData.actor.name}
+              />
+              {actorData.actor.name}
+            </Link>
+          </div>
+        ))}
+      </div>
       <div className="movie-details-rating">
         <h3>User Reviews:</h3>
         <ul className='reviews-map'>
@@ -132,4 +149,4 @@ function MovieDetailsPage() {
 
 export default MovieDetailsPage;
 
-{/* <p>Actor(s): {singleMovie.actors.map(actorData => actorData.actor.name).join(', ')}</p> */}
+{/* <p>Actor(s): {singleMovie.actors.map(actorData => actorData.actor.name).join(', ')}</p> */ }

@@ -154,3 +154,29 @@
 .actor-link:hover {
     text-decoration: underline;
 }
+
+.actor-info {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+
+.movie-actor-link {
+    display: flex;
+    text-decoration: none;
+    color: inherit;
+    align-items: center;
+    gap: 8px;
+  }
+
+.movie-actor-link:hover {
+    text-decoration: underline;
+}
+
+
+.movie-actors img {
+    height: 75px;
+    width: 70px;
+    border-radius: 75%;
+    object-fit: fill;
+}
