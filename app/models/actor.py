@@ -20,7 +20,8 @@ class Actor(db.Model):
             'id': self.id,
             'name': self.name,
             'img_url': self.img_url,
-            # 'movie_ids': [movie_actor.movie_id for movie_actor in self.movie_actors]
         }
 
     # movies = db.relationship("Movie", secondary="movie_actor", back_populates="actors", cascade="all, delete")
+
+            # 'movie_ids': [movie_actor.movie_id for movie_actor in self.movie_actors]

@@ -3,12 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { createMovieThunk } from '../../store/movie';
 import './CreateMovieForm.css';
-import { useModal } from '../../context/Modal';
 
 const CreateMovieForm = () => {
 	const history = useHistory();
 	const dispatch = useDispatch();
-	const { closeModal } = useModal();
 	const user = useSelector(state => state.session.user);
 	const [title, setTitle] = useState('');
 	const [release_year, setReleaseYear] = useState('');
