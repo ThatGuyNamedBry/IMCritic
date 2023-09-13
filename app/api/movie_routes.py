@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import Movie, Review, db
+from app.models import Movie, Review, MovieActor, Actor, db
 from app.forms import CreateMovieForm, EditMovieForm
 from app.api.auth_routes import validation_errors_to_error_messages
 
@@ -79,6 +79,29 @@ def create_new_movie():
 
     return {"errors": validation_errors_to_error_messages(form.errors)}, 401
 
+@movie_routes.route("/<int:movie_id>/addActor", methods=["POST"])
+@login_required
+def add_actor_to_movie(movie_id):
+    # Check if the movie exists and is owned by the current user
+    movie = Movie.query.get(movie_id)
+    if movie is None or movie.user_id != current_user.id:
+        return {"errors": "Movie not found or unauthorized"}, 404
+
+    # Parse the actor_id from the request data
+    data = request.get_json()
+    actor_id = data.get("actor_id")
+
+    # Check if the actor exists
+    actor = Actor.query.get(actor_id)
+    if actor is None:
+        return {"errors": "Actor not found"}, 404
+
+    # Add the actor to the movie in the movie_actor join table
+    movie_actor = MovieActor(movie_id=movie_id, actor_id=actor_id)
+    db.session.add(movie_actor)
+    db.session.commit()
+
+    return {"message": "Actor added to the movie successfully"}
 
 # Editing a Movie a user already created
 @movie_routes.route("/edit/<int:id>", methods=["PUT"])
