@@ -4,6 +4,7 @@ const LOAD_MOVIE = 'movies/LOAD_MOVIE';
 const CREATE_MOVIE = 'movies/CREATE_MOVIE';
 const UPDATE_MOVIE = 'movies/UPDATE_MOVIE';
 const DELETE_MOVIE = 'movies/DELETE_MOVIE';
+const ADD_ACTOR_TO_MOVIE = 'movies/ADD_ACTOR_TO_MOVIE';
 
 
 //                                         Action Creators
@@ -49,7 +50,16 @@ export const deleteMovieAction = (movieId) => {
   };
 };
 
+//Add Actor to Movie Action
+export const addActorToMovieAction = (movieId, actorId) => {
+  return {
+    type: ADD_ACTOR_TO_MOVIE,
+    payload: { movieId, actorId },
+  };
+};
+
 //                                             Thunks
+
 //Get All Movies Thunk
 export const getAllMoviesThunk = () => async (dispatch) => {
   const response = await fetch('/api/movies');
@@ -154,6 +164,17 @@ const movieReducer = (state = initialState, action) => {
       const newMovies = { ...state.allMovies };
       delete newMovies[action.payload];
       return { ...state, allMovies: newMovies };
+    case ADD_ACTOR_TO_MOVIE:
+      const { movieId, actorId } = action.payload;
+      const movieToUpdate = { ...state.allMovies[movieId] };
+      movieToUpdate.actors = [...movieToUpdate.actors, actorId];
+      return {
+        ...state,
+        allMovies: {
+          ...state.allMovies,
+          [movieId]: movieToUpdate,
+        },
+      };
     default:
       return state;
   }
