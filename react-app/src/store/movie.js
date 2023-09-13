@@ -107,6 +107,22 @@ export const createMovieThunk = (formData) => async (dispatch) => {
   }
 };
 
+//Add Actor to Movie Thunk
+export const addActorToMovieThunk = (movieId, actorId) => async (dispatch) => {
+  const response = await fetch(`/api/movies/${movieId}/addActor`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ actorId }),
+  });
+  if (response.ok) {
+    return dispatch(addActorToMovieAction(movieId, actorId));
+  } else {
+    const errorData = await response.json();
+    return errorData;
+  }
+};
+
+
 //Edit/Update an Movie Thunk
 export const updateMovieThunk = (movie, formData) => async (dispatch) => {
   // console.log('Edit/Update an movie Thunk, this is movie  ', movie);

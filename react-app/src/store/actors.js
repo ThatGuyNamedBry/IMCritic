@@ -41,7 +41,6 @@ export const createActorAction = (actor) => {
   };
 };
 
-
 // Edit/Update a Actor Action
 export const updateActorAction = (actor) => {
   return {
