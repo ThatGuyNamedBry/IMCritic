@@ -8,6 +8,7 @@ import EditMovieForm from '../EditMovieForm';
 import ReviewModal from '../ReviewModal';
 import './MovieDetailsPage.css';
 import EditReviewModal from '../EditReviewModal';
+import AddActorToMovieModal from '../AddActorToMovieModal';
 
 function MovieDetailsPage() {
   const dispatch = useDispatch();
@@ -102,7 +103,21 @@ function MovieDetailsPage() {
       <p>Trailer</p>
       <iframe title="Movie Trailer" width="360" height="215" src={singleMovie.trailer} frameBorder="0" allowFullScreen></iframe>
       <div className="movie-actors">
-        <h3>Actors:</h3>
+        <div className="actors-header">
+          <h3>Actors:</h3>
+          <button
+            onClick={() =>
+              setModalContent(
+                <AddActorToMovieModal
+                  movieId={singleMovie.id}
+                  onClose={() => setModalContent(null)} // Function to close the modal
+                />
+              )
+            }
+          >
+            Add Actor to Movie
+          </button>
+        </div>
         {singleMovie.actors.map((actorData, index) => (
           <div key={actorData.actor.id} className="actor-info">
             <Link
