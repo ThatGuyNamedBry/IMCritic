@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addActorToMovieThunk } from '../../store/movie';
+import { useModal } from '../../context/Modal';
 
 function AddActorToMovieModal({ movieId }) {
   const dispatch = useDispatch();
+  const { closeModal } = useModal();
   const [selectedActors, setSelectedActors] = useState([]);
   const availableActors = useSelector((state) => state.actors.allActors);
 
@@ -19,12 +21,8 @@ function AddActorToMovieModal({ movieId }) {
     selectedActors.forEach((actorId) => {
       dispatch(addActorToMovieThunk(movieId, actorId));
     });
-    // Close the modal or perform any other necessary actions.
+    closeModal();
   };
-
-  useEffect(() => {
-    // Fetch available actors here, if needed.
-  }, []);
 
   return (
     <div className="add-actor-to-movie-modal">
