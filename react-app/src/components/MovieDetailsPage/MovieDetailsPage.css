@@ -173,10 +173,20 @@
     text-decoration: underline;
 }
 
-
 .movie-actors img {
     height: 75px;
     width: 70px;
     border-radius: 75%;
     object-fit: fill;
+}
+
+.actors-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.actors-header button {
+    height: 100%;
 }
