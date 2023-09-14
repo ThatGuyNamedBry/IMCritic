@@ -2,47 +2,48 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addActorToMovieThunk } from '../../store/movie';
 import { useModal } from '../../context/Modal';
+import { getAllActorsThunk } from '../../store/actors';
 
 function AddActorToMovieModal({ movieId }) {
   const dispatch = useDispatch();
   const { closeModal } = useModal();
-  const [selectedActors, setSelectedActors] = useState([]);
+  const [selectedActor, setSelectedActor] = useState('');
   const availableActors = useSelector((state) => state.actors.allActors);
 
-  const handleActorSelection = (actorId) => {
-    if (selectedActors.includes(actorId)) {
-      setSelectedActors(selectedActors.filter((id) => id !== actorId));
-    } else {
-      setSelectedActors([...selectedActors, actorId]);
-    }
+  const handleActorSelection = (e) => {
+    setSelectedActor(e.target.value);
   };
 
   const handleAddActors = () => {
-    selectedActors.forEach((actorId) => {
-      dispatch(addActorToMovieThunk(movieId, actorId));
-    });
-    closeModal();
+    if (selectedActor) {
+      dispatch(addActorToMovieThunk(movieId, selectedActor));
+      closeModal();
+    }
   };
+
+  useEffect(() => {
+    dispatch(getAllActorsThunk())
+  }, [dispatch]);
 
   return (
     <div className="add-actor-to-movie-modal">
-      <h3>Add Actor(s) to Movie</h3>
-      <ul>
-        {Object.values(availableActors).map((actor) => (
-          <li key={actor.id}>
-            <label>
-              <input
-                type="checkbox"
-                value={actor.id}
-                checked={selectedActors.includes(actor.id)}
-                onChange={() => handleActorSelection(actor.id)}
-              />
+      <h3>Add Actor to Movie</h3>
+      <div>
+        <label htmlFor="actorSelect">Select an Actor:</label>
+        <select
+          id="actorSelect"
+          value={selectedActor}
+          onChange={handleActorSelection}
+        >
+          <option value="">-- Select an Actor --</option>
+          {Object.values(availableActors).map((actor) => (
+            <option key={actor.id} value={actor.id}>
               {actor.name}
-            </label>
-          </li>
-        ))}
-      </ul>
-      <button onClick={handleAddActors}>Add Actor(s) to Movie</button>
+            </option>
+          ))}
+        </select>
+      </div>
+      <button onClick={handleAddActors}>Add Actor to Movie</button>
     </div>
   );
 }
