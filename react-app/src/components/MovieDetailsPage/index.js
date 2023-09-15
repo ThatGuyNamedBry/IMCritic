@@ -110,7 +110,7 @@ function MovieDetailsPage() {
               setModalContent(
                 <AddActorToMovieModal
                   movieId={singleMovie.id}
-                  onClose={() => setModalContent(null)} // Function to close the modal
+                  onClose={() => setModalContent(null)} 
                 />
               )
             }

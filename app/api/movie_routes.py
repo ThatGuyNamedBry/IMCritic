@@ -82,14 +82,16 @@ def create_new_movie():
 @movie_routes.route("/<int:movie_id>/addActor", methods=["POST"])
 @login_required
 def add_actor_to_movie(movie_id):
-    # Check if the movie exists and is owned by the current user
+    # Check if the movie exists
     movie = Movie.query.get(movie_id)
-    if movie is None or movie.user_id != current_user.id:
-        return {"errors": "Movie not found or unauthorized"}, 404
+    if movie is None:
+        return {"errors": "Movie not found"}, 404
 
     # Parse the actor_id from the request data
     data = request.get_json()
     actor_id = data.get("actor_id")
+    print("Received data:", data)
+    print("Received actor_id:", actor_id)
 
     # Check if the actor exists
     actor = Actor.query.get(actor_id)

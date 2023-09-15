@@ -112,7 +112,7 @@ export const addActorToMovieThunk = (movieId, actorId) => async (dispatch) => {
   const response = await fetch(`/api/movies/${movieId}/addActor`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ actorId }),
+    body: JSON.stringify(actorId),
   });
   if (response.ok) {
     return dispatch(addActorToMovieAction(movieId, actorId));
@@ -180,17 +180,8 @@ const movieReducer = (state = initialState, action) => {
       const newMovies = { ...state.allMovies };
       delete newMovies[action.payload];
       return { ...state, allMovies: newMovies };
-    case ADD_ACTOR_TO_MOVIE:
-      const { movieId, actorId } = action.payload;
-      const movieToUpdate = { ...state.allMovies[movieId] };
-      movieToUpdate.actors = [...movieToUpdate.actors, actorId];
-      return {
-        ...state,
-        allMovies: {
-          ...state.allMovies,
-          [movieId]: movieToUpdate,
-        },
-      };
+      case ADD_ACTOR_TO_MOVIE:
+        return { ...state, allMovies: { ...state.allMovies, [action.payload.id]: action.payload} };
     default:
       return state;
   }
