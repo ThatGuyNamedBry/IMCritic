@@ -104,7 +104,7 @@ function MovieDetailsPage() {
       <iframe title="Movie Trailer" width="360" height="215" src={singleMovie.trailer} frameBorder="0" allowFullScreen></iframe>
       <div className="movie-actors">
         <div className="actors-header">
-          <h3>Actors:</h3>
+          <h3>Top Cast:</h3>
           {sessionUser ? (
             <button
               onClick={() =>
