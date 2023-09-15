@@ -1,0 +1,18 @@
+.link-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.link-div p {
+    margin-bottom: 0px;
+    margin-top: 10px;
+}
+
+.add-actor-to-movie-modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
