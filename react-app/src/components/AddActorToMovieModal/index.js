@@ -3,8 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addActorToMovieThunk, getMovieByIdThunk, removeActorFromMovieThunk } from '../../store/movie';
 import { useModal } from '../../context/Modal';
 import { getAllActorsThunk } from '../../store/actors';
+import { NavLink } from 'react-router-dom/cjs/react-router-dom';
+import './AddActorToMovieModal.css';
 
-function AddActorToMovieModal({ movieId}) {
+function AddActorToMovieModal({ movieId }) {
   const dispatch = useDispatch();
   const { closeModal } = useModal();
   const [selectedActor, setSelectedActor] = useState('');
@@ -32,6 +34,10 @@ function AddActorToMovieModal({ movieId}) {
     }
   };
 
+  const handleAddActorClick = () => {
+    closeModal();
+  };
+
   const handleRemoveActor = async (actorId) => {
     await dispatch(removeActorFromMovieThunk(movieId, actorId));
     await dispatch(getMovieByIdThunk(movieId));
@@ -42,34 +48,42 @@ function AddActorToMovieModal({ movieId}) {
   }, [dispatch]);
 
   return (
-    <div className="add-actor-to-movie-modal">
-      <h3>Add Actor to Movie</h3>
-      <div>
-        <label htmlFor="actorSelect">Select an Actor:</label>
-        <select id="actorSelect" value={selectedActor} onChange={handleActorSelection}>
-          <option value="">-- Select an Actor --</option>
-          {availableActors.map((actor) => (
-            <option key={actor.id} value={actor.id}>
-              {actor.name}
-            </option>
-          ))}
-        </select>
+      <div className="add-actor-to-movie-modal">
+        <h3>Add Actor to Movie</h3>
+        <div>
+          <label htmlFor="actorSelect">Select an Actor:</label>
+          <select id="actorSelect" value={selectedActor} onChange={handleActorSelection}>
+            <option value="">-- Select an Actor --</option>
+            {availableActors.map((actor) => (
+              <option key={actor.id} value={actor.id}>
+                {actor.name}
+              </option>
+            ))}
+          </select>
+        </div>
+        <button onClick={handleAddActors}>Add Actor to Movie</button>
+        <div className="link-div">
+          <p>
+            Don't see the actor listed?
+          </p>
+          <p>
+            <NavLink to="/actors/new" onClick={handleAddActorClick}>Add one here!</NavLink>
+          </p>
+        </div>
+        <div className="current-actors">
+          <h4>Current Actors in Movie:</h4>
+          <ul>
+            {singleMovie.actors.map((actorData) => (
+              <li key={actorData.actor.id}>
+                {actorData.actor.name}
+                {sessionUser && (
+                  <button onClick={() => handleRemoveActor(actorData.actor.id)}>Remove</button>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
-      <button onClick={handleAddActors}>Add Actor to Movie</button>
-      <div className="current-actors">
-        <h4>Current Actors in Movie:</h4>
-        <ul>
-          {singleMovie.actors.map((actorData) => (
-            <li key={actorData.actor.id}>
-              {actorData.actor.name}
-              {sessionUser && (
-                <button onClick={() => handleRemoveActor(actorData.actor.id)}>Remove</button>
-              )}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
   );
 }
 
