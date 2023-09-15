@@ -110,12 +110,12 @@ function MovieDetailsPage() {
               setModalContent(
                 <AddActorToMovieModal
                   movieId={singleMovie.id}
-                  onClose={() => setModalContent(null)} 
+                  onClose={() => setModalContent(null)}
                 />
               )
             }
           >
-            Add Actor to Movie
+          <i className="fas fa-pencil-alt"></i> Edit
           </button>
         </div>
         {singleMovie.actors.map((actorData, index) => (
