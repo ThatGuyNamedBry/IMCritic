@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addActorToMovieThunk, getMovieByIdThunk } from '../../store/movie';
+import { addActorToMovieThunk, getMovieByIdThunk, removeActorFromMovieThunk } from '../../store/movie';
 import { useModal } from '../../context/Modal';
 import { getAllActorsThunk } from '../../store/actors';
 
@@ -32,6 +32,11 @@ function AddActorToMovieModal({ movieId}) {
     }
   };
 
+  const handleRemoveActor = async (actorId) => {
+    await dispatch(removeActorFromMovieThunk(movieId, actorId));
+    await dispatch(getMovieByIdThunk(movieId));
+  };
+
   useEffect(() => {
     dispatch(getAllActorsThunk())
   }, [dispatch]);
@@ -51,6 +56,19 @@ function AddActorToMovieModal({ movieId}) {
         </select>
       </div>
       <button onClick={handleAddActors}>Add Actor to Movie</button>
+      <div className="current-actors">
+        <h4>Current Actors in Movie:</h4>
+        <ul>
+          {singleMovie.actors.map((actorData) => (
+            <li key={actorData.actor.id}>
+              {actorData.actor.name}
+              {sessionUser && (
+                <button onClick={() => handleRemoveActor(actorData.actor.id)}>Remove</button>
+              )}
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
