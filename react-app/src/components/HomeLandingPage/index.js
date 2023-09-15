@@ -143,7 +143,7 @@ const HomeLandingPage = () => {
                                     <div className="average-rating">
                                         <div className="rating-content">
                                             <span className="star-icon">★</span>
-                                            {movie.average_rating.toFixed(1)}
+                                            {movie.average_rating?.toFixed(1)}
                                         </div>
                                     </div>
                                 ) : (
@@ -181,7 +181,7 @@ const HomeLandingPage = () => {
                                 <div className="average-rating">
                                     <div className="rating-content">
                                         <span className="star-icon">★</span>
-                                        {movie.average_rating.toFixed(1)}
+                                        {movie.average_rating?.toFixed(1)}
                                     </div>
                                 </div>
                             ) : (

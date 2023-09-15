@@ -5,6 +5,7 @@ const CREATE_MOVIE = 'movies/CREATE_MOVIE';
 const UPDATE_MOVIE = 'movies/UPDATE_MOVIE';
 const DELETE_MOVIE = 'movies/DELETE_MOVIE';
 const ADD_ACTOR_TO_MOVIE = 'movies/ADD_ACTOR_TO_MOVIE';
+const REMOVE_ACTOR_FROM_MOVIE = 'movies/REMOVE_ACTOR_FROM_MOVIE';
 
 
 //                                         Action Creators
@@ -54,6 +55,14 @@ export const deleteMovieAction = (movieId) => {
 export const addActorToMovieAction = (movieId, actorId) => {
   return {
     type: ADD_ACTOR_TO_MOVIE,
+    payload: { movieId, actorId },
+  };
+};
+
+//Remove Actor From Movie Action
+export const removeActorFromMovieAction = (movieId, actorId) => {
+  return {
+    type: REMOVE_ACTOR_FROM_MOVIE,
     payload: { movieId, actorId },
   };
 };
@@ -112,7 +121,7 @@ export const addActorToMovieThunk = (movieId, actorId) => async (dispatch) => {
   const response = await fetch(`/api/movies/${movieId}/addActor`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ actorId }),
+    body: JSON.stringify(actorId),
   });
   if (response.ok) {
     return dispatch(addActorToMovieAction(movieId, actorId));
@@ -122,6 +131,17 @@ export const addActorToMovieThunk = (movieId, actorId) => async (dispatch) => {
   }
 };
 
+//Remove Actor from Movie Thunk
+export const removeActorFromMovieThunk = (movieId, actorId) => async (dispatch) => {
+  const response = await fetch(`/api/movies/${movieId}/removeActor/${actorId}`, {
+    method: 'DELETE',
+  });
+
+  if (response.ok) {
+    dispatch(removeActorFromMovieAction(movieId, actorId));
+    return response;
+  }
+};
 
 //Edit/Update an Movie Thunk
 export const updateMovieThunk = (movie, formData) => async (dispatch) => {
@@ -180,17 +200,11 @@ const movieReducer = (state = initialState, action) => {
       const newMovies = { ...state.allMovies };
       delete newMovies[action.payload];
       return { ...state, allMovies: newMovies };
-    case ADD_ACTOR_TO_MOVIE:
-      const { movieId, actorId } = action.payload;
-      const movieToUpdate = { ...state.allMovies[movieId] };
-      movieToUpdate.actors = [...movieToUpdate.actors, actorId];
-      return {
-        ...state,
-        allMovies: {
-          ...state.allMovies,
-          [movieId]: movieToUpdate,
-        },
-      };
+      case ADD_ACTOR_TO_MOVIE:
+        return { ...state, allMovies: { ...state.allMovies, [action.payload.id]: action.payload} };
+      case REMOVE_ACTOR_FROM_MOVIE:
+          return {
+            ...state, allMovies: {  ...state.allMovies,  [action.payload.movieId]: action.payload} };
     default:
       return state;
   }

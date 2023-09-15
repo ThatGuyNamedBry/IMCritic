@@ -79,17 +79,20 @@ def create_new_movie():
 
     return {"errors": validation_errors_to_error_messages(form.errors)}, 401
 
+# Adding an Actor to a Movie
 @movie_routes.route("/<int:movie_id>/addActor", methods=["POST"])
 @login_required
 def add_actor_to_movie(movie_id):
-    # Check if the movie exists and is owned by the current user
+    # Check if the movie exists
     movie = Movie.query.get(movie_id)
-    if movie is None or movie.user_id != current_user.id:
-        return {"errors": "Movie not found or unauthorized"}, 404
+    if movie is None:
+        return {"errors": "Movie not found"}, 404
 
     # Parse the actor_id from the request data
     data = request.get_json()
     actor_id = data.get("actor_id")
+    print("Received data:", data)
+    print("Received actor_id:", actor_id)
 
     # Check if the actor exists
     actor = Actor.query.get(actor_id)
@@ -102,6 +105,29 @@ def add_actor_to_movie(movie_id):
     db.session.commit()
 
     return {"message": "Actor added to the movie successfully"}
+
+# Removing an Actor from a Movie
+@movie_routes.route("/<int:movie_id>/removeActor/<int:actor_id>", methods=["DELETE"])
+@login_required
+def remove_actor_from_movie(movie_id, actor_id):
+    # Check if the movie exists
+    movie = Movie.query.get(movie_id)
+    if movie is None:
+        return {"errors": "Movie not found"}, 404
+
+    # Check if the actor exists
+    actor = Actor.query.get(actor_id)
+    if actor is None:
+        return {"errors": "Actor not found"}, 404
+
+    # Remove the actor from the movie in the movie_actor join table
+    movie_actor = MovieActor.query.filter_by(movie_id=movie_id, actor_id=actor_id).first()
+    if movie_actor:
+        db.session.delete(movie_actor)
+        db.session.commit()
+        return {"message": "Actor removed from the movie successfully"}
+
+    return {"errors": "Actor is not associated with this movie"}, 400
 
 # Editing a Movie a user already created
 @movie_routes.route("/edit/<int:id>", methods=["PUT"])
