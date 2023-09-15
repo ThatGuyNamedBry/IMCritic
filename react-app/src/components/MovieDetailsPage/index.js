@@ -105,19 +105,30 @@ function MovieDetailsPage() {
       <div className="movie-actors">
         <div className="actors-header">
           <h3>Actors:</h3>
-          <button
-            onClick={() =>
-              setModalContent(
-                <AddActorToMovieModal
-                  movieId={singleMovie.id}
-                  onClose={() => setModalContent(null)}
-                />
-              )
-            }
-          >
-          <i className="fas fa-pencil-alt"></i> Edit
-          </button>
+          {sessionUser ? (
+            <button
+              onClick={() =>
+                setModalContent(
+                  <AddActorToMovieModal
+                    movieId={singleMovie.id}
+                    onClose={() => setModalContent(null)}
+                  />
+                )
+              }
+            >
+              <i className="fas fa-pencil-alt"></i> Edit
+            </button>
+          ) : (
+            <button
+              onClick={() => {
+                window.alert("Please sign in to edit the cast.");
+              }}
+            >
+              <i className="fas fa-pencil-alt"></i> Edit
+            </button>
+          )}
         </div>
+
         {singleMovie.actors.map((actorData, index) => (
           <div key={actorData.actor.id} className="actor-info">
             <Link
