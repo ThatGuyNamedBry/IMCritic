@@ -140,6 +140,9 @@ export const removeActorFromMovieThunk = (movieId, actorId) => async (dispatch) 
   if (response.ok) {
     dispatch(removeActorFromMovieAction(movieId, actorId));
     return response;
+  } else {
+    const errorData = await response.json();
+    return errorData;
   }
 };
 
