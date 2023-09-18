@@ -31,3 +31,14 @@
     list-style: none;
     justify-content: space-between;
 }
+
+.current-actors ul {
+    padding: 0px;
+}
+
+.actors-map-div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+}
