@@ -91,8 +91,8 @@ def add_actor_to_movie(movie_id):
     # Parse the actor_id from the request data
     data = request.get_json()
     actor_id = data.get("actor_id")
-    print("Received data:", data)
-    print("Received actor_id:", actor_id)
+    # print("Received data:", data)
+    # print("Received actor_id:", actor_id)
 
     # Check if the actor exists
     actor = Actor.query.get(actor_id)
