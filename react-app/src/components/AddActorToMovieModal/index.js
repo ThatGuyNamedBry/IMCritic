@@ -74,7 +74,7 @@ function AddActorToMovieModal({ movieId }) {
         <h4>Current Cast in Movie:</h4>
         <ul>
           {singleMovie.actors.map((actorData) => (
-            <div className='actors-map-div'>
+            <div className='inner-actors-map-div'>
               <li key={actorData.actor.id}>
                 {actorData.actor.name}
               </li>
