@@ -4,14 +4,6 @@ import { useHistory } from 'react-router-dom';
 import { createMovieThunk } from '../../store/movie';
 import './CreateMovieForm.css';
 
-const convertToEmbedURL = (url) => {
-	if (url.includes('youtube.com/watch?v=')) {
-		const videoId = url.split('v=')[1];
-		return `https://www.youtube.com/embed/${videoId}`;
-	}
-	return url;
-};
-
 const CreateMovieForm = () => {
 	const history = useHistory();
 	const dispatch = useDispatch();
@@ -25,6 +17,14 @@ const CreateMovieForm = () => {
 	const [trailer, setTrailer] = useState('');
 	const [img_url, setImgUrl] = useState('');
 	const [errors, setErrors] = useState([]);
+
+	const convertToEmbedURL = (url) => {
+		if (url.includes('youtube.com/watch?v=')) {
+			const videoId = url.split('v=')[1];
+			return `https://www.youtube.com/embed/${videoId}`;
+		}
+		return url;
+	};
 
 	const validateTrailerURL = (url) => {
 		if (!url.includes('youtube.com/embed/')) {
