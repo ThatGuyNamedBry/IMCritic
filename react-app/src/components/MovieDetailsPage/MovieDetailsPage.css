@@ -97,12 +97,12 @@
 
 .review-bttn:hover {
     background-color: rgb(39, 39, 39);
-    opacity: .95;
+    transform: scale(.95);
 }
 
 .review-bttn:active {
     background-color: rgb(50, 50, 50);
-    transform: scale(.95);
+    transform: scale(.90);
 }
 
 .cast-bttn {
@@ -116,12 +116,12 @@
 
 .cast-bttn:hover {
     background-color: rgb(16, 16, 16);
-    opacity: .95;
+    transform: scale(.95);
 }
 
 .cast-bttn:active {
     background-color: rgb(50, 50, 50);
-    transform: scale(.95);
+    transform: scale(.90);
 }
 
 .description-div {
