@@ -106,7 +106,7 @@ function MovieDetailsPage() {
         <div className="actors-header">
           <h3>Top Cast:</h3>
           {sessionUser ? (
-            <button
+            <div
               onClick={() =>
                 setModalContent(
                   <AddActorToMovieModal
@@ -115,17 +115,19 @@ function MovieDetailsPage() {
                   />
                 )
               }
+              className="cast-bttn"
             >
-              <i className="fas fa-pencil-alt"></i> Edit
-            </button>
+              🖉 Edit
+            </div>
           ) : (
-            <button
+            <div
               onClick={() => {
                 window.alert("Please sign in to edit the cast.");
               }}
+              className="cast-bttn"
             >
-              <i className="fas fa-pencil-alt"></i> Edit
-            </button>
+              🖉 Edit
+            </div>
           )}
         </div>
 
