@@ -4,6 +4,14 @@ import { useHistory } from 'react-router-dom';
 import { createMovieThunk } from '../../store/movie';
 import './CreateMovieForm.css';
 
+const convertToEmbedURL = (url) => {
+	if (url.includes('youtube.com/watch?v=')) {
+		const videoId = url.split('v=')[1];
+		return `https://www.youtube.com/embed/${videoId}`;
+	}
+	return url;
+};
+
 const CreateMovieForm = () => {
 	const history = useHistory();
 	const dispatch = useDispatch();
@@ -18,8 +26,23 @@ const CreateMovieForm = () => {
 	const [img_url, setImgUrl] = useState('');
 	const [errors, setErrors] = useState([]);
 
+	const validateTrailerURL = (url) => {
+		if (!url.includes('youtube.com/embed/')) {
+			return false;
+		}
+		return true;
+	};
+
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+
+		const embedTrailer = convertToEmbedURL(trailer);
+
+		if (!validateTrailerURL(embedTrailer)) {
+			setErrors(['Trailer URL must be a valid YouTube embed URL.']);
+			return;
+		}
+
 		const formData = {
 			user_id: user.id,
 			title,
@@ -28,7 +51,7 @@ const CreateMovieForm = () => {
 			director,
 			writer,
 			description,
-			trailer,
+			trailer: embedTrailer,
 			img_url
 		};
 
