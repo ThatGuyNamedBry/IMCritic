@@ -48,42 +48,46 @@ function AddActorToMovieModal({ movieId }) {
   }, [dispatch]);
 
   return (
-      <div className="add-actor-to-movie-modal">
-        <h3>Add Actor to Movie</h3>
-        <div>
-          <label htmlFor="actorSelect">Select an Actor:</label>
-          <select id="actorSelect" value={selectedActor} onChange={handleActorSelection}>
-            <option value="">-- Select an Actor --</option>
-            {availableActors.map((actor) => (
-              <option key={actor.id} value={actor.id}>
-                {actor.name}
-              </option>
-            ))}
-          </select>
-        </div>
-        <button onClick={handleAddActors}>Add Actor to Movie</button>
-        <div className="link-div">
-          <p>
-            Don't see the actor listed?
-          </p>
-          <p>
-            <NavLink to="/actors/new" onClick={handleAddActorClick}>Add one here!</NavLink>
-          </p>
-        </div>
-        <div className="current-actors">
-          <h4>Current Cast in Movie:</h4>
-          <ul>
-            {singleMovie.actors.map((actorData) => (
+    <div className="add-actor-to-movie-modal">
+      <h3>Add Actor to Movie</h3>
+      <div>
+        <label htmlFor="actorSelect">Select an Actor:</label>
+        <select id="actorSelect" value={selectedActor} onChange={handleActorSelection}>
+          <option value="">-- Select an Actor --</option>
+          {availableActors.map((actor) => (
+            <option key={actor.id} value={actor.id}>
+              {actor.name}
+            </option>
+          ))}
+        </select>
+      </div>
+      <button onClick={handleAddActors}>Add Actor to Movie</button>
+      <div className="link-div">
+        <p>
+          Don't see the actor listed?
+        </p>
+        <p>
+          <NavLink to="/actors/new" onClick={handleAddActorClick}>Add one here!</NavLink>
+        </p>
+      </div>
+      <div className="current-actors">
+        <h4>Current Cast in Movie:</h4>
+        <ul>
+          {singleMovie.actors.map((actorData) => (
+            <div className='inner-actors-map-div'>
               <li key={actorData.actor.id}>
                 {actorData.actor.name}
+              </li>
+              <li>
                 {sessionUser && (
                   <button onClick={() => handleRemoveActor(actorData.actor.id)}>Remove</button>
                 )}
               </li>
-            ))}
-          </ul>
-        </div>
+            </div>
+          ))}
+        </ul>
       </div>
+    </div>
   );
 }
 
