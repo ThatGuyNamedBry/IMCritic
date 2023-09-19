@@ -43,6 +43,11 @@ const EditMovieForm = ({ movie }) => {
         <div className="edit-movie-form-container">
             <h2>Edit Movie</h2>
             <form onSubmit={handleSubmit}>
+            <ul className="errors">
+                {errors.map((error, idx) => (
+                    <li key={idx}>{error}</li>
+                ))}
+            </ul>
                 <label>
                     Title:
                     <input
@@ -108,11 +113,6 @@ const EditMovieForm = ({ movie }) => {
                 </label>
                 <button type="submit">Save Changes</button>
             </form>
-            <ul className="errors">
-                {errors.map((error, idx) => (
-                    <li key={idx}>{error}</li>
-                ))}
-            </ul>
         </div>
     );
 };
