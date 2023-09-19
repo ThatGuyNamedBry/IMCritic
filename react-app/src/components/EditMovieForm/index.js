@@ -17,8 +17,31 @@ const EditMovieForm = ({ movie }) => {
     const [img_url, setImgUrl] = useState(movie.img_url);
     const [errors, setErrors] = useState([]);
 
+    const convertToEmbedURL = (url) => {
+        if (url.includes('youtube.com/watch?v=')) {
+            const videoId = url.split('v=')[1];
+            return `https://www.youtube.com/embed/${videoId}`;
+        }
+        return url;
+    };
+
+    const validateTrailerURL = (url) => {
+        if (!url.includes('youtube.com/embed/')) {
+            return false;
+        }
+        return true;
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+		const embedTrailer = convertToEmbedURL(trailer);
+
+		if (!validateTrailerURL(embedTrailer)) {
+			setErrors(['Trailer URL must be a valid YouTube embed URL.']);
+			return;
+		}
+
         const formData = {
             title,
             release_year,
@@ -26,7 +49,7 @@ const EditMovieForm = ({ movie }) => {
             director,
             writer,
             description,
-            trailer,
+            trailer: embedTrailer,
             img_url,
         };
 
@@ -43,11 +66,11 @@ const EditMovieForm = ({ movie }) => {
         <div className="edit-movie-form-container">
             <h2>Edit Movie</h2>
             <form onSubmit={handleSubmit}>
-            <ul className="errors">
-                {errors.map((error, idx) => (
-                    <li key={idx}>{error}</li>
-                ))}
-            </ul>
+                <ul className="errors">
+                    {errors.map((error, idx) => (
+                        <li key={idx}>{error}</li>
+                    ))}
+                </ul>
                 <label>
                     Title:
                     <input
