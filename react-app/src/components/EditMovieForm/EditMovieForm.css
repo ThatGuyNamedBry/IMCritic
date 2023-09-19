@@ -1,0 +1,62 @@
+.edit-movie-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 0px 15px 10px 15px;
+    /* background-color: lightgrey; */
+}
+
+.edit-movie-form-container form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+
+.edit-movie-form-container form label {
+    margin: 5px 0;
+    width: 100%;
+}
+
+.edit-movie-form-container form input {
+    width: 100%;
+    padding: 5px 0px;
+    border-radius: 4px;
+}
+
+.edit-movie-form-container form textarea {
+    width: 100%;
+    border-radius: 4px;
+    padding: 5px 0px;
+}
+
+.edit-movie-form-container button {
+    margin-top: 5px;
+}
+
+.edit-movie-form-container button {
+    background-color: #f5c518;
+    color: black;
+    padding: 8px 10px;
+    border: none;
+    font-weight: bold;
+    border-radius: 3px;
+    transition: 0.2s;
+}
+
+.edit-movie-form-container button:hover {
+    opacity: .9;
+    transform: scale(.98);
+}
+
+.edit-movie-form-container button:active {
+    transform: scale(.94);
+}
+
+.edit-movie-form-container h2 {
+    /* color: #f5c518; */
+    margin-bottom: 0px;
+}

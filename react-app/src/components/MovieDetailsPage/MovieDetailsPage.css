@@ -92,16 +92,37 @@
     color: rgb(87, 153, 239);
     cursor: pointer;
     padding: 1px 3px 3px 2px;
+    transition: 0.2s;
 }
 
 .review-bttn:hover {
     background-color: rgb(39, 39, 39);
+    transform: scale(.95);
 }
 
 .review-bttn:active {
     background-color: rgb(50, 50, 50);
+    transform: scale(.90);
 }
 
+.cast-bttn {
+    background-color: transparent;
+    font-size: large;
+    color: rgb(87, 153, 239);
+    cursor: pointer;
+    padding: 1px 3px 3px 2px;
+    transition: 0.2s;
+}
+
+.cast-bttn:hover {
+    background-color: rgb(16, 16, 16);
+    transform: scale(.95);
+}
+
+.cast-bttn:active {
+    background-color: rgb(50, 50, 50);
+    transform: scale(.90);
+}
 
 .description-div {
     max-width: 400px;
