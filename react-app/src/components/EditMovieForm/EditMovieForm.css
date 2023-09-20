@@ -4,8 +4,8 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
-    padding: 0px 15px 10px 15px;
-    /* background-color: lightgrey; */
+    padding: 0px 25px 15px 25px;
+    background-color: #1f1f1f;
 }
 
 .edit-movie-form-container form {
@@ -19,18 +19,21 @@
 .edit-movie-form-container form label {
     margin: 5px 0;
     width: 100%;
+    color: #f5c518;
 }
 
 .edit-movie-form-container form input {
     width: 100%;
     padding: 5px 0px;
     border-radius: 4px;
+    background-color: rgb(165, 165, 165);
 }
 
 .edit-movie-form-container form textarea {
     width: 100%;
     border-radius: 4px;
     padding: 5px 0px;
+    background-color: rgb(165, 165, 165);
 }
 
 .edit-movie-form-container button {
@@ -57,6 +60,6 @@
 }
 
 .edit-movie-form-container h2 {
-    /* color: #f5c518; */
+    color: #f5c518;
     margin-bottom: 0px;
 }
