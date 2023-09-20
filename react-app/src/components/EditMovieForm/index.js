@@ -62,6 +62,11 @@ const EditMovieForm = ({ movie }) => {
         }
     };
 
+    const handleCancel = () => {
+        closeModal();
+    }
+
+
     return (
         <div className="edit-movie-form-container">
             <h2>Edit Movie</h2>
@@ -134,7 +139,10 @@ const EditMovieForm = ({ movie }) => {
                         onChange={(e) => setImgUrl(e.target.value)}
                     />
                 </label>
+                <div className="button-container">
                 <button type="submit">Save Changes</button>
+                <button className="keep-button" onClick={handleCancel}>Cancel</button>
+                </div>
             </form>
         </div>
     );

@@ -51,6 +51,12 @@
     transition: 0.2s;
 }
 
+.edit-movie-form-container .keep-button {
+    background-color: #1f1f1f;
+    color: #f5c518;
+    border: 1px solid #f5c518;
+}
+
 .edit-movie-form-container button:hover {
     opacity: .9;
     transform: scale(.98);
@@ -63,4 +69,11 @@
 .edit-movie-form-container h2 {
     color: #f5c518;
     margin-bottom: 0px;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
 }
