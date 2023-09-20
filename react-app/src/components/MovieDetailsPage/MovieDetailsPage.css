@@ -77,7 +77,12 @@
 }
 
 .reviews-map li {
+    background-color: #090909;
     list-style: none;
+    border: 1px solid #141414;
+    padding-left: 10px;
+    margin-bottom: 20px;
+    border-radius: 4px;
 }
 
 .review-bttn-container {
@@ -167,6 +172,10 @@
     justify-content: space-between;
 }
 
+.inner-reviews-map p {
+    margin: 0;
+}
+
 .actor-link {
     text-decoration: none;
     color: inherit;
@@ -226,4 +235,12 @@
     text-decoration: underline;
     color: inherit;
     cursor: pointer;
+}
+
+.username-p {
+    color: #f5c518;
+}
+
+.movie-details-container h3 {
+    color: #f5c518;
 }

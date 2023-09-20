@@ -192,7 +192,10 @@ function MovieDetailsPage() {
           {singleMovie.reviews.map(review => (
             <li key={review.id}>
               <div className='inner-reviews-map'>
-                <p>Rating: {review.rating}</p>
+                <p>
+                  <span className='star-icon'>★</span>
+                  {review.rating}/5
+                </p>
                 <div className='edit-delete-bttns-container'>
                   {sessionUser && sessionUser.id === review.user_id && (
                     <div onClick={() => setModalContent(<EditReviewModal review={review} />)} className='update-delete-buttons'>
@@ -206,7 +209,8 @@ function MovieDetailsPage() {
                   )}
                 </div>
               </div>
-              {review.content && <p>Review: {review.content}</p>}
+              <p className='username-p'>{review.username}</p>
+              {review.content && <p>{review.content}</p>}
             </li>
           ))}
         </ul>
