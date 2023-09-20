@@ -72,7 +72,7 @@ const ReviewModal = ({ movieId }) => {
                     />
                 </label>
                 <button type="submit">Submit Review</button>
-                <button type="button" className='cancel-review-bttn' onClick={closeModal}>Cancel</button>
+                <button type="button" className='cancel-button' onClick={closeModal}>Cancel</button>
             </form>
         </div>
     );

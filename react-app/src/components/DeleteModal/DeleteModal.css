@@ -33,11 +33,11 @@
 }
 
 .keep-button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
+    border: 1px solid #f5c518;
     background-color: rgb(20, 20, 20);
-    color: white;
+    color: #f5c518;
+    padding: 10px 20px;
+    border-radius: 4px;
     width: 100px;
 }
 

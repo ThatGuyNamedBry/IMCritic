@@ -70,7 +70,7 @@ const EditReviewModal = ({ review }) => {
                     />
                 </label>
                 <button type="submit">Save Changes</button>
-                <button type="button" onClick={closeModal}>Cancel</button>
+                <button type="button" className='cancel-button' onClick={closeModal}>Cancel</button>
             </form>
         </div>
     );

@@ -144,8 +144,10 @@ const CreateMovieForm = () => {
 						placeholder='Image URL'
 					/>
 				</label>
+				<div className='button-container'>
 				<button type="submit">Create Movie</button>
-				<button type="button" onClick={() => history.goBack()}>Cancel</button>
+				<button type="button" className='cancel-button' onClick={() => history.goBack()}>Cancel</button>
+				</div>
 			</form>
 		</div>
 	);

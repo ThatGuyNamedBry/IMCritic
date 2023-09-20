@@ -51,10 +51,13 @@
     transition: 0.2s;
 }
 
-.edit-movie-form-container .keep-button {
-    background-color: #1f1f1f;
+.button-container .cancel-button {
+    background-color: transparent;
     color: #f5c518;
     border: 1px solid #f5c518;
+    padding: 10px 20px;
+    border-radius: 4px;
+    width: 100px;
 }
 
 .edit-movie-form-container button:hover {

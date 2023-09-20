@@ -141,7 +141,7 @@ const EditMovieForm = ({ movie }) => {
                 </label>
                 <div className="button-container">
                 <button type="submit">Save Changes</button>
-                <button className="keep-button" onClick={handleCancel}>Cancel</button>
+                <button className="cancel-button" onClick={handleCancel}>Cancel</button>
                 </div>
             </form>
         </div>
