@@ -1,5 +1,6 @@
 .add-actor-to-movie-modal h3,h4 {
     margin: 14px 0px;
+    color: #f5c518;
 }
 
 .link-div {
@@ -8,9 +9,20 @@
     align-items: center;
 }
 
+.link-div a {
+    color: rgb(87, 153, 239);
+    text-decoration: none;;
+}
+
+.link-div a:hover {
+    text-decoration: underline;
+}
+
+
 .link-div p {
     margin-bottom: 0px;
     margin-top: 10px;
+    color: #f5c518;
 }
 
 .add-actor-to-movie-modal {
@@ -19,6 +31,22 @@
     justify-content: center;
     align-items: center;
     padding: 10px;
+    background-color: #1f1f1f;
+    gap: 5px;
+}
+
+.add-actor-to-movie-modal button {
+    background-color: #f5c518;
+    color: black;
+    padding: 4px 6px;
+    border: none;
+    font-weight: bold;
+    border-radius: 3px;
+    transition: 0.2s;
+}
+
+.add-actor-to-movie-modal label {
+    color: #f5c518;
 }
 
 .current-actors {
@@ -30,10 +58,12 @@
 .current-actors li {
     list-style: none;
     justify-content: space-between;
+    color: #f5c518;
 }
 
 .current-actors ul {
     padding: 0px;
+    margin: 6px 0px;
 }
 
 .inner-actors-map-div {
@@ -41,4 +71,18 @@
     flex-direction: row;
     align-items: center;
     gap: 5px;
+    margin-bottom: 3px;
+}
+
+#actorSelect {
+    background-color: rgb(165, 165, 165);
+    border-radius: 4px;
+}
+
+.actor-select-inner-div {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    justify-content: space-between;
+    width: 100%;
 }

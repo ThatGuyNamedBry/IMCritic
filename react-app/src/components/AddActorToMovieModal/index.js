@@ -50,7 +50,7 @@ function AddActorToMovieModal({ movieId }) {
   return (
     <div className="add-actor-to-movie-modal">
       <h3>Add Actor to Movie</h3>
-      <div>
+      <div className='actor-select-inner-div'>
         <label htmlFor="actorSelect">Select an Actor:</label>
         <select id="actorSelect" value={selectedActor} onChange={handleActorSelection}>
           <option value="">-- Select an Actor --</option>
