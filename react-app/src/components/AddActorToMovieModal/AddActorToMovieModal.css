@@ -3,7 +3,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 10px;
+    padding: 10px 15px;
     background-color: #1f1f1f;
     gap: 5px;
     border-radius: 6px;
@@ -32,7 +32,7 @@
 
 .link-div p {
     margin-bottom: 0px;
-    margin-top: 10px;
+    margin-top: 5px;
     color: #f5c518;
 }
 
@@ -46,6 +46,15 @@
     transition: 0.2s;
 }
 
+.add-actor-to-movie-modal button:hover {
+    opacity: .9;
+    transform: scale(.98);
+}
+
+.add-actor-to-movie-modal button:active {
+    transform: scale(.94);
+}
+
 .add-actor-to-movie-modal label {
     color: #f5c518;
 }
@@ -54,6 +63,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
 }
 
 .current-actors li {
@@ -65,12 +75,14 @@
 .current-actors ul {
     padding: 0px;
     margin: 6px 0px;
+    width: 78%;
 }
 
 .inner-actors-map-div {
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
     gap: 5px;
     margin-bottom: 3px;
 }
@@ -78,6 +90,14 @@
 #actorSelect {
     background-color: rgb(165, 165, 165);
     border-radius: 4px;
+    font-weight: bold;
+    align-items: center;
+    overflow: hidden;
+}
+
+#actorSelect option {
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .actor-select-inner-div {
@@ -86,4 +106,10 @@
     gap: 5px;
     justify-content: space-between;
     width: 100%;
+    margin-bottom: 3px;
+}
+
+.add-actor-error {
+    color: red;
+    font-size: small;
 }

@@ -10,6 +10,7 @@ function AddActorToMovieModal({ movieId }) {
   const dispatch = useDispatch();
   const { closeModal } = useModal();
   const [selectedActor, setSelectedActor] = useState('');
+  const [error, setError] = useState(null);
   const singleMovie = useSelector((state) => state.movies.singleMovie[movieId]);
   const sessionUser = useSelector((state) => state.session.user);
 
@@ -31,6 +32,8 @@ function AddActorToMovieModal({ movieId }) {
       await dispatch(addActorToMovieThunk(movieId, { actor_id: selectedActor }));
       await dispatch(getMovieByIdThunk(movieId))
       closeModal();
+    } else {
+      setError('Please select an actor to add to the movie.')
     }
   };
 
@@ -43,20 +46,6 @@ function AddActorToMovieModal({ movieId }) {
     await dispatch(getMovieByIdThunk(movieId));
   };
 
-  // const handleCreateNewActor = async () => {
-  //   if (newActorName && newActorImgUrl) {
-  //     const newActorData = {
-  //       name: newActorName,
-  //       img_url: newActorImgUrl,
-  //     };
-  //     const response = await dispatch(createActorThunk(newActorData));
-  //     const newActorId = response.payload.id;
-  //     await dispatch(addActorToMovieThunk(movieId, { actor_id: newActorId }));
-  //     await dispatch(getMovieByIdThunk(movieId))
-  //     closeModal();
-  //   }
-  // };
-
   useEffect(() => {
     dispatch(getAllActorsThunk())
   }, [dispatch]);
@@ -67,7 +56,7 @@ function AddActorToMovieModal({ movieId }) {
       <div className='actor-select-inner-div'>
         <label htmlFor="actorSelect">Select an Actor:</label>
         <select id="actorSelect" value={selectedActor} onChange={handleActorSelection}>
-          <option value="">-- Select an Actor --</option>
+          <option value="">--- Select an Actor ---</option>
           {availableActors.map((actor) => (
             <option key={actor.id} value={actor.id}>
               {actor.name}
@@ -76,6 +65,11 @@ function AddActorToMovieModal({ movieId }) {
         </select>
       </div>
       <button onClick={handleAddActors}>Add Actor to Movie</button>
+      {error && (
+        <div className="add-actor-error">
+          {error}
+        </div>
+      )}
       <div className="link-div">
         <p>
           Don't see the actor listed?
@@ -106,3 +100,19 @@ function AddActorToMovieModal({ movieId }) {
 }
 
 export default AddActorToMovieModal;
+
+
+
+// const handleCreateNewActor = async () => {
+//   if (newActorName && newActorImgUrl) {
+//     const newActorData = {
+//       name: newActorName,
+//       img_url: newActorImgUrl,
+//     };
+//     const response = await dispatch(createActorThunk(newActorData));
+//     const newActorId = response.payload.id;
+//     await dispatch(addActorToMovieThunk(movieId, { actor_id: newActorId }));
+//     await dispatch(getMovieByIdThunk(movieId))
+//     closeModal();
+//   }
+// };
