@@ -100,8 +100,10 @@ function MovieDetailsPage() {
           </p>
         </div>
       </div>
-      <p>Trailer</p>
-      <iframe title="Movie Trailer" width="360" height="215" src={singleMovie.trailer} frameBorder="0" allowFullScreen></iframe>
+      <div className="movie-trailer-div">
+        <h3>Trailer:</h3>
+        <iframe title="Movie Trailer" width="360" height="215" src={singleMovie.trailer} frameBorder="0" allowFullScreen></iframe>
+      </div>
       <div className="movie-actors">
         <div className="actors-header">
           <h3>Top Cast:</h3>
@@ -130,29 +132,70 @@ function MovieDetailsPage() {
             </div>
           )}
         </div>
-
-        {singleMovie.actors.map((actorData, index) => (
-          <div key={actorData.actor.id} className="actor-info">
-            <Link
-              to={`/actors/${actorData.actor.id}`}
-              className="movie-actor-link"
+        {singleMovie.actors.length === 0 ? (
+          <p>
+            Be the first to{' '}
+            <span
+              className="add-actor-link"
+              onClick={() =>
+                sessionUser
+                  ? setModalContent(
+                    <AddActorToMovieModal
+                      movieId={singleMovie.id}
+                      onClose={() => setModalContent(null)}
+                    />
+                  )
+                  : window.alert("Please sign in to add an actor to the movie.")
+              }
             >
-              <img
-                src={actorData.actor.img_url}
-                alt={actorData.actor.name}
-              />
-              {actorData.actor.name}
-            </Link>
-          </div>
-        ))}
+              add an actor
+            </span>{' '}
+            to the movie!
+          </p>
+        ) : null}
+        <div className="cast-container">
+          {singleMovie.actors.map((actorData, index) => (
+            <div key={actorData.actor.id} className="actor-info">
+              <Link
+                to={`/actors/${actorData.actor.id}`}
+                className="movie-actor-link"
+              >
+                <img
+                  src={actorData.actor.img_url}
+                  alt={actorData.actor.name}
+                />
+                {actorData.actor.name}
+              </Link>
+            </div>
+          ))}
+        </div>
       </div>
       <div className="movie-details-rating">
         <h3>User Reviews:</h3>
         <ul className='reviews-map'>
+          {singleMovie.reviews.length === 0 ? (
+            <p>
+              Be the first to{' '}
+              <span
+                className="review-link"
+                onClick={() =>
+                  sessionUser
+                    ? setModalContent(<ReviewModal movieId={singleMovie.id} />)
+                    : window.alert("Please sign in to leave a review.")
+                }
+              >
+                leave a review
+              </span>
+              !
+            </p>
+          ) : null}
           {singleMovie.reviews.map(review => (
             <li key={review.id}>
               <div className='inner-reviews-map'>
-                <p>Rating: {review.rating}</p>
+                <p>
+                  <span className='star-icon'>★</span>
+                  {review.rating}/5
+                </p>
                 <div className='edit-delete-bttns-container'>
                   {sessionUser && sessionUser.id === review.user_id && (
                     <div onClick={() => setModalContent(<EditReviewModal review={review} />)} className='update-delete-buttons'>
@@ -166,7 +209,8 @@ function MovieDetailsPage() {
                   )}
                 </div>
               </div>
-              {review.content && <p>Review: {review.content}</p>}
+              <p className='username-p'>{review.username}</p>
+              {review.content && <p>{review.content}</p>}
             </li>
           ))}
         </ul>

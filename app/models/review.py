@@ -13,6 +13,7 @@ class Review(db.Model):
     movie_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("movies.id")), nullable=False)
     rating = db.Column(db.Integer, nullable=False)
     content = db.Column(db.Text)
+    # created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
     user = db.relationship("User", back_populates="reviews")
     movie = db.relationship("Movie", back_populates="reviews")
@@ -24,4 +25,6 @@ class Review(db.Model):
             "movie_id": self.movie_id,
             "rating": self.rating,
             "content": self.content,
+            # "created_at": self.created_at,
+            "username": self.user.username,
         }

@@ -1,5 +1,5 @@
 .review-modal-container {
-    background-color: white;
+    background-color: #1f1f1f;
     border-radius: 10px;
     padding: 20px;
     text-align: center;
@@ -10,6 +10,7 @@
     font-size: 1.5rem;
     margin-bottom: -10px;
     margin-top: 0px;
+    color:#f5c518;
 }
 
 .review-modal-container label {
@@ -17,6 +18,7 @@
     font-weight: bold;
     margin-bottom: 5px;
     font-size: 1.2rem;
+    color:#f5c518;
 }
 
 .review-modal-container textarea {
@@ -24,6 +26,7 @@
     padding: 8px;
     border: 1px solid lightgray;
     border-radius: 5px;
+    background-color: rgb(165, 165, 165);
 }
 
 .review-modal-container button {
@@ -38,6 +41,17 @@
     margin-right: 10px;
     width: 100%;
     margin-bottom: 3px;
+}
+
+.review-modal-container button:hover {
+    opacity: .9;
+    transform: scale(0.98);
+}
+
+.review-modal-container .cancel-button {
+    background-color: #1f1f1f;
+    color: #f5c518;
+    border: 1px solid #f5c518;
 }
 
 .review-modal-container button:active {

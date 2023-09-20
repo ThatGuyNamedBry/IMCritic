@@ -38,7 +38,7 @@ def create_new_review():
 
     existing_review = Review.query.filter_by(user_id=current_user.id, movie_id=form.data["movie_id"]).first()
     if existing_review:
-        return {"errors": "You can't review the same movie twice"}, 400
+        return {"errors": ["You can't review the same movie twice"]}, 400
 
     if form.validate_on_submit():
         new_review = Review(
@@ -62,7 +62,7 @@ def edit_review(id):
         return {"errors": "Review not found"}, 404
 
     if review.user_id != current_user.id:
-        return {"errors": "You are not authorized to edit this review"}, 403
+        return {"errors": ["You are not authorized to edit this review"]}, 403
 
     form = EditReviewForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
@@ -83,7 +83,7 @@ def edit_review(id):
 def delete_review(id):
     review = Review.query.get(id)
     if review is None:
-        return {"errors": "Review not found"}, 404
+        return {"errors": ["Review not found"]}, 404
 
     db.session.delete(review)
     db.session.commit()

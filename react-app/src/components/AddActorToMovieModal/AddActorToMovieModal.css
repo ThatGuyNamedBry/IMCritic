@@ -1,5 +1,17 @@
+.add-actor-to-movie-modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: #1f1f1f;
+    gap: 5px;
+    border-radius: 6px;
+}
+
 .add-actor-to-movie-modal h3,h4 {
     margin: 14px 0px;
+    color: #f5c518;
 }
 
 .link-div {
@@ -8,37 +20,102 @@
     align-items: center;
 }
 
-.link-div p {
-    margin-bottom: 0px;
-    margin-top: 10px;
+.link-div a {
+    color: rgb(87, 153, 239);
+    text-decoration: none;;
 }
 
-.add-actor-to-movie-modal {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
+.link-div a:hover {
+    text-decoration: underline;
+}
+
+
+.link-div p {
+    margin-bottom: 0px;
+    margin-top: 5px;
+    color: #f5c518;
+}
+
+.add-actor-to-movie-modal button {
+    background-color: #f5c518;
+    color: black;
+    padding: 4px 6px;
+    border: none;
+    font-weight: bold;
+    border-radius: 3px;
+    transition: 0.2s;
+}
+
+.add-actor-to-movie-modal .remove-actor-button {
+    background-color: #1f1f1f;
+    color: #f5c518;
+    border: 1px solid #f5c518;
+}
+
+.add-actor-to-movie-modal button:hover {
+    opacity: .9;
+    transform: scale(.98);
+}
+
+.add-actor-to-movie-modal button:active {
+    transform: scale(.94);
+}
+
+.add-actor-to-movie-modal label {
+    color: #f5c518;
 }
 
 .current-actors {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
 }
 
 .current-actors li {
     list-style: none;
     justify-content: space-between;
+    color: rgb(230, 230, 230);
 }
 
 .current-actors ul {
     padding: 0px;
+    margin: 6px 0px;
+    width: 78%;
 }
 
 .inner-actors-map-div {
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
     gap: 5px;
+    margin-bottom: 3px;
+}
+
+#actorSelect {
+    background-color: rgb(165, 165, 165);
+    border-radius: 4px;
+    font-weight: bold;
+    align-items: center;
+    overflow: hidden;
+}
+
+#actorSelect option {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.actor-select-inner-div {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 3px;
+}
+
+.add-actor-error {
+    color: red;
+    font-size: small;
 }
