@@ -180,6 +180,7 @@
     display: flex;
     flex-direction: row;
     align-items: baseline;
+    flex: 0 0 calc(50% - 20px);
 }
 
 .movie-actor-link {
@@ -194,6 +195,9 @@
     text-decoration: underline;
 }
 
+.movie-actors {
+    width: 400px;
+}
 .movie-actors img {
     height: 75px;
     width: 70px;
@@ -210,4 +214,16 @@
 
 .actors-header button {
     height: 100%;
+}
+
+.cast-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.review-link, .add-actor-link {
+    text-decoration: underline;
+    color: inherit;
+    cursor: pointer;
 }
