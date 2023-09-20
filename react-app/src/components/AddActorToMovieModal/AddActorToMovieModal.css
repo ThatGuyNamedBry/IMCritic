@@ -58,7 +58,7 @@
 .current-actors li {
     list-style: none;
     justify-content: space-between;
-    color: #f5c518;
+    color: rgb(230, 230, 230);
 }
 
 .current-actors ul {

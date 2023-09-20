@@ -5,15 +5,17 @@
     justify-content: center;
     width: 350px;
     height: 200px;
+    background-color: #1f1f1f;
 }
 
 .delete-modal-container h2 {
     font-size: 24px;
     margin-bottom: 10px;
+    color: #f5c518;
 }
 
 .delete-modal-container p {
-    color: rgb(69, 69, 69);
+    color: rgb(230, 230, 230);
     font-size: 18px;
     margin-bottom: 25px;
     text-align: center;

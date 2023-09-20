@@ -43,6 +43,20 @@ function AddActorToMovieModal({ movieId }) {
     await dispatch(getMovieByIdThunk(movieId));
   };
 
+  // const handleCreateNewActor = async () => {
+  //   if (newActorName && newActorImgUrl) {
+  //     const newActorData = {
+  //       name: newActorName,
+  //       img_url: newActorImgUrl,
+  //     };
+  //     const response = await dispatch(createActorThunk(newActorData));
+  //     const newActorId = response.payload.id;
+  //     await dispatch(addActorToMovieThunk(movieId, { actor_id: newActorId }));
+  //     await dispatch(getMovieByIdThunk(movieId))
+  //     closeModal();
+  //   }
+  // };
+
   useEffect(() => {
     dispatch(getAllActorsThunk())
   }, [dispatch]);
