@@ -44,7 +44,7 @@ const ReviewModal = ({ movieId }) => {
             <h2>Create Review</h2>
             <form onSubmit={handleSubmit}>
             <ul className="errors">
-                {errors.map((error, idx) => (
+                {Object.values(errors).map((error, idx) => (
                     <li key={idx}>{error}</li>
                 ))}
             </ul>
@@ -72,7 +72,7 @@ const ReviewModal = ({ movieId }) => {
                     />
                 </label>
                 <button type="submit">Submit Review</button>
-                <button type="button" onClick={closeModal}>Cancel</button>
+                <button type="button" className='cancel-review-bttn' onClick={closeModal}>Cancel</button>
             </form>
         </div>
     );

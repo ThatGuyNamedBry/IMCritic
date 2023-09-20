@@ -88,7 +88,7 @@ function AddActorToMovieModal({ movieId }) {
               </li>
               <li>
                 {sessionUser && (
-                  <button onClick={() => handleRemoveActor(actorData.actor.id)}>Remove</button>
+                  <button className='remove-actor-button' onClick={() => handleRemoveActor(actorData.actor.id)}>Remove</button>
                 )}
               </li>
             </div>

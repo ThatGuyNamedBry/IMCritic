@@ -43,6 +43,17 @@
     margin-bottom: 3px;
 }
 
+.review-modal-container button:hover {
+    opacity: .9;
+    transform: scale(0.98);
+}
+
+.review-modal-container .cancel-review-bttn {
+    background-color: #1f1f1f;
+    color: #f5c518;
+    border: 1px solid #f5c518;
+}
+
 .review-modal-container button:active {
     transform: scale(0.95);
 }
@@ -67,4 +78,13 @@
 
 .star.empty {
     color: lightgray;
+}
+
+.review-errors {
+    display: flex;
+    flex-direction: row;
+    color: red;
+    list-style: none;
+    font-size: small;
+    margin-bottom: -2px;
 }
