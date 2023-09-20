@@ -23,7 +23,7 @@
 .featured-movie {
     background-color: rgb(19, 19, 19);
     height: 240px;
-    width: 130px;
+    width: 128px;
     border-radius: 3px;
 }
 
@@ -38,10 +38,11 @@
 }
 
 .featured-movie img {
-    height: 130px;
-    width: 130px;
+    height: 140px;
+    width: 126px;
     object-fit: fill;
     border-radius: 3px;
+    margin: 0px 1px;
 }
 
 .featured-movie img:hover {
