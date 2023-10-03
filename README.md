@@ -32,7 +32,7 @@ Check it out [here](https://imcritic.onrender.com)!
 ![imcritic-homepage](https://github.com/ThatGuyNamedBry/IMCritic/assets/115834757/fed40e9c-cad9-42f9-b5de-d366c5979c53)
 
 ### MovieDetails Page
-![IMCritic-movieDetails](https://github.com/ThatGuyNamedBry/IMCritic/assets/115834757/d920fc6c-4769-4603-afac-379b41fed46c)
+![IMCritic-movieDetails](https://github.com/ThatGuyNamedBry/IMCritic/assets/115834757/194884ed-bd93-4d80-9520-643c880747ff)
 
 <!-- ### Review Modal
 ![ReviewModal](https://github.com/ThatGuyNamedBry/IMCritic/assets/115834757/e84d4039-48a6-4c93-ab90-9d95c671e917)
