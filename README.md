@@ -34,9 +34,9 @@ Check it out [here](https://imcritic.onrender.com)!
 ### MovieDetails Page
 ![IMCritic-movieDetails](https://github.com/ThatGuyNamedBry/IMCritic/assets/115834757/d920fc6c-4769-4603-afac-379b41fed46c)
 
-### Review Modal
+<!-- ### Review Modal
 ![ReviewModal](https://github.com/ThatGuyNamedBry/IMCritic/assets/115834757/e84d4039-48a6-4c93-ab90-9d95c671e917)
-
+-->
 
 ## Installation Instructions
 
