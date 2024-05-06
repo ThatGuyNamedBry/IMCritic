@@ -45,7 +45,7 @@ def seed_movies():
         writer="Shay Hatten, Michael Finch",
         description="John Wick: Chapter 4 is a 2023 American action thriller film directed and co-produced by Chad Stahelski and written by Shay Hatten and Michael Finch. The sequel to John Wick: Chapter 3 - Parabellum (2019) and the fourth installment in the John Wick franchise. In the film, John Wick sets out to get revenge on the High Table and those who left him for dead.",
         trailer="https://www.youtube.com/embed/qEVUtrk8_B4",
-        img_url='https://www.thevillagesentertainment.com/wp-content/uploads/2023/03/John-wick-4-poster-scaled.jpg'
+        img_url='https://upload.wikimedia.org/wikipedia/en/d/d0/John_Wick_-_Chapter_4_promotional_poster.jpg'
     )
     movie5 = Movie(
         user_id=3,
